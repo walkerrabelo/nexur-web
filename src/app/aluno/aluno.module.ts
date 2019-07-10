@@ -5,16 +5,18 @@ import { AlunoExercicioComponent } from './aluno-exercicio/aluno-exercicio.compo
 import { AlunoAvaliacaoComponent } from './aluno-avaliacao/aluno-avaliacao.component';
 import { DragDropModule } from '@angular/cdk/drag-drop';
 import { MatGridListModule, MatCardModule,
-  MatMenuModule, MatIconModule, MatButtonModule, MatToolbarModule, MatDividerModule, MatExpansionModule } from '@angular/material';
+  MatMenuModule, MatIconModule, MatButtonModule, MatToolbarModule, MatDividerModule, MatExpansionModule, MatTabsModule } from '@angular/material';
 import { LayoutModule } from '@angular/cdk/layout';
 import { AlunoComponent } from './aluno/aluno.component';
+import { AlunoListaComponent } from './aluno-lista/aluno-lista.component';
 
 @NgModule({
   declarations: [
     AlunoTreinoComponent,
     AlunoExercicioComponent,
     AlunoAvaliacaoComponent,
-    AlunoComponent
+    AlunoComponent,
+    AlunoListaComponent
   ],
   imports: [
     CommonModule,
@@ -27,7 +29,10 @@ import { AlunoComponent } from './aluno/aluno.component';
     DragDropModule,
     MatToolbarModule,
     MatDividerModule,
-    MatExpansionModule
+    MatExpansionModule,
+    MatIconModule,
+    MatTabsModule,
+    MatGridListModule
   ],
   exports: [
     AlunoComponent

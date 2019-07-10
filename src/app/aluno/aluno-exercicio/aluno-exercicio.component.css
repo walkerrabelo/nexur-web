@@ -1,3 +1,10 @@
 .card-200 {
-    max-width: 200px;
+    max-width: 260px;
+
+  }
+  .title-footer {
+    font-weight: 500;
+  }
+  .subtitle-footer {
+    font-weight: 300;
   }

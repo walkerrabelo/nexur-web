@@ -1,6 +1,6 @@
 <mat-toolbar color="primary">
     <mat-toolbar-row>
-    <span>Fulano de Tal dos Anzóis</span>
+    <span>Fulano de Tal dos Anzóis ( Engenheiro ) - 110Kg e 1,90m</span>
         <span class="example-spacer"></span>
         <mat-icon class="example-icon" aria-hidden="false" aria-label="Example heart icon">
             favorite
@@ -10,10 +10,18 @@
         </mat-icon>
     </mat-toolbar-row>
 </mat-toolbar>
-<app-aluno-treino></app-aluno-treino>
-<mat-divider></mat-divider>
-<app-aluno-treino></app-aluno-treino>
-<mat-divider></mat-divider>
-<app-aluno-treino></app-aluno-treino>
-<mat-divider></mat-divider>
-<app-aluno-treino></app-aluno-treino>
+<mat-tab-group>
+    <mat-tab label="Treinos">
+        <app-aluno-treino></app-aluno-treino>
+        <mat-divider></mat-divider>
+        <app-aluno-treino></app-aluno-treino>
+        <mat-divider></mat-divider>
+        <app-aluno-treino></app-aluno-treino>
+        <mat-divider></mat-divider>
+        <app-aluno-treino></app-aluno-treino>
+    </mat-tab>
+    <mat-tab label="Avaliações"> Content 2 </mat-tab>
+    <mat-tab label="Dados Pessoais"> Content 3 </mat-tab>
+</mat-tab-group>
+
+

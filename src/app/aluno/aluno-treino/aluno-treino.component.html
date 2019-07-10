@@ -1,9 +1,17 @@
-<mat-accordion displayMode="default" [multi]="true" [hideToggle]="false">
-    <mat-expansion-panel [hideToggle]="false">
-        <mat-expansion-panel-header>Treino de Força (CrossFit) - 01/07 31/08/2019</mat-expansion-panel-header>
-            <app-aluno-exercicio></app-aluno-exercicio>
-            <app-aluno-exercicio></app-aluno-exercicio>
-            <app-aluno-exercicio></app-aluno-exercicio>
+<mat-accordion displayMode="flat" [multi]="true" [hideToggle]="false">
+    <mat-expansion-panel [hideToggle]="false" [expanded]="true">
+        <mat-expansion-panel-header>
+            Treino de Força (CrossFit) - 01/07 31/08/2019
+        </mat-expansion-panel-header>
+        <div class="background-expansion">
+            <mat-grid-list cols="4">
+                <mat-grid-tile><app-aluno-exercicio></app-aluno-exercicio></mat-grid-tile>
+                <mat-grid-tile><app-aluno-exercicio></app-aluno-exercicio></mat-grid-tile>
+                <mat-grid-tile><app-aluno-exercicio></app-aluno-exercicio></mat-grid-tile>
+                <mat-grid-tile><app-aluno-exercicio></app-aluno-exercicio></mat-grid-tile>
+                <mat-grid-tile><app-aluno-exercicio></app-aluno-exercicio></mat-grid-tile>
+            </mat-grid-list>
+        </div>
         <mat-action-row>
             <button mat-button>EDITAR TREINO</button>
             <button mat-button>ADICIONAR EXERCÍCIO</button>

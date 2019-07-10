@@ -9,6 +9,7 @@ import { MatGridListModule, MatCardModule,
 import { LayoutModule } from '@angular/cdk/layout';
 import { AlunoComponent } from './aluno/aluno.component';
 import { AlunoListaComponent } from './aluno-lista/aluno-lista.component';
+import { AlunoExerciciosModalEditComponent } from './aluno-exercicio/aluno-exercicios-modal-edit/aluno-exercicios-modal-edit.component';
 
 @NgModule({
   declarations: [
@@ -16,7 +17,8 @@ import { AlunoListaComponent } from './aluno-lista/aluno-lista.component';
     AlunoExercicioComponent,
     AlunoAvaliacaoComponent,
     AlunoComponent,
-    AlunoListaComponent
+    AlunoListaComponent,
+    AlunoExerciciosModalEditComponent
   ],
   imports: [
     CommonModule,

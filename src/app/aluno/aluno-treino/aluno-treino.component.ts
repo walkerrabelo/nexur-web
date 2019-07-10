@@ -7,7 +7,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AlunoTreinoComponent implements OnInit {
 
-  expanded = false;
+  expanded = true;
 
   constructor() { }
 

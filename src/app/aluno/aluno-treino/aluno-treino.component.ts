@@ -7,9 +7,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AlunoTreinoComponent implements OnInit {
 
+  expanded = false;
+
   constructor() { }
 
   ngOnInit() {
+  }
+
+  expandExercices() {
+    this.expanded = !this.expanded;
   }
 
 }

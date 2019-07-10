@@ -1,1 +1,22 @@
-<p>aluno-exercicios-modal-edit works!</p>
+<h6 mat-dialog-title>Editando {{data.description}}</h6>
+<div mat-dialog-content>
+    <form [formGroup]="alunoExercicioForm">
+        <mat-form-field class="full-width">
+            <input matInput placeholder="Data de Ativação" formControlName="activationDate" 
+            [matDatepicker]="pickerActivationDate">
+            <mat-datepicker-toggle matSuffix [for]="pickerActivationDate"></mat-datepicker-toggle>
+            <mat-datepicker #pickerActivationDate></mat-datepicker>
+        </mat-form-field>
+        <mat-form-field class="full-width">
+            <input matInput placeholder="Data de Vencimento" formControlName="dueDate"
+             [matDatepicker]="pickerDueDate">
+            <mat-datepicker-toggle matSuffix [for]="pickerDueDate"></mat-datepicker-toggle>
+            <mat-datepicker #pickerDueDate></mat-datepicker>
+        </mat-form-field>
+    </form>
+</div>
+<div mat-dialog-actions>
+  <button mat-button (click)="onNoClick()">Cancelar</button>
+  <button mat-button type="button" [mat-dialog-close]="[data.description, alunoExercicioForm.get('activationDate').value,
+  alunoExercicioForm.get('activationDate').value]" cdkFocusInitial>Ok</button>
+</div>

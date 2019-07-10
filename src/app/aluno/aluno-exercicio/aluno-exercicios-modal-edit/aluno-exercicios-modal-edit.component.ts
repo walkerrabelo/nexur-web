@@ -1,5 +1,6 @@
 import { Component, OnInit, Inject } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
+import { FormGroup, FormBuilder } from '@angular/forms';
 
 @Component({
   selector: 'app-aluno-exercicios-modal-edit',
@@ -8,7 +9,10 @@ import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 })
 export class AlunoExerciciosModalEditComponent implements OnInit {
 
+  alunoExercicioForm: FormGroup;
+
   constructor(
+    private formBuilder: FormBuilder,
     public dialogRef: MatDialogRef<AlunoExerciciosModalEditComponent>,
     @Inject(MAT_DIALOG_DATA) public data: DialogData) {}
 
@@ -17,6 +21,11 @@ export class AlunoExerciciosModalEditComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.alunoExercicioForm = this.formBuilder.group({
+      description: '', // this.data.description,
+      activationDate: '', // this.data.activationDate,
+      dueDate: '', // this.data.dueDate
+    });
   }
 
 }

@@ -5,13 +5,18 @@ import { AlunoExercicioComponent } from './aluno-exercicio/aluno-exercicio.compo
 import { AlunoAvaliacaoComponent } from './aluno-avaliacao/aluno-avaliacao.component';
 import { DragDropModule } from '@angular/cdk/drag-drop';
 import { MatGridListModule, MatCardModule,
-  MatMenuModule, MatIconModule, MatButtonModule, MatToolbarModule, MatDividerModule, MatExpansionModule, MatTabsModule } from '@angular/material';
+  MatMenuModule, MatIconModule, MatButtonModule, MatToolbarModule, MatDividerModule,
+   MatExpansionModule, MatTabsModule, MatFormFieldModule, MatDialogModule, MatDatepickerModule, MatInputModule } from '@angular/material';
 import { LayoutModule } from '@angular/cdk/layout';
 import { AlunoComponent } from './aluno/aluno.component';
 import { AlunoListaComponent } from './aluno-lista/aluno-lista.component';
 import { AlunoExerciciosModalEditComponent } from './aluno-exercicio/aluno-exercicios-modal-edit/aluno-exercicios-modal-edit.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
+  entryComponents: [
+    AlunoExerciciosModalEditComponent
+  ],
   declarations: [
     AlunoTreinoComponent,
     AlunoExercicioComponent,
@@ -19,6 +24,7 @@ import { AlunoExerciciosModalEditComponent } from './aluno-exercicio/aluno-exerc
     AlunoComponent,
     AlunoListaComponent,
     AlunoExerciciosModalEditComponent
+    
   ],
   imports: [
     CommonModule,
@@ -34,7 +40,12 @@ import { AlunoExerciciosModalEditComponent } from './aluno-exercicio/aluno-exerc
     MatExpansionModule,
     MatIconModule,
     MatTabsModule,
-    MatGridListModule
+    MatGridListModule,
+    MatFormFieldModule,
+    MatDialogModule,
+    ReactiveFormsModule,
+    MatDatepickerModule,
+    MatInputModule
   ],
   exports: [
     AlunoComponent

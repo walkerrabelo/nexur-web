@@ -1,5 +1,12 @@
-.example-container {
-    width: 400px;
+.example-container1 {
+    width: 240px;
+    max-width: 100%;
+    margin: 0 25px 25px 0;
+    display: inline-block;
+    vertical-align: top;
+  }
+.example-container2 {
+    width: 240px;
     max-width: 100%;
     margin: 0 25px 25px 0;
     display: inline-block;
@@ -16,7 +23,9 @@
   }
   
   .example-box {
-    padding: 20px 10px;
+    width: 200px;
+    padding: 10px 10px;
+    padding-left: 10px;
     border-bottom: solid 1px #ccc;
     color: rgba(0, 0, 0, 0.87);
     display: flex;

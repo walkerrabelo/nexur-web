@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ExercicioDragDropItemComponent } from './exercicio-drag-drop-item/exercicio-drag-drop-item.component';
-import { MatCardModule } from '@angular/material';
+import { MatCardModule, MatRippleModule } from '@angular/material';
 
 @NgModule({
   declarations: [ExercicioDragDropItemComponent],
@@ -10,7 +10,8 @@ import { MatCardModule } from '@angular/material';
   ],
   imports: [
     CommonModule,
-    MatCardModule
+    MatCardModule,
+    MatRippleModule
   ]
 })
 export class ExercicioModule { }

@@ -8,7 +8,7 @@ import { Component, OnInit } from '@angular/core';
 export class AlunoTreinoComponent implements OnInit {
 
   expanded = false;
-  showHideText = 'Ocultar';
+  showHideText = 'Exibir';
   constructor() { }
 
   ngOnInit() {

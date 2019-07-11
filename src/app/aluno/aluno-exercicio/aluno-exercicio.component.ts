@@ -41,4 +41,7 @@ export class AlunoExercicioComponent implements OnInit {
       }
     });
   }
+  delete() {
+    console.log('REMOVENDO EXERCICIO');
+  }
 }

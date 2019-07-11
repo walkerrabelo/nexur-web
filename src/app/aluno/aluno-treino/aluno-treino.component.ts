@@ -8,7 +8,7 @@ import { Component, OnInit } from '@angular/core';
 export class AlunoTreinoComponent implements OnInit {
 
   expanded = true;
-
+  showHideText = 'Ocultar';
   constructor() { }
 
   ngOnInit() {
@@ -16,6 +16,7 @@ export class AlunoTreinoComponent implements OnInit {
 
   expandExercices() {
     this.expanded = !this.expanded;
+    this.showHideText = this.expanded ? 'Ocultar' : 'Exibir';
   }
 
 }

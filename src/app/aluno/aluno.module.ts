@@ -6,7 +6,7 @@ import { AlunoAvaliacaoComponent } from './aluno-avaliacao/aluno-avaliacao.compo
 import { DragDropModule } from '@angular/cdk/drag-drop';
 import { MatGridListModule, MatCardModule,
   MatMenuModule, MatIconModule, MatButtonModule, MatToolbarModule, MatDividerModule,
-   MatExpansionModule, MatTabsModule, MatFormFieldModule, MatDialogModule, MatDatepickerModule, MatInputModule, MatRippleModule } from '@angular/material';
+   MatExpansionModule, MatTabsModule, MatFormFieldModule, MatDialogModule, MatDatepickerModule, MatInputModule, MatRippleModule, MatTooltipModule } from '@angular/material';
 import { LayoutModule } from '@angular/cdk/layout';
 import { AlunoComponent } from './aluno/aluno.component';
 import { AlunoListaComponent } from './aluno-lista/aluno-lista.component';
@@ -46,7 +46,8 @@ import { ReactiveFormsModule } from '@angular/forms';
     ReactiveFormsModule,
     MatDatepickerModule,
     MatInputModule,
-    MatRippleModule
+    MatRippleModule,
+    MatTooltipModule
   ],
   exports: [
     AlunoComponent

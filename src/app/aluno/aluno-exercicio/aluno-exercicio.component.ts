@@ -1,4 +1,4 @@
-import { AlunoExerciciosModalEditComponent } from './aluno-exercicios-modal-edit/aluno-exercicios-modal-edit.component';
+import { AlunoExercicioModalEditComponent } from './aluno-exercicio-modal-edit/aluno-exercicio-modal-edit.component';
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material';
 
@@ -22,7 +22,7 @@ export class AlunoExercicioComponent implements OnInit {
   }
 
   openDialog(): void {
-    const dialogRef = this.dialog.open(AlunoExerciciosModalEditComponent, {
+    const dialogRef = this.dialog.open(AlunoExercicioModalEditComponent, {
       width: '350px',
       data: {
         description: 'Leg Press Abd Supra Infra Max',

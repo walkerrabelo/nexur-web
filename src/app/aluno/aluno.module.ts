@@ -6,16 +6,19 @@ import { AlunoAvaliacaoComponent } from './aluno-avaliacao/aluno-avaliacao.compo
 import { DragDropModule } from '@angular/cdk/drag-drop';
 import { MatGridListModule, MatCardModule,
   MatMenuModule, MatIconModule, MatButtonModule, MatToolbarModule, MatDividerModule,
-   MatExpansionModule, MatTabsModule, MatFormFieldModule, MatDialogModule, MatDatepickerModule, MatInputModule, MatRippleModule, MatTooltipModule } from '@angular/material';
+   MatExpansionModule, MatTabsModule, MatFormFieldModule, MatDialogModule,
+   MatDatepickerModule, MatInputModule, MatRippleModule, MatTooltipModule } from '@angular/material';
 import { LayoutModule } from '@angular/cdk/layout';
 import { AlunoComponent } from './aluno/aluno.component';
 import { AlunoListaComponent } from './aluno-lista/aluno-lista.component';
-import { AlunoExerciciosModalEditComponent } from './aluno-exercicio/aluno-exercicios-modal-edit/aluno-exercicios-modal-edit.component';
+import { AlunoExercicioModalEditComponent } from './aluno-exercicio/aluno-exercicio-modal-edit/aluno-exercicio-modal-edit.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { AlunoTreinoEditComponent } from './aluno-treino/aluno-treino-edit/aluno-treino-edit.component';
+import { ExercicioModule } from '../exercicio/exercicio.module';
 
 @NgModule({
   entryComponents: [
-    AlunoExerciciosModalEditComponent
+    AlunoExercicioModalEditComponent
   ],
   declarations: [
     AlunoTreinoComponent,
@@ -23,8 +26,8 @@ import { ReactiveFormsModule } from '@angular/forms';
     AlunoAvaliacaoComponent,
     AlunoComponent,
     AlunoListaComponent,
-    AlunoExerciciosModalEditComponent
-    
+    AlunoExercicioModalEditComponent,
+    AlunoTreinoEditComponent
   ],
   imports: [
     CommonModule,
@@ -47,7 +50,9 @@ import { ReactiveFormsModule } from '@angular/forms';
     MatDatepickerModule,
     MatInputModule,
     MatRippleModule,
-    MatTooltipModule
+    MatTooltipModule,
+    DragDropModule,
+    ExercicioModule
   ],
   exports: [
     AlunoComponent

@@ -1,0 +1,31 @@
+.drag-drop-item-container {
+    border-radius: 6px;
+    cursor: pointer;
+    text-align: center;
+    width: 230px;
+    height: 230px;
+    user-select: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    -webkit-user-drag: none;
+    -webkit-tap-highlight-color: transparent;
+}
+.drag-drop-item-footer {
+    position: absolute;
+    bottom: 5px;
+    text-align: center;
+    align-items: center;
+    width: 100%;
+    min-height: 50px;
+    background-color: white;
+    opacity: 0.9;
+}
+.drag-drop-item-title-footer {
+    font-weight: 500;
+    margin-top: 5px;
+}
+.drag-drop-item-subtitle-footer {
+    margin-top: 2px;
+    font-weight: 300;
+}

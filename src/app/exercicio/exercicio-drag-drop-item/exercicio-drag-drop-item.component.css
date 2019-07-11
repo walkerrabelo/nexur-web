@@ -1,9 +1,10 @@
 .drag-drop-container {
+    
     border-radius: 6px;
     cursor: pointer;
     text-align: center;
-    width: 180px;
-    height: 180px;
+    width: 140px;
+    height: 140px;
     user-select: none;
     -webkit-user-select: none;
     -moz-user-select: none;
@@ -13,17 +14,17 @@
 }
 .drag-drop-footer {
     position: absolute;
-    bottom: 2px;
+    bottom: 0px;
     text-align: center;
     align-items: center;
     width: 100%;
-    min-height: 30px;
+    height: 35px;
     background-color: white;
     opacity: 0.9;
 }
 .drag-drop-title-footer {
     font-weight: 500;
-    margin-top: 5px;
+    font-size: 12px;
 }
 .drag-drop-subtitle-footer {
     margin-top: 2px;

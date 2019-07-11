@@ -1,5 +1,5 @@
+<div class="container-drag-drop">
 <div class="example-container1">
-    <h2>Exercícios</h2>
     
     <div
         cdkDropList
@@ -15,15 +15,15 @@
     </div>
     
     <div class="example-container2">
-    <h2>Treino do Aluno</h2>
     
     <div
         cdkDropList
         #doneList="cdkDropList"
         [cdkDropListData]="done"
         [cdkDropListConnectedTo]="[todoList]"
-        class="example-list"
+        class="example-list2"
         (cdkDropListDropped)="drop($event)">
         <app-exercicio-drag-drop-item class="example-box" *ngFor="let item of done" cdkDrag></app-exercicio-drag-drop-item>
     </div>
+</div>
 </div>

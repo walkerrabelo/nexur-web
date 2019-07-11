@@ -9,6 +9,13 @@ import { MatDialog } from '@angular/material';
 })
 export class AlunoExercicioComponent implements OnInit {
 
+  // Mat Riple Properties
+  centered = false;
+  disabled = false;
+  unbounded = false;
+  radius: number;
+  color: string;
+
   constructor(public dialog: MatDialog) { }
 
   ngOnInit() {
@@ -25,11 +32,13 @@ export class AlunoExercicioComponent implements OnInit {
     });
 
     dialogRef.afterClosed().subscribe(result => {
-      const description = result[0];
-      const activationDate = result[0];
-      const dueDate = result[2];
-      console.log('Dados de atualizacao: ');
-      console.log(result);
+      if (result) {
+        const description = result[0];
+        const activationDate = result[0];
+        const dueDate = result[2];
+        console.log('Dados de atualizacao: ');
+        console.log(result);
+      }
     });
   }
 }

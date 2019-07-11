@@ -1,11 +1,26 @@
+<!--
 <mat-card class="card-260">
   <mat-card-header>
   </mat-card-header>
   <mat-card-content>
-    <a mat-button (click)="openDialog()">
-      <img mat-card-image src="https://media.giphy.com/media/LEdeagTR1duUM/giphy.gif" alt="Photo of a Shiba Inu"/>  
-    </a>
-      <div class="title-footer">Leg Press Abd Supra Infra Max</div>
-      <div class="subtitle-footer">3x5 | 100Kg | 60s</div>
+      <div matRipple (click)="openDialog()">
+        <img mat-card-image src="https://media.giphy.com/media/LEdeagTR1duUM/giphy.gif" alt="Photo of a Shiba Inu"/>  
+      
+        <div class="title-footer">LEG PRESS ABD SUPRA INFRA MAX</div>
+        <div class="subtitle-footer">3x5 | 100Kg | 60s</div>
+      </div>
   </mat-card-content>
 </mat-card>
+-->
+<div matRipple class="ripple-container mat-elevation-z4" (click)="openDialog()"
+  [matRippleCentered]="centered"
+  [matRippleDisabled]="disabled"
+  [matRippleUnbounded]="unbounded"
+  [matRippleRadius]="radius"
+  [matRippleColor]="color">
+  <img mat-card-image src="https://media.giphy.com/media/1fj7LPAGBMiCfxqtQy/giphy.gif" alt="Photo of a Shiba Inu"/> 
+  <div class="ripple-footer">
+    <div class="title-footer">LEG PRESS ABD SUPRA INFRA MAX</div>
+    <div class="subtitle-footer">3x5 | 100Kg | 60s</div>
+  </div>
+</div>

@@ -4,22 +4,22 @@
             TREINO DE FORÇA (CrossFit)
             <button mat-stroked-button color="primary" (click)="expandExercices()">
                 <mat-icon>view_module</mat-icon>
-                Exibir
+                Exibir Exercícios
             </button>
             <button mat-stroked-button color="primary">
                 <mat-icon>edit</mat-icon>
-                Editar
+                Editar Treino
             </button>
             <button mat-stroked-button color="warn">
                 <mat-icon>block</mat-icon>
-                Desativar
+                Desativar Treino
             </button>
         </mat-card-title>
     </mat-card-header>
     <mat-card-content>
     <mat-accordion displayMode="flat" [multi]="true" [hideToggle]="false">
         <mat-expansion-panel [hideToggle]="false" [expanded]="expanded">
-            <mat-grid-list cols="4">
+            <mat-grid-list cols="5">
                 <mat-grid-tile><app-aluno-exercicio></app-aluno-exercicio></mat-grid-tile>
                 <mat-grid-tile><app-aluno-exercicio></app-aluno-exercicio></mat-grid-tile>
                 <mat-grid-tile><app-aluno-exercicio></app-aluno-exercicio></mat-grid-tile>

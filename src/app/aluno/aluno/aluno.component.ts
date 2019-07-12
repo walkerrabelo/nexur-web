@@ -10,6 +10,7 @@ export class AlunoComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
+    console.log('Fazendo a requisição...');
   }
 
 }

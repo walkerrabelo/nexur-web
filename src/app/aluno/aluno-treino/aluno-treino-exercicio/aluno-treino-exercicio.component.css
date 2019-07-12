@@ -1,0 +1,43 @@
+.ripple-container {
+    border-radius: 6px;
+    cursor: pointer;
+    text-align: center;
+    width: 230px;
+    height: 230px;
+    user-select: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    -webkit-user-drag: none;
+    -webkit-tap-highlight-color: transparent;
+  }
+  .ripple-container:hover {
+    border-radius: 6px;
+    filter: brightness(95%);
+  }
+  .ripple-footer {
+    position: absolute;
+    bottom: 5px;
+    text-align: center;
+    align-items: center;
+    width: 100%;
+    min-height: 50px;
+    background-color: white;
+    opacity: 0.9;
+  }
+  .title-footer {
+    font-weight: 500;
+    margin-top: 5px;
+  }
+  .subtitle-footer {
+    margin-top: 2px;
+    font-weight: 300;
+  }
+  .ripple-close-button {
+    position: absolute;
+    top: 2px;
+    right: 10px;
+    border-radius: 15px;
+    width: 20px;
+    height: 20px;
+  }

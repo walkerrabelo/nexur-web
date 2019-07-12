@@ -16,8 +16,9 @@ import { MAT_DATE_LOCALE, MatNativeDateModule } from '@angular/material';
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
-    AlunoModule,
-    MatNativeDateModule
+    MatNativeDateModule,
+    // This App Module
+    AlunoModule
   ],
   providers: [{provide: MAT_DATE_LOCALE, useValue: 'pt-BR'}],
   bootstrap: [AppComponent]

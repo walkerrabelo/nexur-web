@@ -1,15 +1,15 @@
-import { AlunoExercicioModalEditComponent } from './aluno-exercicio-modal-edit/aluno-exercicio-modal-edit.component';
-import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material';
+import { AlunoTreinoExercicioDialogFormComponent } from './aluno-treino-exercicio-dialog-form/aluno-treino-exercicio-dialog-form.component';
+import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'app-aluno-exercicio',
-  templateUrl: './aluno-exercicio.component.html',
-  styleUrls: ['./aluno-exercicio.component.css']
+  selector: 'app-aluno-treino-exercicio',
+  templateUrl: './aluno-treino-exercicio.component.html',
+  styleUrls: ['./aluno-treino-exercicio.component.css']
 })
-export class AlunoExercicioComponent implements OnInit {
+export class AlunoTreinoExercicioComponent implements OnInit {
 
-  // Mat Riple Properties
+  // MatRiple properties
   centered = false;
   disabled = false;
   unbounded = false;
@@ -22,7 +22,7 @@ export class AlunoExercicioComponent implements OnInit {
   }
 
   openDialog(): void {
-    const dialogRef = this.dialog.open(AlunoExercicioModalEditComponent, {
+    const dialogRef = this.dialog.open(AlunoTreinoExercicioDialogFormComponent, {
       width: '350px',
       data: {
         description: 'Leg Press Abd Supra Infra Max',

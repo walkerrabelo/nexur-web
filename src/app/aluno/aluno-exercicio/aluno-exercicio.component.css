@@ -11,6 +11,10 @@
   -webkit-user-drag: none;
   -webkit-tap-highlight-color: transparent;
 }
+.ripple-container:hover {
+  border-radius: 6px;
+  filter: brightness(95%);
+}
 .ripple-footer {
   position: absolute;
   bottom: 5px;

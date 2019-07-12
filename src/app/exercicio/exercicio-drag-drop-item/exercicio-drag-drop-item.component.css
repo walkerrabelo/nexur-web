@@ -12,6 +12,10 @@
     -webkit-user-drag: none;
     -webkit-tap-highlight-color: transparent;
 }
+.drag-drop-container:hover {
+    border-radius: 6px;
+    filter: brightness(90%);
+}
 .drag-drop-footer {
     position: absolute;
     bottom: 0px;

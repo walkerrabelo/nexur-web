@@ -1,6 +1,13 @@
+<form [formGroup]="alunoTreinoEditForm">
+</form>
 <div class="container-drag-drop">
 <div class="example-container1">
     
+    <form [formGroup]="listaExercicioForm">
+        <mat-form-field class="full-width">
+            <input matInput placeholder="Pesquise por Nome, Tipo ou Equipamento" formControlName="nomeTipoEquipamento">
+        </mat-form-field>
+    </form>    
     <div
         cdkDropList
         #todoList="cdkDropList"
@@ -15,6 +22,7 @@
     </div>
     
     <div class="example-container2">
+    <h3>Série do Aluno</h3>
     
     <div
         cdkDropList

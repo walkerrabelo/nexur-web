@@ -1,3 +1,4 @@
+import { FormGroup, FormBuilder } from '@angular/forms';
 import { Component, OnInit } from '@angular/core';
 import {CdkDragDrop, moveItemInArray, transferArrayItem, copyArrayItem} from '@angular/cdk/drag-drop';
 @Component({
@@ -6,6 +7,10 @@ import {CdkDragDrop, moveItemInArray, transferArrayItem, copyArrayItem} from '@a
   styleUrls: ['./aluno-treino-edit.component.css']
 })
 export class AlunoTreinoEditComponent implements OnInit {
+
+  alunoTreinoEditForm: FormGroup;
+  listaExercicioForm: FormGroup;
+
   todo = [
     'Get to work',
     'Pick up groceries',
@@ -21,7 +26,7 @@ export class AlunoTreinoEditComponent implements OnInit {
     'Walk dog'
   ];
 
-  constructor() { }
+  constructor(private formBuilder: FormBuilder) { }
 
   ngOnInit() {
   }
@@ -39,5 +44,14 @@ export class AlunoTreinoEditComponent implements OnInit {
                         event.previousIndex,
                         event.currentIndex);
     }
+  }
+
+  createForms() {
+    this.listaExercicioForm = this.formBuilder.group({
+      nomeTipoEquipamento: ''
+    });
+
+    this.alunoTreinoEditForm = this.formBuilder.group({
+    });
   }
 }

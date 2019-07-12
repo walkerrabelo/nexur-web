@@ -1,4 +1,11 @@
-.container-drag-drop{
+.container-form {
+  width: 700px;
+  border: solid 1px rgb(25, 23, 139);
+  padding: 20px;
+  flex-direction: column;
+  justify-content: space-around;
+}
+.container-drag-drop{ 
 
   width: 700px;
   border: solid 1px rgb(139, 23, 23);
@@ -76,4 +83,16 @@
   
   .example-list.cdk-drop-list-dragging .example-box:not(.cdk-drag-placeholder) {
     transition: transform 250ms cubic-bezier(0, 0, 0.2, 1);
+  }
+
+  .field-short {
+    width: 20%;
+    margin-left: 10px;
+  }
+  .field-medium {
+    width: 25%;
+    margin-left: 10px;
+  }
+  .field-big {
+    width: 40%;
   }

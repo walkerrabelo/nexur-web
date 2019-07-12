@@ -1,37 +1,54 @@
-<form [formGroup]="alunoTreinoEditForm">
-</form>
-<div class="container-drag-drop">
-<div class="example-container1">
-    
-    <form [formGroup]="listaExercicioForm">
-        <mat-form-field class="full-width">
-            <input matInput placeholder="Pesquise por Nome, Tipo ou Equipamento" formControlName="nomeTipoEquipamento">
+<div class="container-form">
+    <form [formGroup]="alunoTreinoEditForm">
+        <mat-form-field class="field-big">
+            <input matInput placeholder="Descrição do Treino" formControlName="descricao">
         </mat-form-field>
-    </form>    
-    <div
-        cdkDropList
-        #todoList="cdkDropList"
-        [cdkDropListData]="todo"
-        [cdkDropListConnectedTo]="[doneList]"
-        class="example-list"
-        (cdkDropListDropped)="drop($event)">
-        <app-exercicio-drag-drop-item [showSubTitle]="false" class="example-box" *ngFor="let item of todo" cdkDrag>
-            
-        </app-exercicio-drag-drop-item>
-    </div>
-    </div>
-    
-    <div class="example-container2">
-    <h3>Série do Aluno</h3>
-    
-    <div
-        cdkDropList
-        #doneList="cdkDropList"
-        [cdkDropListData]="done"
-        [cdkDropListConnectedTo]="[todoList]"
-        class="example-list2"
-        (cdkDropListDropped)="drop($event)">
-        <app-exercicio-drag-drop-item [showSubTitle]="true" class="example-box" *ngFor="let item of done" cdkDrag></app-exercicio-drag-drop-item>
-    </div>
+        <mat-form-field class="field-short">
+            <input matInput placeholder="Data de Ativação" formControlName="dataAtivacao" 
+            [matDatepicker]="pickerDataAtivacao">
+            <mat-datepicker-toggle matSuffix [for]="pickerDataAtivacao"></mat-datepicker-toggle>
+            <mat-datepicker #pickerDataAtivacao></mat-datepicker>
+        </mat-form-field>
+        <mat-form-field class="field-short">
+            <input matInput placeholder="Data de Vencimento" formControlName="dataVencimento"
+                [matDatepicker]="pickerDataVencimento">
+            <mat-datepicker-toggle matSuffix [for]="pickerDataVencimento"></mat-datepicker-toggle>
+            <mat-datepicker #pickerDataVencimento></mat-datepicker>
+        </mat-form-field>
+    </form>
 </div>
+<div class="container-drag-drop">
+    <div class="example-container1">
+        
+        <form [formGroup]="listaExercicioForm">
+            <mat-form-field class="full-width">
+                <input matInput placeholder="Pesquise por Nome, Tipo ou Equipamento" formControlName="nomeTipoEquipamento">
+            </mat-form-field>
+        </form>    
+        <div
+            cdkDropList
+            #todoList="cdkDropList"
+            [cdkDropListData]="todo"
+            [cdkDropListConnectedTo]="[doneList]"
+            class="example-list"
+            (cdkDropListDropped)="drop($event)">
+            <app-exercicio-drag-drop-item [showSubTitle]="false" class="example-box" *ngFor="let item of todo" cdkDrag>
+                
+            </app-exercicio-drag-drop-item>
+        </div>
+        </div>
+        
+    <div class="example-container2">
+        <h4>Série do Aluno</h4>
+        
+        <div
+            cdkDropList
+            #doneList="cdkDropList"
+            [cdkDropListData]="done"
+            [cdkDropListConnectedTo]="[todoList]"
+            class="example-list2"
+            (cdkDropListDropped)="drop($event)">
+            <app-exercicio-drag-drop-item [showSubTitle]="true" class="example-box" *ngFor="let item of done" cdkDrag></app-exercicio-drag-drop-item>
+        </div>
+    </div>
 </div>

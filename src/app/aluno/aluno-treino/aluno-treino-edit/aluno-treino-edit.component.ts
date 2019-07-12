@@ -1,6 +1,8 @@
+import { AlunoTreino } from './../../../models/aluno/aluno-treino';
 import { FormGroup, FormBuilder } from '@angular/forms';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Inject } from '@angular/core';
 import {CdkDragDrop, moveItemInArray, transferArrayItem, copyArrayItem} from '@angular/cdk/drag-drop';
+import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 @Component({
   selector: 'app-aluno-treino-edit',
   templateUrl: './aluno-treino-edit.component.html',
@@ -26,7 +28,16 @@ export class AlunoTreinoEditComponent implements OnInit {
     'Walk dog'
   ];
 
-  constructor(private formBuilder: FormBuilder) { }
+  constructor(
+    private formBuilder: FormBuilder,
+    public dialogRef: MatDialogRef<AlunoTreinoEditComponent>,
+    @Inject(MAT_DIALOG_DATA) public alunoTreino: AlunoTreino) {
+    this.createForms();
+  }
+
+  onNoClick(): void {
+    this.dialogRef.close();
+  }
 
   ngOnInit() {
   }
@@ -52,6 +63,9 @@ export class AlunoTreinoEditComponent implements OnInit {
     });
 
     this.alunoTreinoEditForm = this.formBuilder.group({
+      descricao: 'TREINO DE FORÇA (CrossFit)',
+      dataAtivacao: '',
+      dataVencimento: ''
     });
   }
 }

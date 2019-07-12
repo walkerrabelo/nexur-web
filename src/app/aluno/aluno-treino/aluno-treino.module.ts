@@ -23,7 +23,7 @@ import { AlunoTreinoEditComponent } from './aluno-treino-edit/aluno-treino-edit.
     AlunoTreinoExercicioComponent,
     AlunoTreinoExercicioDialogFormComponent
   ],
-  exports: [AlunoTreinoComponent],
+  exports: [AlunoTreinoComponent, AlunoTreinoEditComponent],
   imports: [
     CommonModule,
     MatRippleModule,

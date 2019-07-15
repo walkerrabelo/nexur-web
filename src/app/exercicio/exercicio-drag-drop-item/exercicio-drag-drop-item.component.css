@@ -1,11 +1,12 @@
 .drag-drop-container {
-    
     border-radius: 6px;
     cursor: pointer;
     text-align: center;
     width: 140px;
     height: 140px;
     user-select: none;
+    cursor: move;
+    font-size: 12px;
     -webkit-user-select: none;
     -moz-user-select: none;
     -ms-user-select: none;
@@ -28,7 +29,6 @@
 }
 .drag-drop-title-footer {
     font-weight: 500;
-    font-size: 12px;
 }
 .drag-drop-subtitle-footer {
     margin-top: 2px;

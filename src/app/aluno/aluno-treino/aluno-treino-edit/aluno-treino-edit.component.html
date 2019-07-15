@@ -32,15 +32,17 @@
             [cdkDropListConnectedTo]="[doneList]"
             class="example-list"
             (cdkDropListDropped)="drop($event)">
-            <app-exercicio-drag-drop-item [showSubTitle]="false" class="example-box" *ngFor="let item of todo" cdkDrag>
+            <app-exercicio-drag-drop-item 
+                [showSubTitle]="false" class="example-box" 
+                *ngFor="let item of todo" cdkDrag>
                 
             </app-exercicio-drag-drop-item>
         </div>
         </div>
+
         
     <div class="example-container2">
         <h4>Série do Aluno</h4>
-        
         <div
             cdkDropList
             #doneList="cdkDropList"
@@ -48,7 +50,10 @@
             [cdkDropListConnectedTo]="[todoList]"
             class="example-list2"
             (cdkDropListDropped)="drop($event)">
-            <app-exercicio-drag-drop-item [showSubTitle]="true" class="example-box" *ngFor="let item of done" cdkDrag></app-exercicio-drag-drop-item>
+            <app-exercicio-drag-drop-item 
+                [showSubTitle]="true" class="example-box"  
+                *ngFor="let item of done" cdkDrag>
+            </app-exercicio-drag-drop-item>
         </div>
     </div>
 </div>

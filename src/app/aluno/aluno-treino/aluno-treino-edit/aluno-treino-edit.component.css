@@ -28,7 +28,7 @@
   }
   
   .example-list {
-    border: solid 1px #ccc;
+    border: dotted 1px #ccc;
     min-height: 60px;
     background: white;
     border-radius: 4px;
@@ -37,7 +37,7 @@
     flex-wrap: wrap;
   }
   .example-list2 {
-    border: solid 1px #ccc;
+    border: solid 1px rgb(93, 29, 145);
     min-height: 60px;
     background: white;
     border-radius: 4px;
@@ -48,18 +48,12 @@
   .example-box {
     width: 160px;
     height: 160px;
-    padding: 10px 10px;
-    padding-left: 10px;
-    
-    color: rgba(0, 0, 0, 0.87);
+    padding: 10px;
     display: flex;
     flex-direction: row;
     align-items: center;
     justify-content: space-between;
     box-sizing: border-box;
-    cursor: move;
-    background: white;
-    font-size: 12px;
   }
   
   .cdk-drag-preview {

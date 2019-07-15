@@ -1,10 +1,10 @@
 import { AlunoTreinoEditComponent } from './aluno-treino/aluno-treino-edit/aluno-treino-edit.component';
 import { AlunoTreinoModule } from './aluno-treino/aluno-treino.module';
-import { FloatActionButtonAnimatedModule } from './../shared/float-action-button-animated/float-action-button-animated.module';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { AlunoAvaliacaoComponent } from './aluno-avaliacao/aluno-avaliacao.component';
-import { MatIconModule, MatToolbarModule, MatDividerModule, MatTabsModule, MatTooltipModule, MatDialogModule } from '@angular/material';
+import { MatIconModule, MatToolbarModule, MatDividerModule, MatTabsModule,
+  MatTooltipModule, MatDialogModule, MatButtonModule } from '@angular/material';
 import { AlunoComponent } from './aluno/aluno.component';
 import { AlunoListaComponent } from './aluno-lista/aluno-lista.component';
 
@@ -23,12 +23,11 @@ import { AlunoListaComponent } from './aluno-lista/aluno-lista.component';
     MatIconModule,
     MatToolbarModule,
     MatDividerModule,
-    MatIconModule,
     MatTabsModule,
     MatTooltipModule,
-    FloatActionButtonAnimatedModule,
     MatDialogModule,
-    AlunoTreinoModule
+    AlunoTreinoModule,
+    MatButtonModule,
   ],
   exports: [
     AlunoComponent

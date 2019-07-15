@@ -1,6 +1,7 @@
 import { AlunoTreinoEditComponent } from './../aluno-treino/aluno-treino-edit/aluno-treino-edit.component';
 import { MatDialog } from '@angular/material';
 import { Component, OnInit } from '@angular/core';
+import { FormControl } from '@angular/forms';
 
 @Component({
   selector: 'app-aluno',
@@ -9,10 +10,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AlunoComponent implements OnInit {
 
+  tooltipButton = 'Novo Treino';
+  selectedTab = new FormControl(0);
   constructor(private dialog: MatDialog) { }
 
   ngOnInit() {
-    console.log('Fazendo a requisição...');
+    console.log('Fazendo a requisição de teste...');
   }
   openDialog(): void {
     const dialogRef = this.dialog.open(AlunoTreinoEditComponent, {
@@ -34,5 +37,18 @@ export class AlunoComponent implements OnInit {
         console.log(result);
       }
     });
+  }
+
+  create() {
+    if (this.selectedTab.value === 0) {
+      console.log('Criando um Treino...');
+      this.openDialog();
+    }
+    if (this.selectedTab.value === 1) {
+      console.log('Criando uma Avaliação');
+    }
+    if (this.selectedTab.value === 2) {
+      console.log('Botão desabilitado...');
+    }
   }
 }

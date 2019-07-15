@@ -5,7 +5,7 @@ import { NgModule } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { MAT_DATE_LOCALE, MatNativeDateModule } from '@angular/material';
+import { MAT_DATE_LOCALE, MatNativeDateModule, MatIconModule, MatButtonModule, MatTooltipModule } from '@angular/material';
 
 @NgModule({
   declarations: [

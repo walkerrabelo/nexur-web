@@ -22,7 +22,7 @@
         
         <form [formGroup]="listaExercicioForm">
             <mat-form-field class="full-width">
-                <input matInput placeholder="Pesquise por Nome, Tipo ou Equipamento" formControlName="nomeTipoEquipamento">
+                <input (keyup)="findExercices()" matInput placeholder="Pesquise por Nome, Tipo ou Equipamento" formControlName="nomeTipoEquipamento">
             </mat-form-field>
         </form>    
         <div
@@ -34,7 +34,11 @@
             (cdkDropListDropped)="drop($event)">
             <app-exercicio-drag-drop-item 
                 [showSubTitle]="false" class="example-box" 
-                *ngFor="let item of todo" cdkDrag>
+                *ngFor="let item of todo" 
+                [imageUrl]="item.url"
+                [title]="item.nome"
+                [subtitle]="item.repeticao"
+                cdkDrag>
                 
             </app-exercicio-drag-drop-item>
         </div>
@@ -52,7 +56,11 @@
             (cdkDropListDropped)="drop($event)">
             <app-exercicio-drag-drop-item 
                 [showSubTitle]="true" class="example-box"  
-                *ngFor="let item of done" cdkDrag>
+                *ngFor="let item of done" 
+                [imageUrl]="item.url"
+                [title]="item.nome"
+                [subtitle]="item.repeticao"
+                cdkDrag>
             </app-exercicio-drag-drop-item>
         </div>
     </div>

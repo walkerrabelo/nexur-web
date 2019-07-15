@@ -1,11 +1,11 @@
 <div matRipple class="drag-drop-container mat-elevation-z4">
-  <img mat-card-image src="https://media.giphy.com/media/GchncVE4gJDjO/giphy.gif" alt="Photo of a Shiba Inu"/> 
+  <img mat-card-image [src]="imageUrl" [alt]="title"/> 
   <div class="drag-drop-footer">
     <div class="drag-drop-title-footer">
-      ABDOMINAL SUPRA
+      {{title}}
     </div>
     <div *ngIf="showSubTitle" class="drag-drop-subtitle-footer">
-      3X5 | 60s | 100Kg
+      {{subtitle}}
     </div>
   </div>
 </div>

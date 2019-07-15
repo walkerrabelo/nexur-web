@@ -7,8 +7,11 @@ import { Component, OnInit, Input } from '@angular/core';
 })
 export class ExercicioDragDropItemComponent implements OnInit {
 
-  @Input()
-  showSubTitle = true;
+  @Input() showSubTitle = true;
+  @Input() imageUrl = '';
+  @Input() title = '';
+  @Input() subtitle = '';
+
   constructor() { }
 
   ngOnInit() {

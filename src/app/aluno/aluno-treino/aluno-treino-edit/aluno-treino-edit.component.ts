@@ -14,18 +14,65 @@ export class AlunoTreinoEditComponent implements OnInit {
   listaExercicioForm: FormGroup;
 
   todo = [
-    'Get to work',
-    'Pick up groceries',
-    'Go home',
-    'Fall asleep'
+    {
+      nome: 'ABDOMINAL SUPRA',
+      repeticao: '3x5',
+      peso: '100kg',
+      tempo: '60s',
+      url: 'https://media.giphy.com/media/GchncVE4gJDjO/giphy.gif'
+    },
+    {
+      nome: 'ABDOMINAL SUPRA',
+      repeticao: '3x5',
+      peso: '100kg',
+      tempo: '60s',
+      url: 'https://media.giphy.com/media/iQK5zCZL4mBuU/giphy.gif'
+    },
+    {
+      nome: 'ABDOMINAL SUPRA',
+      repeticao: '3x5',
+      peso: '100kg',
+      tempo: '60s',
+      url: 'https://media.giphy.com/media/mnPBQeSZp8XN6/giphy.gif'
+    },
+    {
+      nome: 'ABDOMINAL SUPRA',
+      repeticao: '3x5',
+      peso: '100kg',
+      tempo: '60s',
+      url: 'https://media.giphy.com/media/Sl0eYejFnbeta/giphy.gif'
+    },
   ];
 
   done = [
-    'Get up',
-    'Brush teeth',
-    'Take a shower',
-    'Check e-mail',
-    'Walk dog'
+    {
+      nome: 'ABDOMINAL SUPRA',
+      repeticao: '3x5',
+      peso: '100kg',
+      tempo: '60s',
+      url: 'https://media.giphy.com/media/GchncVE4gJDjO/giphy.gif'
+    },
+    {
+      nome: 'ABDOMINAL SUPRA',
+      repeticao: '3x5',
+      peso: '100kg',
+      tempo: '60s',
+      url: 'https://media.giphy.com/media/iQK5zCZL4mBuU/giphy.gif'
+    },
+    {
+      nome: 'ABDOMINAL SUPRA',
+      repeticao: '3x5',
+      peso: '100kg',
+      tempo: '60s',
+      url: 'https://media.giphy.com/media/mnPBQeSZp8XN6/giphy.gif'
+    },
+    {
+      nome: 'ABDOMINAL SUPRA',
+      repeticao: '3x5',
+      peso: '100kg',
+      tempo: '60s',
+      url: 'https://media.giphy.com/media/Sl0eYejFnbeta/giphy.gif'
+    },
   ];
 
   constructor(
@@ -67,5 +114,9 @@ export class AlunoTreinoEditComponent implements OnInit {
       dataAtivacao: '',
       dataVencimento: ''
     });
+  }
+  findExercices() {
+    console.log('Procurando exercicios que comecem com '
+     + this.listaExercicioForm.get('nomeTipoEquipamento').value);
   }
 }

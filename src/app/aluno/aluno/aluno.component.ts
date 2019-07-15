@@ -11,6 +11,7 @@ import { FormControl } from '@angular/forms';
 export class AlunoComponent implements OnInit {
 
   tooltipButton = 'Novo Treino';
+  buttonDissabled = false;
   selectedTab = new FormControl(0);
   constructor(private dialog: MatDialog) { }
 
@@ -49,6 +50,21 @@ export class AlunoComponent implements OnInit {
     }
     if (this.selectedTab.value === 2) {
       console.log('Botão desabilitado...');
+    }
+  }
+
+  changeTootipText() {
+    if (this.selectedTab.value === 0) {
+      this.tooltipButton = 'Novo Treino';
+      this.buttonDissabled = false;
+    }
+    if (this.selectedTab.value === 1) {
+      this.tooltipButton = 'Nova Avaliação';
+      this.buttonDissabled = false;
+    }
+    if (this.selectedTab.value === 2) {
+      this.tooltipButton = 'Selecione Treino ou Avaliação para Habilitar o botão';
+      this.buttonDissabled = true;
     }
   }
 }

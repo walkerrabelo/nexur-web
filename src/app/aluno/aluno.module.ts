@@ -4,7 +4,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { AlunoAvaliacaoComponent } from './aluno-avaliacao/aluno-avaliacao.component';
 import { MatIconModule, MatToolbarModule, MatDividerModule, MatTabsModule,
-  MatTooltipModule, MatDialogModule, MatButtonModule } from '@angular/material';
+  MatTooltipModule, MatDialogModule, MatButtonModule, MatSlideToggleModule } from '@angular/material';
 import { AlunoComponent } from './aluno/aluno.component';
 import { AlunoListaComponent } from './aluno-lista/aluno-lista.component';
 
@@ -27,7 +27,7 @@ import { AlunoListaComponent } from './aluno-lista/aluno-lista.component';
     MatTooltipModule,
     MatDialogModule,
     AlunoTreinoModule,
-    MatButtonModule,
+    MatButtonModule
   ],
   exports: [
     AlunoComponent

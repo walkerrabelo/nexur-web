@@ -9,6 +9,7 @@ export class AlunoTreinoComponent implements OnInit {
 
   expanded = false;
   showHideText = 'Exibir';
+  activeTrain = true;
   constructor() { }
 
   ngOnInit() {
@@ -19,4 +20,8 @@ export class AlunoTreinoComponent implements OnInit {
     this.showHideText = this.expanded ? 'Ocultar' : 'Exibir';
   }
 
+  activateTrain() {
+    this.activeTrain = !this.activeTrain;
+    console.log(this.activeTrain);
+  }
 }

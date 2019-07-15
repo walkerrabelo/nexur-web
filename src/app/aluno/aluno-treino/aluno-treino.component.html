@@ -5,7 +5,7 @@
             <button matTooltip="{{showHideText}} todos os exercícios deste treino" 
             mat-stroked-button color="primary" (click)="expandExercices()">
                 <mat-icon>view_module</mat-icon>
-                {{showHideText}} Exercícios
+                {{showHideText}}
             </button>
             <button matTooltip="Editar dados deste treino"
             mat-stroked-button color="primary">
@@ -17,17 +17,16 @@
                 <mat-icon>date_range</mat-icon>
                 Periodização
             </button>
-            <button matTooltip="Desativar Treino"
-            mat-stroked-button color="warn">
-                <mat-icon>block</mat-icon>
-                Desativar Treino
-            </button>
+            <mat-slide-toggle (toggleChange)="activateTrain()" [checked]="activeTrain">
+                {{activeTrain ? "Desativar" : "Ativar"}} Treino
+            </mat-slide-toggle>
+
         </mat-card-title>
     </mat-card-header>
     <mat-card-content>
     <mat-accordion displayMode="flat" [multi]="true" [hideToggle]="false">
         <mat-expansion-panel [hideToggle]="false" [expanded]="expanded">
-            <mat-grid-list cols="5">
+            <mat-grid-list cols="5" class="wrap-tile">
                 <mat-grid-tile>
                     <app-aluno-treino-exercicio></app-aluno-treino-exercicio>
                 </mat-grid-tile>

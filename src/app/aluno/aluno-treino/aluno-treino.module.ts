@@ -3,7 +3,7 @@ import { DragDropModule } from '@angular/cdk/drag-drop';
 import { ReactiveFormsModule } from '@angular/forms';
 import { MatRippleModule, MatDatepickerModule, MatButtonModule,
   MatFormFieldModule, MatDialogModule, MatGridListModule, MatCardModule,
-  MatTooltipModule, MatIconModule, MatExpansionModule, MatInputModule } from '@angular/material';
+  MatTooltipModule, MatIconModule, MatExpansionModule, MatInputModule, MatSlideToggleModule } from '@angular/material';
 import { AlunoTreinoComponent } from './aluno-treino.component';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
@@ -39,6 +39,7 @@ import { AlunoTreinoEditComponent } from './aluno-treino-edit/aluno-treino-edit.
     MatTooltipModule,
     DragDropModule,
     MatInputModule,
+    MatSlideToggleModule,
     ExercicioModule
   ]
 })

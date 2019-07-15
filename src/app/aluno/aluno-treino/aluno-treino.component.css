@@ -1,3 +1,6 @@
 .background-expansion {
   background-color: whitesmoke;
 }
+.wrap-tile {
+  flex-wrap: wrap;
+}

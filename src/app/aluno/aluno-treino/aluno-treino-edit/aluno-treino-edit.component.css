@@ -1,3 +1,7 @@
+.container-window {
+  overflow: unset;
+  min-height: 93%;
+}
 .container-form {
   width: 99%;
   /*border: solid 1px rgb(25, 23, 139);*/
@@ -13,37 +17,44 @@
   display: flex;
   flex-direction: row;
   justify-content: space-around;
+  overflow: auto;
 }
 .example-container1 {
-    width: 38%;
-    height: 100%;
+    width: 36%;
+    height: 99%;
     display: inline-block;
     vertical-align: top;
+    overflow: auto;
   }
 .example-container2 {
-    width: 55%;
-    height: 100%;
+    width: 50%;
+    height: 99%;
     display: inline-block;
     vertical-align: top;
+    overflow: auto;
   }
   
   .example-list {
     border: dotted 1px #ccc;
     min-height: 60px;
+    max-height: 580px;
     background: white;
     border-radius: 4px;
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
+    overflow: auto;
   }
   .example-list2 {
     border: solid 1px rgb(93, 29, 145);
     min-height: 60px;
+    max-height: 580px;
     background: white;
     border-radius: 4px;
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
+    overflow: auto;
   }
   .example-box {
     width: 160px;

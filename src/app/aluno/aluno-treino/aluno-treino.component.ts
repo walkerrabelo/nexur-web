@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { MatDialog } from '@angular/material';
+import { AlunoTreinoEditComponent } from './aluno-treino-edit/aluno-treino-edit.component';
 
 @Component({
   selector: 'app-aluno-treino',
@@ -10,7 +12,9 @@ export class AlunoTreinoComponent implements OnInit {
   expanded = false;
   showHideText = 'Exibir';
   activeTrain = true;
-  constructor() { }
+  activeTrainColor = 'active';
+
+  constructor(private dialog: MatDialog) { }
 
   ngOnInit() {
   }
@@ -22,6 +26,28 @@ export class AlunoTreinoComponent implements OnInit {
 
   activateTrain() {
     this.activeTrain = !this.activeTrain;
+    this.activeTrainColor = this.activateTrain ? 'active' : 'inactive';
     console.log(this.activeTrain);
+  }
+  openDialog(): void {
+    const dialogRef = this.dialog.open(AlunoTreinoEditComponent, {
+      width: '95%',
+      height: '95%',
+      data: {
+        descricao: 'Leg Press Abd Supra Infra Max',
+        dataAtivacao: Date.now(),
+        dataVencimento: Date.now()
+      }
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      if (result) {
+        const descricao = result[0];
+        const dataAtivacao = result[0];
+        const dataVencimento = result[2];
+        console.log('Dados de atualizacao: ');
+        console.log(result);
+      }
+    });
   }
 }

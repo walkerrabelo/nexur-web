@@ -1,3 +1,4 @@
+<div mat-dialog-content class="container-window">
 <div class="container-form">
     <form [formGroup]="alunoTreinoEditForm">
         <mat-form-field class="field-big">
@@ -42,7 +43,7 @@
                 
             </app-exercicio-drag-drop-item>
         </div>
-        </div>
+    </div>
 
         
     <div class="example-container2">
@@ -64,4 +65,9 @@
             </app-exercicio-drag-drop-item>
         </div>
     </div>
+</div>
+</div>
+<div mat-dialog-actions>
+    <button mat-button type="button" [mat-dialog-close]="[alunoTreinoEditForm.get('descricao').value,
+        alunoTreinoEditForm.get('descricao').value]" cdkFocusInitial>Ok</button>
 </div>

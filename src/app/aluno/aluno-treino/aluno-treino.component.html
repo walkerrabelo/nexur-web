@@ -2,25 +2,24 @@
     <mat-card-header>
         <mat-card-title>
             TREINO DE FORÇA (CrossFit)
-            <button matTooltip="{{showHideText}} todos os exercícios deste treino" 
-            mat-stroked-button color="primary" (click)="expandExercices()">
+            <button class="fixed-sized-button" matTooltip="{{showHideText}} todos os exercícios deste treino" 
+            mat-stroked-button (click)="expandExercices()">
                 <mat-icon>view_module</mat-icon>
                 {{showHideText}}
             </button>
-            <button matTooltip="Editar dados deste treino"
-            mat-stroked-button color="primary">
+            <button class="fixed-sized-button" matTooltip="Editar dados deste treino"
+            mat-stroked-button (click)="openDialog()">
                 <mat-icon>edit</mat-icon>
                 Editar Treino
             </button>
-            <button matTooltip="Editar a Periodização deste treino" 
-            mat-stroked-button color="primary">
+            <button class="fixed-sized-button" matTooltip="Editar a Periodização deste treino" 
+            mat-stroked-button>
                 <mat-icon>date_range</mat-icon>
                 Periodização
             </button>
             <mat-slide-toggle (toggleChange)="activateTrain()" [checked]="activeTrain">
                 {{activeTrain ? "Desativar" : "Ativar"}} Treino
             </mat-slide-toggle>
-
         </mat-card-title>
     </mat-card-header>
     <mat-card-content>

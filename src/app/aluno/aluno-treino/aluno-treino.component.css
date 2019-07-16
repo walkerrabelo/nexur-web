@@ -4,3 +4,14 @@
 .wrap-tile {
   flex-wrap: wrap;
 }
+.fixed-sized-button {
+  width: 150px;
+  margin-left: 10px;
+  margin-right: 5px;
+}
+.active {
+  background-color: white;
+}
+.inactive {
+  background-color: grey;
+}

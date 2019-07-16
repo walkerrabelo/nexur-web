@@ -1,12 +1,24 @@
 import { AlunoTreinoEditComponent } from './../aluno-treino/aluno-treino-edit/aluno-treino-edit.component';
 import { MatDialog } from '@angular/material';
-import { Component, OnInit } from '@angular/core';
 import { FormControl } from '@angular/forms';
+import { Component, OnInit, HostBinding } from '@angular/core';
+import {
+  trigger,
+  state,
+  style,
+  animate,
+  transition,
+  // ...
+} from '@angular/animations';
+
 
 @Component({
   selector: 'app-aluno',
   templateUrl: './aluno.component.html',
-  styleUrls: ['./aluno.component.css']
+  styleUrls: ['./aluno.component.css'],
+  animations: [
+    // animation triggers go here
+  ]
 })
 export class AlunoComponent implements OnInit {
 
@@ -20,8 +32,8 @@ export class AlunoComponent implements OnInit {
   }
   openDialog(): void {
     const dialogRef = this.dialog.open(AlunoTreinoEditComponent, {
-      width: '90%',
-      height: '90%',
+      width: '95%',
+      height: '95%',
       data: {
         descricao: 'Leg Press Abd Supra Infra Max',
         dataAtivacao: Date.now(),

@@ -1,15 +1,7 @@
-<mat-toolbar color="primary">
+<mat-toolbar>
     <mat-toolbar-row>
     <span>Fulano de Tal dos Anzóis ( Engenheiro ) - 110Kg e 1,90m</span>
         <span class="example-spacer"></span>
-    <!--
-        <mat-icon class="example-icon" aria-hidden="false" aria-label="Example heart icon">
-            favorite
-        </mat-icon>
-        <mat-icon class="example-icon" aria-hidden="false" aria-label="Example delete icon">
-            delete
-        </mat-icon>
-    -->        
     </mat-toolbar-row>
 </mat-toolbar>
 <mat-tab-group mat-stretch-tabs [selectedIndex]="selectedTab.value"
@@ -17,7 +9,7 @@
     <mat-tab label="Treinos">
         <ng-template mat-tab-label>
             <mat-icon class="example-tab-icon">directions_run</mat-icon>
-            Treinos
+            <h3>Treinos</h3>
         </ng-template>
         <app-aluno-treino></app-aluno-treino>
         <mat-divider></mat-divider>
@@ -27,16 +19,16 @@
         <mat-divider></mat-divider>
         <app-aluno-treino></app-aluno-treino>
     </mat-tab>
-    <mat-tab label="Avaliações" color="accent">
+    <mat-tab label="Avaliações">
         <ng-template mat-tab-label>
             <mat-icon class="example-tab-icon">accessibility</mat-icon>
-            Avaliações
+            <h3>Avaliações</h3>
         </ng-template>
     </mat-tab>
     <mat-tab label="Dados Pessoais">  
         <ng-template mat-tab-label>
             <mat-icon class="example-tab-icon">person_outline</mat-icon>
-            Dados Pessoais
+            <h3>Dados Pessoais</h3>
         </ng-template> 
     </mat-tab>
 </mat-tab-group>

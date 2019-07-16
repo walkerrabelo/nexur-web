@@ -5,7 +5,12 @@
   flex-wrap: wrap;
 }
 .fixed-sized-button {
-  width: 150px;
+  width: 130px;
+  margin-left: 10px;
+  margin-right: 5px;
+}
+.fixed-sized-button-min {
+  width: 100px;
   margin-left: 10px;
   margin-right: 5px;
 }

@@ -34,7 +34,7 @@
             class="example-list"
             (cdkDropListDropped)="drop($event)">
             <app-exercicio-drag-drop-item 
-                [showSubTitle]="false" class="example-box" 
+                [showSubTitle]="false" class="box-left" 
                 *ngFor="let item of todo" 
                 [imageUrl]="item.url"
                 [title]="item.nome"
@@ -56,7 +56,7 @@
             class="example-list2"
             (cdkDropListDropped)="drop($event)">
             <app-exercicio-drag-drop-item 
-                [showSubTitle]="true" class="example-box"  
+                [showSubTitle]="true" class="box-right"  
                 *ngFor="let item of done" 
                 [imageUrl]="item.url"
                 [title]="item.nome"

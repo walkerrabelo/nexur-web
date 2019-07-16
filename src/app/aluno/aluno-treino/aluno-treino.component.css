@@ -11,12 +11,15 @@
 }
 .fixed-sized-button-min {
   width: 100px;
-  margin-left: 10px;
-  margin-right: 5px;
+  margin-left: 40px;
 }
 .active {
   background-color: white;
 }
 .inactive {
   background-color: grey;
+}
+.card-title {
+  font-size: 16px;
+  font-weight: 500;
 }

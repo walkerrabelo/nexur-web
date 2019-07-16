@@ -1,6 +1,7 @@
 import { MatDialog } from '@angular/material';
 import { AlunoTreinoExercicioDialogFormComponent } from './aluno-treino-exercicio-dialog-form/aluno-treino-exercicio-dialog-form.component';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
+import { AlunoTreinoExercicio } from '../../../models/aluno/aluno-treino-exercicio';
 
 @Component({
   selector: 'app-aluno-treino-exercicio',
@@ -15,6 +16,10 @@ export class AlunoTreinoExercicioComponent implements OnInit {
   unbounded = false;
   radius: number;
   color: string;
+
+  //
+  @Input()
+  alunoTreinoExercicio: AlunoTreinoExercicio;
 
   constructor(public dialog: MatDialog) { }
 

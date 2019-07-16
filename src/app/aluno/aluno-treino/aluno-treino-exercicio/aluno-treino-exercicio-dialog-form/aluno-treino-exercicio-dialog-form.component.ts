@@ -1,6 +1,7 @@
 import { FormGroup, FormBuilder } from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 import { Component, OnInit, Inject } from '@angular/core';
+import { AlunoTreinoExercicio } from 'src/app/models/aluno/aluno-treino-exercicio';
 
 @Component({
   selector: 'app-aluno-treino-exercicio-dialog-form',
@@ -14,7 +15,7 @@ export class AlunoTreinoExercicioDialogFormComponent implements OnInit {
   constructor(
     private formBuilder: FormBuilder,
     public dialogRef: MatDialogRef<AlunoTreinoExercicioDialogFormComponent>,
-    @Inject(MAT_DIALOG_DATA) public data: DialogData) {}
+    @Inject(MAT_DIALOG_DATA) public alunoTreinoExercicio: AlunoTreinoExercicio) {}
 
   onNoClick(): void {
     this.dialogRef.close();
@@ -22,16 +23,11 @@ export class AlunoTreinoExercicioDialogFormComponent implements OnInit {
 
   ngOnInit() {
     this.alunoExercicioForm = this.formBuilder.group({
-      description: '',
-      activationDate: '',
-      dueDate: '',
+      tipoRepeticao: '',
+      repeticao: '',
+      carga: '',
+      intervalo: '',
+      nota: '',
     });
   }
-
-}
-
-export interface DialogData {
-  description: string;
-  activationDate: Date;
-  dueDate: Date;
 }

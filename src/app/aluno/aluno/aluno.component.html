@@ -4,6 +4,7 @@
         <span class="example-spacer"></span>
     </mat-toolbar-row>
 </mat-toolbar>
+<div class="container-route mat-elevation-z2">
 <mat-tab-group mat-stretch-tabs [selectedIndex]="selectedTab.value"
 (selectedIndexChange)="selectedTab.setValue($event); changeTootipText()">
     <mat-tab label="Treinos">
@@ -37,4 +38,5 @@
         [matTooltip]="tooltipButton">
         <mat-icon>add</mat-icon>
     </button>
+</div>
 </div>

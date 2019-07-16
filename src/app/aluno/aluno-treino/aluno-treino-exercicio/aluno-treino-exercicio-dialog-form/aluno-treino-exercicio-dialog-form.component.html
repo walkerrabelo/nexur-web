@@ -1,22 +1,37 @@
-<h6 mat-dialog-title>Editando {{data.description}}</h6>
+<h6 mat-dialog-title>LEG PRESS ABD SUPRA INFRA MAX</h6>
 <div mat-dialog-content>
-    <form [formGroup]="alunoExercicioForm">
-        <mat-form-field class="full-width">
-            <input matInput placeholder="Data de Ativação" formControlName="activationDate" 
-            [matDatepicker]="pickerActivationDate">
-            <mat-datepicker-toggle matSuffix [for]="pickerActivationDate"></mat-datepicker-toggle>
-            <mat-datepicker #pickerActivationDate></mat-datepicker>
-        </mat-form-field>
-        <mat-form-field class="full-width">
-            <input matInput placeholder="Data de Vencimento" formControlName="dueDate"
-             [matDatepicker]="pickerDueDate">
-            <mat-datepicker-toggle matSuffix [for]="pickerDueDate"></mat-datepicker-toggle>
-            <mat-datepicker #pickerDueDate></mat-datepicker>
-        </mat-form-field>
-    </form>
+    <mat-grid-list cols="2">
+        <mat-grid-tile>
+            <div class="tile-padding">
+                <img mat-card-image src="https://cdn1.coachmag.co.uk/sites/coachmag/files/styles/16x9_860/public/2018/03/home-dumbbell-workout-plan.jpg" alt="Photo of a Shiba Inu"/> 
+            </div>
+        </mat-grid-tile>
+        <mat-grid-tile>
+            <form [formGroup]="alunoExercicioForm">
+                <mat-form-field class="full-width">
+                    <input matInput placeholder="Tipo de Repetição" formControlName="tipoRepeticao">
+                </mat-form-field>
+                <mat-form-field class="full-width">
+                    <input matInput placeholder="Repetição" formControlName="repeticao">
+                </mat-form-field>
+                <div>
+                    <mat-form-field>
+                        <input matInput placeholder="Carga" formControlName="carga">
+                    </mat-form-field>
+                    <mat-form-field>
+                        <input matInput placeholder="Intervalo" formControlName="intervalo">
+                    </mat-form-field>
+                </div>
+                <mat-form-field class="full-width">
+                    <input matInput placeholder="Nota" formControlName="nota">
+                </mat-form-field>
+            </form>
+        </mat-grid-tile>
+    </mat-grid-list>
 </div>
 <div mat-dialog-actions>
   <button mat-button (click)="onNoClick()">Cancelar</button>
-  <button mat-button type="button" [mat-dialog-close]="[data.description, alunoExercicioForm.get('activationDate').value,
-  alunoExercicioForm.get('activationDate').value]" cdkFocusInitial>Ok</button>
+  <button mat-button type="button"
+   [mat-dialog-close]="[alunoExercicioForm.get('tipoRepeticao').value,
+  alunoExercicioForm.get('repeticao').value]" cdkFocusInitial>Ok</button>
 </div>

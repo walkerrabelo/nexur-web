@@ -12,7 +12,6 @@ export class AlunoTreinoComponent implements OnInit {
   expanded = false;
   showHideText = 'Exibir';
   activeTrain = true;
-  activeTrainColor = 'active';
 
   constructor(private dialog: MatDialog) { }
 
@@ -26,7 +25,6 @@ export class AlunoTreinoComponent implements OnInit {
 
   activateTrain() {
     this.activeTrain = !this.activeTrain;
-    this.activeTrainColor = this.activateTrain ? 'active' : 'inactive';
     console.log(this.activeTrain);
   }
   openDialog(): void {

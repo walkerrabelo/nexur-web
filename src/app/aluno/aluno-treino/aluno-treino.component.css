@@ -5,13 +5,10 @@
   flex-wrap: wrap;
 }
 .fixed-sized-button {
-  width: 130px;
+  width: 150px;
+  min-height: 35px;
   margin-left: 20px;
   margin-right: 5px;
-}
-.fixed-sized-button-min {
-  width: 100px;
-  margin-left: 20px;
 }
 .active {
   background-color: white;
@@ -47,4 +44,18 @@
   display: block;
   font-size: 16px;
   margin-left: -10px;
+}
+
+.background-box:hover {
+  background-color: rgba(255, 255, 219, 0.952);
+}
+
+.false-button {
+  cursor: pointer;
+}
+.false-button-block {
+  width: 300px;
+  display: block;
+  height: 60px;
+  float: right;
 }

@@ -1,17 +1,17 @@
-<mat-card class="mat-elevation-z2">
-    <mat-card-header>
-        <mat-card-title>
-           TREINO DE FORÇA (CrossFit)
-            <button class="fixed-sized-button-min" matTooltip="{{showHideText}} todos os exercícios deste treino" 
-            mat-stroked-button (click)="expandExercices()">
-                <mat-icon>view_module</mat-icon>
-                {{showHideText}}
-            </button>
+<mat-card class="mat-elevation-z2 background-box">
+    <mat-card-header class="false-button">
+        <mat-card-title >
+            <span (click)="expandExercices()">
+             TREINO DE FORÇA (CrossFit)
+            </span>
             <mat-slide-toggle class="fixed-sized-button" (toggleChange)="activateTrain()" [checked]="activeTrain">
                 {{activeTrain ? "Desativar" : "Ativar"}}
             </mat-slide-toggle>
+            <div class="false-button-block" (click)="expandExercices()"></div>
             <mat-card-subtitle>
+                <span (click)="expandExercices()">
                 01/07 a 30/08/2019 Seg. a Sexta
+                </span>
             </mat-card-subtitle>
         </mat-card-title>
     </mat-card-header>

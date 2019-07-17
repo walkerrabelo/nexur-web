@@ -6,12 +6,12 @@
 }
 .fixed-sized-button {
   width: 130px;
-  margin-left: 10px;
+  margin-left: 20px;
   margin-right: 5px;
 }
 .fixed-sized-button-min {
   width: 100px;
-  margin-left: 40px;
+  margin-left: 20px;
 }
 .active {
   background-color: white;
@@ -22,4 +22,29 @@
 .card-title {
   font-size: 16px;
   font-weight: 500;
+}
+.big-icon {
+  font-size: 6em;
+}
+.plus-button {
+  border-radius: 6px;
+  width: 150px;
+  height: 150px;
+  padding-top: 40px;
+  padding-left: 50px;
+  cursor: pointer;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  -webkit-user-drag: none;
+  -webkit-tap-highlight-color: transparent;
+}
+.plus-button:hover{
+  border-radius: 5px;
+  filter: brightness(95%);
+}
+.plus-button span {
+  display: block;
+  font-size: 16px;
+  margin-left: -10px;
 }

@@ -1,15 +1,7 @@
 import { AlunoTreinoEditComponent } from './../aluno-treino/aluno-treino-edit/aluno-treino-edit.component';
 import { MatDialog } from '@angular/material';
 import { FormControl } from '@angular/forms';
-import { Component, OnInit, HostBinding } from '@angular/core';
-import {
-  trigger,
-  state,
-  style,
-  animate,
-  transition,
-  // ...
-} from '@angular/animations';
+import { Component, OnInit } from '@angular/core';
 
 
 @Component({

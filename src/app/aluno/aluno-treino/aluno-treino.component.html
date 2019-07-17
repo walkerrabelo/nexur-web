@@ -7,17 +7,7 @@
                 <mat-icon>view_module</mat-icon>
                 {{showHideText}}
             </button>
-            <button class="fixed-sized-button" matTooltip="Editar dados deste treino"
-            mat-stroked-button (click)="openDialog()">
-                <mat-icon>edit</mat-icon>
-                Editar Treino
-            </button>
-            <button class="fixed-sized-button" matTooltip="Editar a Periodização deste treino" 
-            mat-stroked-button>
-                <mat-icon>date_range</mat-icon>
-                Periodização
-            </button>
-            <mat-slide-toggle (toggleChange)="activateTrain()" [checked]="activeTrain">
+            <mat-slide-toggle class="fixed-sized-button" (toggleChange)="activateTrain()" [checked]="activeTrain">
                 {{activeTrain ? "Desativar" : "Ativar"}}
             </mat-slide-toggle>
             <mat-card-subtitle>
@@ -43,6 +33,21 @@
                 </mat-grid-tile>
                 <mat-grid-tile>
                     <app-aluno-treino-exercicio></app-aluno-treino-exercicio>
+                </mat-grid-tile>
+                <mat-grid-tile>
+                    <app-aluno-treino-exercicio></app-aluno-treino-exercicio>
+                </mat-grid-tile>
+                <mat-grid-tile>
+                    <app-aluno-treino-exercicio></app-aluno-treino-exercicio>
+                </mat-grid-tile>
+                <mat-grid-tile>
+                    <app-aluno-treino-exercicio></app-aluno-treino-exercicio>
+                </mat-grid-tile>
+                <mat-grid-tile>
+                    <div matRipple class="plus-button">
+                        <mat-icon class="big-icon">add_circle_outline</mat-icon>
+                        <span>Novo Exercício</span>
+                    </div>
                 </mat-grid-tile>
             </mat-grid-list>
         </mat-expansion-panel>

@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { Aluno } from '../../models/aluno/aluno';
-import { LISTA_ALUNOS_EXEMPLO } from './alunos-lista-exemplo';
+import { LISTA_ALUNOS } from './alunos-lista-exemplo';
+import { MatTableDataSource, MatPaginator, MatSort } from '@angular/material';
 
 @Component({
   selector: 'app-aluno-lista',
@@ -10,11 +11,21 @@ import { LISTA_ALUNOS_EXEMPLO } from './alunos-lista-exemplo';
 
 export class AlunoListaComponent implements OnInit {
 
-  listaAlunos = LISTA_ALUNOS_EXEMPLO;
+  displayedColumns: string[] = ['nome', 'email', 'avaliacao', 'vencimento', 'grupo'];
+  dataSource = new MatTableDataSource<Aluno>(LISTA_ALUNOS);
+
+  @ViewChild(MatPaginator, {static: true}) paginator: MatPaginator;
+
+  @ViewChild(MatSort, {static: true}) sort: MatSort;
 
   constructor() { }
 
   ngOnInit() {
+    this.dataSource.sort = this.sort;
+    this.dataSource.paginator = this.paginator;
+  }
+  applyFilter(filterValue: string) {
+    this.dataSource.filter = filterValue.trim().toLowerCase();
   }
 
 }

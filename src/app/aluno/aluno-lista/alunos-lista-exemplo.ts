@@ -1,5 +1,5 @@
 import { Aluno } from '../../models/aluno/aluno';
-export const LISTA_ALUNOS_EXEMPLO: Aluno[] = [
+const LISTA_ALUNOS_EXEMPLO: Aluno[] = [
     {
       id_aluno: '1',
       nome: 'Fulano de Tal dos Anzóis',
@@ -36,7 +36,7 @@ export const LISTA_ALUNOS_EXEMPLO: Aluno[] = [
       data_nascimento: '2019-06-06',
       data_matricula: '2019-06-06',
       sexo: 'Feminino',
-      grupo: '0',
+      grupo: '1',
       id_professor: '18',
       id_usuario: '30814',
       id_iugu: null,
@@ -59,3 +59,23 @@ export const LISTA_ALUNOS_EXEMPLO: Aluno[] = [
       }
     },
 ];
+
+export const LISTA_ALUNOS = LISTA_ALUNOS_EXEMPLO.concat(LISTA_ALUNOS_EXEMPLO)
+.concat(LISTA_ALUNOS_EXEMPLO).concat(LISTA_ALUNOS_EXEMPLO)
+.concat(LISTA_ALUNOS_EXEMPLO).concat(LISTA_ALUNOS_EXEMPLO)
+.concat(LISTA_ALUNOS_EXEMPLO).concat(LISTA_ALUNOS_EXEMPLO)
+.concat(LISTA_ALUNOS_EXEMPLO).concat(LISTA_ALUNOS_EXEMPLO)
+.concat(LISTA_ALUNOS_EXEMPLO).concat(LISTA_ALUNOS_EXEMPLO)
+.concat(LISTA_ALUNOS_EXEMPLO).concat(LISTA_ALUNOS_EXEMPLO)
+.concat(LISTA_ALUNOS_EXEMPLO).concat(LISTA_ALUNOS_EXEMPLO)
+.concat(LISTA_ALUNOS_EXEMPLO).concat(LISTA_ALUNOS_EXEMPLO)
+.concat(LISTA_ALUNOS_EXEMPLO).concat(LISTA_ALUNOS_EXEMPLO)
+.concat(LISTA_ALUNOS_EXEMPLO).concat(LISTA_ALUNOS_EXEMPLO)
+.concat(LISTA_ALUNOS_EXEMPLO).concat(LISTA_ALUNOS_EXEMPLO)
+.concat(LISTA_ALUNOS_EXEMPLO).concat(LISTA_ALUNOS_EXEMPLO)
+.concat(LISTA_ALUNOS_EXEMPLO).concat(LISTA_ALUNOS_EXEMPLO)
+.concat(LISTA_ALUNOS_EXEMPLO).concat(LISTA_ALUNOS_EXEMPLO)
+.concat(LISTA_ALUNOS_EXEMPLO).concat(LISTA_ALUNOS_EXEMPLO)
+.concat(LISTA_ALUNOS_EXEMPLO).concat(LISTA_ALUNOS_EXEMPLO)
+.concat(LISTA_ALUNOS_EXEMPLO).concat(LISTA_ALUNOS_EXEMPLO)
+.concat(LISTA_ALUNOS_EXEMPLO).concat(LISTA_ALUNOS_EXEMPLO);

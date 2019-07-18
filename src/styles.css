@@ -10,6 +10,12 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
     border-radius: 5px;
     margin-left: 1%;
   }
+  .container-route-no-header {
+    width: 98%;
+    border-radius: 5px;
+    margin-top: 1%;
+    margin-left: 1%;
+  }
   .field-150 {
     width: 100px;
     margin-left: 20px;
@@ -29,4 +35,8 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
   .field-580 { 
     width: 580px;
     margin-left: 20px;
+  }
+  tr:hover {
+    background-color: rgba(255, 255, 219, 0.952);
+    cursor: pointer;
   }

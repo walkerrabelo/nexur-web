@@ -1,0 +1,57 @@
+<mat-card>
+    <mat-card-header>
+        <mat-card-title>Fulano de Tal dos Anzóis</mat-card-title>
+        <mat-card-subtitle>38 anos 110Kg 1,90m - Engenheiro</mat-card-subtitle>
+    </mat-card-header>
+    <mat-card-content>
+        <div fxLayout="row">
+            <mat-form-field appearance="outline" class="field-460">
+                <mat-label>Nome</mat-label>
+                <input matInput placeholder="Nome do(a) Aluno(a)">
+                <mat-icon matSuffix>person_pin</mat-icon>
+            </mat-form-field>
+            <mat-form-field appearance="outline" class="field-340">
+                <mat-label>Email</mat-label>
+                <input matInput placeholder="E-mail válido para o(a) Aluno(a)">
+                <mat-icon matSuffix>email</mat-icon>
+            </mat-form-field>
+        </div>
+        <div fxLayout="row">
+            <mat-form-field appearance="outline" class="field-220">
+                <mat-label>Nascimento</mat-label>
+                <input matInput placeholder="Data de Nascimento">
+                <mat-icon matSuffix>child_care</mat-icon>
+            </mat-form-field>
+            <mat-form-field appearance="outline" class="field-220">
+                <mat-label>Inicio dos Treinos</mat-label>
+                <input matInput placeholder="Data de Inicio dos Treinos">
+                <mat-icon matSuffix>fitness_center</mat-icon>
+            </mat-form-field>
+            <mat-radio-group aria-label="Select an option">
+                <mat-radio-button value="Masculino" class="field-150">Masculino</mat-radio-button>
+                <mat-radio-button value="Feminino" class="field-150">Feminino</mat-radio-button>
+            </mat-radio-group>
+        </div>
+       
+        <div fxLayout="row">
+            <mat-form-field appearance="outline" class="field-340">
+                <mat-label>Login de Acesso ao App</mat-label>
+                <input matInput placeholder="Login de Acesso ao App">
+                <mat-icon matSuffix>verified_user</mat-icon>
+            </mat-form-field>
+            <mat-form-field appearance="outline" class="field-220">
+                <mat-label>Senha de Acesso ao App</mat-label>
+                <input matInput placeholder="Senha de Acesso ao App">
+                <mat-icon matSuffix>security</mat-icon>
+            </mat-form-field>
+            <mat-form-field appearance="outline" class="field-220">
+                <mat-label>Confirmação de Senha</mat-label>
+                <input matInput placeholder="Confirmação de Senha">
+                <mat-icon matSuffix>check_circle_outline</mat-icon>
+            </mat-form-field>                        
+        </div>
+    </mat-card-content>
+    <mat-card-actions align="start">
+        <button mat-raised-button color="accent">Salvar</button>
+    </mat-card-actions>
+</mat-card>

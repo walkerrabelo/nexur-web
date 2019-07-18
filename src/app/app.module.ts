@@ -5,6 +5,7 @@ import { NgModule } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { FlexLayoutModule } from '@angular/flex-layout';
 import { MAT_DATE_LOCALE, MatNativeDateModule, MatIconModule,
    MatButtonModule, MatToolbarModule, MatSidenavModule, MatListModule } from '@angular/material';
 import { NavigationComponent } from './shared/navigation/navigation.component';
@@ -20,6 +21,7 @@ import { LayoutModule } from '@angular/cdk/layout';
     AppRoutingModule,
     BrowserAnimationsModule,
     MatNativeDateModule,
+    FlexLayoutModule,
     // This App Module
     AlunoModule,
     LayoutModule,

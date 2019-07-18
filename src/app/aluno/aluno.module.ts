@@ -4,7 +4,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { AlunoAvaliacaoComponent } from './aluno-avaliacao/aluno-avaliacao.component';
 import { MatIconModule, MatToolbarModule, MatDividerModule, MatTabsModule, MatTooltipModule,
-  MatDialogModule, MatButtonModule, MatFormFieldModule, MatInputModule, MatRadioModule } from '@angular/material';
+  MatDialogModule, MatButtonModule, MatFormFieldModule, MatInputModule, MatRadioModule, MatBadgeModule } from '@angular/material';
 import { AlunoComponent } from './aluno/aluno.component';
 import { AlunoListaComponent } from './aluno-lista/aluno-lista.component';
 import { AlunoFormComponent } from './aluno-form/aluno-form.component';
@@ -37,6 +37,7 @@ import { ReactiveFormsModule } from '@angular/forms';
     MatInputModule,
     MatTooltipModule,
     MatRadioModule,
+    MatBadgeModule,
 
     AlunoTreinoModule,
   ],

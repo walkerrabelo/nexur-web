@@ -5,11 +5,11 @@
       [opened]="(isHandset$ | async) === false">
     <mat-nav-list>
 
-      <button class="big_button_side_menu" mat-button color="primary">
+      <button routerLink="" class="big_button_side_menu" mat-button color="primary">
           <mat-icon >home</mat-icon>
           <div class="big_button_side_menu_subtitle">Home</div>
       </button>
-      <button class="big_button_side_menu" mat-button color="primary">
+      <button routerLink="alunos" class="big_button_side_menu" mat-button color="primary">
           <mat-icon >group</mat-icon>
           <div class="big_button_side_menu_subtitle">  
             Alunos
@@ -45,9 +45,9 @@
         *ngIf="isHandset$ | async">
         <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
       </button>
-      <span>Nexur / Todos os Alunos</span>
+      <span>Nexur / #Nome da Rota Atual#</span>
     </mat-toolbar>
     <!--routes-->
-    <app-aluno-lista></app-aluno-lista>
+    <router-outlet></router-outlet>
   </mat-sidenav-content>
 </mat-sidenav-container>

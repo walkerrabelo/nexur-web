@@ -2,6 +2,7 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { Aluno } from '../../models/aluno/aluno';
 import { LISTA_ALUNOS } from './alunos-lista-exemplo';
 import { MatTableDataSource, MatPaginator, MatSort } from '@angular/material';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-aluno-lista',
@@ -18,7 +19,7 @@ export class AlunoListaComponent implements OnInit {
 
   @ViewChild(MatSort, {static: true}) sort: MatSort;
 
-  constructor() { }
+  constructor(private router: Router) { }
 
   ngOnInit() {
     this.dataSource.sort = this.sort;
@@ -26,6 +27,10 @@ export class AlunoListaComponent implements OnInit {
   }
   applyFilter(filterValue: string) {
     this.dataSource.filter = filterValue.trim().toLowerCase();
+  }
+
+  edit() {
+    this.router.navigate(['/aluno']);
   }
 
 }

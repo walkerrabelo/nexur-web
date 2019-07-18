@@ -46,8 +46,14 @@
         <app-aluno-form></app-aluno-form>
     </mat-tab>
 </mat-tab-group>
-<div class="fab-container">
-    <button mat-fab [disabled]="buttonDissabled" class="fab-toggler" (click)="create()" 
+<div class="fab-container-top">
+    <button mat-fab (click)="create()" 
+        [matTooltip]="tooltipButton">
+        <mat-icon>add</mat-icon>
+    </button>
+</div>
+<div class="fab-container-bottom">
+    <button mat-fab (click)="create()" 
         [matTooltip]="tooltipButton">
         <mat-icon>add</mat-icon>
     </button>

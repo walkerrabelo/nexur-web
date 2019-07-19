@@ -2,6 +2,7 @@ import { AlunoTreinoEditComponent } from './../aluno-treino/aluno-treino-edit/al
 import { MatDialog } from '@angular/material';
 import { FormControl } from '@angular/forms';
 import { Component, OnInit } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
 
 
 @Component({
@@ -17,9 +18,17 @@ export class AlunoComponent implements OnInit {
   tooltipButton = 'Novo Treino';
   buttonDissabled = false;
   selectedTab = new FormControl(0);
-  constructor(private dialog: MatDialog) { }
+  constructor(private dialog: MatDialog, private http: HttpClient) { }
 
   ngOnInit() {
+    const loginData = { login: 'academia', password: 'nexu' };
+    this.http.post('https://api.nexur.com.br/auth/login', loginData).subscribe(
+      response => console.log(response),
+      error => {
+        console.log('Deu ruim....');
+        console.log(error);
+      }
+    );
     console.log('Fazendo a requisição de teste...');
   }
   openDialog(): void {

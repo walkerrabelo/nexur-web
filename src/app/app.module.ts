@@ -10,6 +10,7 @@ import { MAT_DATE_LOCALE, MatNativeDateModule, MatIconModule,
    MatButtonModule, MatToolbarModule, MatSidenavModule, MatListModule } from '@angular/material';
 import { NavigationComponent } from './shared/navigation/navigation.component';
 import { LayoutModule } from '@angular/cdk/layout';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -22,6 +23,7 @@ import { LayoutModule } from '@angular/cdk/layout';
     BrowserAnimationsModule,
     MatNativeDateModule,
     FlexLayoutModule,
+    HttpClientModule,
     // This App Module
     AlunoModule,
     LayoutModule,

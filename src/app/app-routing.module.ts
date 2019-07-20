@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { AlunoListaComponent } from './aluno/aluno-lista/aluno-lista.component';
-import { AlunoComponent } from './aluno/aluno/aluno.component';
+import { AlunoListaComponent } from './components/alunos/aluno-lista/aluno-lista.component';
+import { AlunoComponent } from './components/alunos/aluno/aluno.component';
 
 const routes: Routes = [
   { path: '', component: AlunoListaComponent},

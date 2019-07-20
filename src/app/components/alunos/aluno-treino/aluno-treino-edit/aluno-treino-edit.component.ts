@@ -1,4 +1,4 @@
-import { AlunoTreino } from './../../../models/aluno/aluno-treino';
+import { AlunoTreino } from '../../../../models/aluno/aluno-treino';
 import { FormGroup, FormBuilder } from '@angular/forms';
 import { Component, OnInit, Inject } from '@angular/core';
 import {CdkDragDrop, moveItemInArray, transferArrayItem, copyArrayItem} from '@angular/cdk/drag-drop';

@@ -1,4 +1,4 @@
-import { AlunoModule } from './aluno/aluno.module';
+import { AlunoModule } from './components/alunos/aluno.module';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 

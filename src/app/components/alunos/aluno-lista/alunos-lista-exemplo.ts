@@ -1,4 +1,4 @@
-import { Aluno } from '../../models/aluno/aluno';
+import { Aluno } from '../../../models/aluno/aluno';
 const LISTA_ALUNOS_EXEMPLO: Aluno[] = [
     {
       id_aluno: '1',

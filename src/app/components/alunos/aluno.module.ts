@@ -1,5 +1,3 @@
-import { AlunoTreinoEditComponent } from './aluno-treino/aluno-treino-edit/aluno-treino-edit.component';
-import { AlunoTreinoModule } from './aluno-treino/aluno-treino.module';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { AlunoAvaliacaoComponent } from './aluno-avaliacao/aluno-avaliacao.component';
@@ -14,6 +12,8 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { AlunoAvaliacaoModule } from './aluno-avaliacao/aluno-avaliacao.module';
 import { AlunoNutricaoModule } from './aluno-nutricao/aluno-nutricao.module';
 import { AlunoPeriodizacaoModule } from './aluno-periodizacao/aluno-periodizacao.module';
+import { AlunoTreinoEditComponent } from './aluno-treino/aluno-treino-edit/aluno-treino-edit.component';
+import { AlunoTreinoModule } from './aluno-treino/aluno-treino.module';
 
 
 @NgModule({

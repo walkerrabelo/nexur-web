@@ -1,8 +1,8 @@
-import { AlunoTreinoEditComponent } from './../aluno-treino/aluno-treino-edit/aluno-treino-edit.component';
 import { MatDialog } from '@angular/material';
 import { FormControl } from '@angular/forms';
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { AlunoTreinoEditComponent } from '../aluno-treino/aluno-treino-edit/aluno-treino-edit.component';
 
 
 @Component({

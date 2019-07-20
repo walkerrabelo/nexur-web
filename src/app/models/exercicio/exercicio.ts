@@ -34,3 +34,33 @@ interface TipoEquipamento {
   descricao_en: string;
   descricao_pt: string;
 }
+
+export const CLASSIFICACOES_EXERCICIO: ClassificacaoExercicio[] = [
+  {
+    id_classificacao_exercicio: '',
+    id_tipo_exercicio: '',
+    descricao_en: '',
+    descricao_pt: '',
+    tipoExercicio: {
+      id_tipo_exercicio: '',
+      descricao_en: '',
+      descricao_pt: ''
+    }
+  }
+];
+
+export const TIPOS_EXERCICIO: TipoExercicio[] = [
+  {
+    id_tipo_exercicio: '',
+    descricao_en: '',
+    descricao_pt: '',
+  }
+];
+
+export const TIPOS_EQUIPAMENTO: TipoEquipamento[] = [
+  {
+    id_tipo_equipamento: '',
+    descricao_en: '',
+    descricao_pt: ''
+  }
+];

@@ -1,6 +1,6 @@
 import { Usuario } from '../usuario/usuario';
 // tslint:disable: variable-name
-export class Aluno {
+export interface Aluno {
     id_aluno: string;
     nome: string;
     email: string;
@@ -10,7 +10,7 @@ export class Aluno {
     grupo: string;
     id_professor: string;
     id_usuario: string;
-    id_iugu: string;
+    id_iugu?: any;
     hash: string;
     ativo: string;
     visivel: string;

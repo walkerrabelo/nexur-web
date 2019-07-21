@@ -20,15 +20,7 @@ export class AlunoComponent implements OnInit {
   selectedTab = new FormControl(0);
   constructor(private dialog: MatDialog, private http: HttpClient) { }
 
-  ngOnInit() {
-    const auth = {
-      login: 'academia',
-      password: 'nexur'
-    };
-    this.http.post('https://api.nexur.com.br/auth/login', auth).subscribe(
-      respo => console.log('Autenticação bem sucedida !')
-    );
-   }
+  ngOnInit() { }
   openDialog(): void {
     const dialogRef = this.dialog.open(AlunoTreinoEditComponent, {
       width: '95%',

@@ -23,7 +23,7 @@
         
         <form [formGroup]="listaExercicioForm">
             <mat-form-field class="full-width">
-                <input (keyup)="findExercices()" matInput placeholder="Pesquise por Nome, Tipo ou Equipamento" formControlName="nomeTipoEquipamento">
+                <input (keyup)="debounce.next($event.target.value)" matInput placeholder="Pesquise por Nome, Tipo ou Equipamento" formControlName="nomeTipoEquipamento">
             </mat-form-field>
         </form>    
         <div

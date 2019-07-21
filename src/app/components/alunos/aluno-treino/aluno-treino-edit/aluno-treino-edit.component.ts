@@ -1,18 +1,20 @@
 import { AlunoTreino } from '../../../../models/aluno/aluno-treino';
 import { FormGroup, FormBuilder } from '@angular/forms';
-import { Component, OnInit, Inject } from '@angular/core';
+import { Component, OnInit, Inject, OnDestroy } from '@angular/core';
 import {CdkDragDrop, moveItemInArray, transferArrayItem, copyArrayItem} from '@angular/cdk/drag-drop';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
-import { startWith, map } from 'rxjs/operators';
+import { debounceTime } from 'rxjs/operators';
+import { Subject } from 'rxjs';
 @Component({
   selector: 'app-aluno-treino-edit',
   templateUrl: './aluno-treino-edit.component.html',
   styleUrls: ['./aluno-treino-edit.component.css']
 })
-export class AlunoTreinoEditComponent implements OnInit {
+export class AlunoTreinoEditComponent implements OnInit, OnDestroy {
 
   alunoTreinoEditForm: FormGroup;
   listaExercicioForm: FormGroup;
+  debounce: Subject<string> = new Subject<string>();
 
   todoAll = [
     {
@@ -119,6 +121,17 @@ export class AlunoTreinoEditComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.debounce
+    .pipe(debounceTime(300))
+    .subscribe(filter =>
+      this.todo = this.todoAll.filter(item =>
+        item.nome.toLowerCase().includes(filter.toLowerCase())
+      )
+    );
+  }
+
+  ngOnDestroy() {
+    this.debounce.unsubscribe();
   }
   /**
    * TODO:
@@ -147,8 +160,9 @@ export class AlunoTreinoEditComponent implements OnInit {
       dataVencimento: ''
     });
   }
-  findExercices() {
-    const exercicio = this.listaExercicioForm.get('nomeTipoEquipamento').value;
-    this.todo = this.todoAll.filter(item => item.nome.toLowerCase().includes(exercicio.toLowerCase()));
+  findExercices(partialName: string) {
+    this.todo = this.todoAll.filter(
+        item => item.nome.toLowerCase().includes(partialName.toLowerCase())
+      );
   }
 }

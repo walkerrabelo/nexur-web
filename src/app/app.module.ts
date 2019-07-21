@@ -10,7 +10,8 @@ import { MAT_DATE_LOCALE, MatNativeDateModule, MatIconModule,
    MatButtonModule, MatToolbarModule, MatSidenavModule, MatListModule } from '@angular/material';
 import { NavigationComponent } from './shared/navigation/navigation.component';
 import { LayoutModule } from '@angular/cdk/layout';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { AppHttpInterceptor } from './http.interceptor';
 
 @NgModule({
   declarations: [
@@ -33,7 +34,10 @@ import { HttpClientModule } from '@angular/common/http';
     MatIconModule,
     MatListModule
   ],
-  providers: [{provide: MAT_DATE_LOCALE, useValue: 'pt-BR'}],
+  providers: [
+    {provide: MAT_DATE_LOCALE, useValue: 'pt-BR'},
+    {provide: HTTP_INTERCEPTORS, useClass: AppHttpInterceptor, multi: true}
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

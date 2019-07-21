@@ -1,3 +1,4 @@
+import { SignInModule } from './components/autenticacao/sign-in/sign-in.module';
 import { AlunoModule } from './components/alunos/aluno.module';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
@@ -27,14 +28,15 @@ import { ToastrModule } from 'ngx-toastr';
     FlexLayoutModule,
     HttpClientModule,
     ToastrModule.forRoot(),
-    // This App Module
-    AlunoModule,
     LayoutModule,
     MatToolbarModule,
     MatButtonModule,
     MatSidenavModule,
     MatIconModule,
-    MatListModule
+    MatListModule,
+    // This App Module
+    AlunoModule,
+    SignInModule
   ],
   providers: [
     {provide: MAT_DATE_LOCALE, useValue: 'pt-BR'},

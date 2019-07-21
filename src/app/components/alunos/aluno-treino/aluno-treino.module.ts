@@ -7,12 +7,13 @@ import { MatRippleModule, MatDatepickerModule, MatButtonModule,
 import { AlunoTreinoComponent } from './aluno-treino.component';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { AlunoTreinoExercicioComponent } from '../../../aluno/aluno-treino/aluno-treino-exercicio/aluno-treino-exercicio.component';
+
 // tslint:disable-next-line: import-spacing
-import { AlunoTreinoExercicioDialogFormComponent } from
-'../../../aluno/aluno-treino/aluno-treino-exercicio/aluno-treino-exercicio-dialog-form/aluno-treino-exercicio-dialog-form.component';
 import { AlunoTreinoEditComponent } from './aluno-treino-edit/aluno-treino-edit.component';
 import { ExercicioModule } from '../../exercicios/exercicio.module';
+// tslint:disable-next-line: max-line-length
+import { AlunoTreinoExercicioDialogFormComponent } from './aluno-treino-exercicio/aluno-treino-exercicio-dialog-form/aluno-treino-exercicio-dialog-form.component';
+import { AlunoTreinoExercicioComponent } from './aluno-treino-exercicio/aluno-treino-exercicio.component';
 
 @NgModule({
   entryComponents: [

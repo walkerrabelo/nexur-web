@@ -36,6 +36,7 @@ export class AppHttpInterceptor implements HttpInterceptor {
               positionClass: 'toast-bottom-center'
             });
           } catch (e) {
+            console.log('Deu ruim...');
             this.toasterService.error('Ops ! Deu algo errado... :(.', '', {
               positionClass: 'toast-bottom-center'
             });

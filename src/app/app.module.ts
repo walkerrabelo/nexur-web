@@ -12,6 +12,7 @@ import { NavigationComponent } from './shared/navigation/navigation.component';
 import { LayoutModule } from '@angular/cdk/layout';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AppHttpInterceptor } from './http.interceptor';
+import { ToastrModule } from 'ngx-toastr';
 
 @NgModule({
   declarations: [
@@ -25,6 +26,7 @@ import { AppHttpInterceptor } from './http.interceptor';
     MatNativeDateModule,
     FlexLayoutModule,
     HttpClientModule,
+    ToastrModule.forRoot(),
     // This App Module
     AlunoModule,
     LayoutModule,

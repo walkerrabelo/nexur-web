@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { AlunoAvaliacaoComponent } from './aluno-avaliacao/aluno-avaliacao.component';
 import { MatIconModule, MatToolbarModule, MatDividerModule, MatTabsModule, MatTooltipModule,
   MatDialogModule, MatButtonModule, MatFormFieldModule, MatInputModule,
   MatRadioModule, MatBadgeModule, MatTableModule, MatPaginatorModule, MatSortModule, MatChipsModule } from '@angular/material';

@@ -1,13 +1,12 @@
 import { HttpClient } from '@angular/common/http';
-import { tap, take } from 'rxjs/operators';
-
+import { take } from 'rxjs/operators';
+import { environment } from '../../environments/environment';
 export class HttpBaseService<T> {
 
-    private readonly API_BASE = 'https://api.nexur.com.br/';
     private API: string;
 
     constructor(protected http: HttpClient, private endpoint: string) {
-        this.API = `${this.API}/${this.endpoint}`;
+        this.API = `${environment.api_url}/${this.endpoint}`;
     }
 
     getById(id: string) {

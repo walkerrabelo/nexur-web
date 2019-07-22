@@ -3,6 +3,8 @@ import { Aluno } from '../../../models/aluno/aluno';
 import { LISTA_ALUNOS } from './alunos-lista-exemplo';
 import { MatTableDataSource, MatPaginator, MatSort } from '@angular/material';
 import { Router } from '@angular/router';
+import { debounceTime } from 'rxjs/operators';
+import { Subject } from 'rxjs';
 
 @Component({
   selector: 'app-aluno-lista',
@@ -14,6 +16,7 @@ export class AlunoListaComponent implements OnInit {
 
   displayedColumns: string[] = ['nome', 'email', 'avaliacao', 'vencimento', 'grupo'];
   dataSource = new MatTableDataSource<Aluno>(LISTA_ALUNOS);
+  debounce: Subject<string> = new Subject<string>();
 
   @ViewChild(MatPaginator, {static: true}) paginator: MatPaginator;
 
@@ -24,9 +27,11 @@ export class AlunoListaComponent implements OnInit {
   ngOnInit() {
     this.dataSource.sort = this.sort;
     this.dataSource.paginator = this.paginator;
-  }
-  applyFilter(filterValue: string) {
-    this.dataSource.filter = filterValue.trim().toLowerCase();
+
+    this.debounce
+      .pipe(debounceTime(300))
+      .subscribe(
+        filter => this.dataSource.filter = filter.trim().toLowerCase());
   }
 
   edit() {

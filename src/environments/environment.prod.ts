@@ -1,5 +1,5 @@
 export const environment = {
   production: true,
-  ambiente: 'desenvolvimento',
+  ambiente: 'produção',
   api_url: 'https://api.nexur.com.br'
 };

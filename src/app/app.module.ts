@@ -1,5 +1,5 @@
 import { SignInModule } from './components/autenticacao/sign-in/sign-in.module';
-import { AlunoModule } from './components/alunos/aluno.module';
+import { AlunoModule } from './components/aluno/aluno.module';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
@@ -14,6 +14,7 @@ import { LayoutModule } from '@angular/cdk/layout';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AppHttpInterceptor } from './http.interceptor';
 import { ToastrModule } from 'ngx-toastr';
+import { environment } from '../environments/environment.prod';
 
 @NgModule({
   declarations: [
@@ -44,4 +45,8 @@ import { ToastrModule } from 'ngx-toastr';
   ],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {
+  constructor() {
+    console.log('Rodando em ambiente de ' + environment.ambiente);
+  }
+}

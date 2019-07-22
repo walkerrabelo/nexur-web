@@ -10,10 +10,11 @@ import { CommonModule } from '@angular/common';
 
 // tslint:disable-next-line: import-spacing
 import { AlunoTreinoEditComponent } from './aluno-treino-edit/aluno-treino-edit.component';
-import { ExercicioModule } from '../../exercicios/exercicio.module';
+
 // tslint:disable-next-line: max-line-length
 import { AlunoTreinoExercicioDialogFormComponent } from './aluno-treino-exercicio/aluno-treino-exercicio-dialog-form/aluno-treino-exercicio-dialog-form.component';
 import { AlunoTreinoExercicioComponent } from './aluno-treino-exercicio/aluno-treino-exercicio.component';
+import { ExercicioModule } from '../../exercicio/exercicio.module';
 
 @NgModule({
   entryComponents: [

@@ -12,6 +12,6 @@ export class AutenticacaoService {
   constructor(private http: HttpClient) { }
 
   authenticate(login: string, password: string) {
-    return this.http.post(`${environment}/${ENDPOINT}`, {login, password});
+    return this.http.post(`${environment.api_url}/${ENDPOINT}`, {login, password});
   }
 }

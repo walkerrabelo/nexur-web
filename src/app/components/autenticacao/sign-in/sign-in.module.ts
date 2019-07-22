@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { SignInComponent } from './sign-in.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { MatFormFieldModule, MatCardModule, MatInputModule, MatButtonModule, MatIconModule } from '@angular/material';
+import { RouterModule } from '@angular/router';
 
 @NgModule({
   declarations: [SignInComponent],
@@ -13,7 +14,8 @@ import { MatFormFieldModule, MatCardModule, MatInputModule, MatButtonModule, Mat
     MatCardModule,
     MatInputModule,
     MatButtonModule,
-    MatIconModule
+    MatIconModule,
+    RouterModule
   ]
 })
 export class SignInModule { }

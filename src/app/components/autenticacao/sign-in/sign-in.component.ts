@@ -26,11 +26,11 @@ export class SignInComponent implements OnInit {
     const password = this.formSignIn.get('senha').value;
     this.autenticacaoService.authenticate(user, password)
       .subscribe(
-        () => console.log('Autenticou...'),
+        () => this.router.navigate(['alunos']),
         err => {
           console.log('Não autenticou');
           console.log(err);
-         }
+        }
       );
   }
   forget() {

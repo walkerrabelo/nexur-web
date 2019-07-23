@@ -10,16 +10,20 @@ import { Injectable } from '@angular/core';
 import { Observable, of } from 'rxjs';
 import { tap, catchError } from 'rxjs/operators';
 import { ToastrService } from 'ngx-toastr';
+import { LoaderService } from '../shared/loader/loader.service';
+
 @Injectable()
-export class AppHttpInterceptor implements HttpInterceptor {
-  constructor(public toasterService: ToastrService) {}
-  intercept(
-    req: HttpRequest<any>,
-    next: HttpHandler
-  ): Observable<HttpEvent<any>> {
+export class HttpErrorInterceptor implements HttpInterceptor {
+  constructor(
+    public toasterService: ToastrService,
+    private loaderService: LoaderService
+    ) {}
+  intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
+    this.showLoader();
     return next.handle(req).pipe(
       tap(evt => {
         if (evt instanceof HttpResponse) {
+          this.onEnd();
           if (evt.body && evt.body.success) {
             this.toasterService.success(
               evt.body.success.message,
@@ -30,6 +34,7 @@ export class AppHttpInterceptor implements HttpInterceptor {
         }
       }),
       catchError((err: any) => {
+        this.onEnd();
         if (err instanceof HttpErrorResponse) {
           try {
             this.toasterService.error(err.error.message, err.error.title, {
@@ -46,5 +51,15 @@ export class AppHttpInterceptor implements HttpInterceptor {
         return of(err);
       })
     );
+  }
+
+  private onEnd(): void {
+    this.hideLoader();
+  }
+  private showLoader(): void {
+    this.loaderService.show();
+  }
+  private hideLoader(): void {
+    this.loaderService.hide();
   }
 }

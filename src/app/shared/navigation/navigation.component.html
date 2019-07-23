@@ -5,31 +5,37 @@
       [opened]="(isHandset$ | async) === false">
     <mat-nav-list>
 
-      <button routerLink="" class="big_button_side_menu" mat-button color="primary">
+      <button routerLink="home" class="big_button_side_menu" mat-button color="primary">
           <mat-icon >home</mat-icon>
           <div class="big_button_side_menu_subtitle">Home</div>
       </button>
       <button routerLink="alunos" class="big_button_side_menu" mat-button color="primary">
           <mat-icon >group</mat-icon>
-          <div class="big_button_side_menu_subtitle">  
+          <div class="big_button_side_menu_subtitle">
             Alunos
           </div>
       </button>
-      <button class="big_button_side_menu" mat-button color="primary">
+      <button routerLink="aulas" class="big_button_side_menu" mat-button color="primary">
           <mat-icon >date_range</mat-icon>
           <div class="big_button_side_menu_subtitle">Aulas</div>
       </button>
-      <button class="big_button_side_menu" mat-button color="primary">
+      <button routerLink="financeiro" class="big_button_side_menu" mat-button color="primary">
           <mat-icon >attach_money</mat-icon>
           <div class="big_button_side_menu_subtitle">Financeiro</div>
       </button>
-      <button class="big_button_side_menu" mat-button color="primary">
+      <button routerLink="exercicios" class="big_button_side_menu" mat-button color="primary">
+        <mat-icon>directions_run</mat-icon>
+        <div class="big_button_side_menu_subtitle">
+          Exercícios
+        </div>
+      </button>
+      <button routerLink="preferencias" class="big_button_side_menu" mat-button color="primary">
           <mat-icon >settings</mat-icon>
           <div class="big_button_side_menu_subtitle">
             Preferências
           </div>
       </button>
-      <button class="big_button_side_menu" mat-button color="primary">
+      <button class="big_button_side_menu" mat-button color="primary" (click)="logout()">
           <mat-icon >power_settings_new</mat-icon>
           <div class="big_button_side_menu_subtitle">Sair</div>
       </button>
@@ -39,15 +45,14 @@
     <mat-toolbar color="primary" class="mat-elevation-z8">
       <button
         type="button"
-        aria-label="Toggle sidenav"
+        aria-label="Menu"
         mat-icon-button
         (click)="drawer.toggle()"
         *ngIf="isHandset$ | async">
         <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
       </button>
-      <span>Nexur / #Nome da Rota Atual#</span>
+      <span>Nexur {{currentRoute}}</span>
     </mat-toolbar>
-    <!--routes-->
     <router-outlet></router-outlet>
   </mat-sidenav-content>
 </mat-sidenav-container>

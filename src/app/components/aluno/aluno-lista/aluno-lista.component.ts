@@ -4,7 +4,8 @@ import { LISTA_ALUNOS } from './alunos-lista-exemplo';
 import { MatTableDataSource, MatPaginator, MatSort } from '@angular/material';
 import { Router } from '@angular/router';
 import { debounceTime } from 'rxjs/operators';
-import { Subject } from 'rxjs';
+import { Subject, Observable } from 'rxjs';
+import { AlunoService } from '../../../services/aluno/aluno.service';
 
 @Component({
   selector: 'app-aluno-lista',
@@ -15,16 +16,17 @@ import { Subject } from 'rxjs';
 export class AlunoListaComponent implements OnInit {
 
   displayedColumns: string[] = ['nome', 'email', 'avaliacao', 'vencimento', 'grupo'];
-  dataSource = new MatTableDataSource<Aluno>(LISTA_ALUNOS);
+  dataSource: MatTableDataSource<Aluno>;
   debounce: Subject<string> = new Subject<string>();
 
   @ViewChild(MatPaginator, {static: true}) paginator: MatPaginator;
-
   @ViewChild(MatSort, {static: true}) sort: MatSort;
 
-  constructor(private router: Router) { }
+  constructor(private router: Router, private alunoService: AlunoService) { }
 
   ngOnInit() {
+    this.dataSource = new MatTableDataSource<Aluno>();
+    this.alunoService.list().subscribe(alunos => this.dataSource.data = alunos);
     this.dataSource.sort = this.sort;
     this.dataSource.paginator = this.paginator;
 

@@ -17,8 +17,8 @@
 }
 .big_button_side_menu {
   min-height: 50px;
-  max-height: 90px;
-  padding: 15px;
+  max-height: 80px;
+  padding-bottom: 15px;
   width: 100%;
   font-size: 14px;
   display: flex;

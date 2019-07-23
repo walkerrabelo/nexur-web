@@ -45,16 +45,16 @@
         <!--Nutrição-->
         <app-aluno-nutricao></app-aluno-nutricao>
     </mat-tab>
-    <mat-tab label="Dados Pessoais">  
+    <mat-tab label="Dados Pessoais">
         <ng-template mat-tab-label>
             <mat-icon class="example-tab-icon">person_outline</mat-icon>
             <h4>Dados Pessoais</h4>
-        </ng-template> 
+        </ng-template>
         <app-aluno-form></app-aluno-form>
     </mat-tab>
 </mat-tab-group>
 <div class="fab-container-top">
-    <button mat-fab (click)="create()" 
+    <button mat-fab (click)="create()"
         [matTooltip]="tooltipButton">
         <mat-icon>add</mat-icon>
     </button>

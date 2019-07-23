@@ -27,7 +27,7 @@ export class TokenService {
   }
 
   removeToken() {
-    window.localStorage.remove(`${TOKEN_NAME}`);
-    window.localStorage.remove(`${USER_NAME}`);
+    window.localStorage.removeItem(`${TOKEN_NAME}`);
+    window.localStorage.removeItem(`${USER_NAME}`);
   }
 }

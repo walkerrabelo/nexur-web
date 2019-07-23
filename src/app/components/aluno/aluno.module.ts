@@ -13,6 +13,7 @@ import { AlunoNutricaoModule } from './aluno-nutricao/aluno-nutricao.module';
 import { AlunoPeriodizacaoModule } from './aluno-periodizacao/aluno-periodizacao.module';
 import { AlunoTreinoEditComponent } from './aluno-treino/aluno-treino-edit/aluno-treino-edit.component';
 import { AlunoTreinoModule } from './aluno-treino/aluno-treino.module';
+import { AlunoService } from '../../services/aluno/aluno.service';
 
 
 @NgModule({
@@ -23,6 +24,13 @@ import { AlunoTreinoModule } from './aluno-treino/aluno-treino.module';
     AlunoComponent,
     AlunoListaComponent,
     AlunoFormComponent,
+  ],
+  exports: [
+    AlunoComponent,
+    AlunoListaComponent
+  ],
+  providers: [
+    AlunoService
   ],
   imports: [
     CommonModule,
@@ -50,10 +58,6 @@ import { AlunoTreinoModule } from './aluno-treino/aluno-treino.module';
     AlunoAvaliacaoModule,
     AlunoNutricaoModule,
     AlunoPeriodizacaoModule
-  ],
-  exports: [
-    AlunoComponent,
-    AlunoListaComponent
   ]
 })
 export class AlunoModule { }

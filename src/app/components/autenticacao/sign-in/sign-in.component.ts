@@ -10,7 +10,7 @@ import { AutenticacaoService } from 'src/app/services/autenticacao/autenticacao.
 export class SignInComponent implements OnInit {
 
   formSignIn: FormGroup;
-
+  viewProgressBar = false;
   constructor(
     private formBuilder: FormBuilder,
     private router: Router, private autenticacaoService: AutenticacaoService) { }
@@ -22,16 +22,24 @@ export class SignInComponent implements OnInit {
     });
   }
   login() {
+    this.showProgress();
     const user = this.formSignIn.get('usuario').value;
     const password = this.formSignIn.get('senha').value;
     this.autenticacaoService.authenticate(user, password)
       .subscribe(
-        () => this.router.navigate(['alunos']),
+        () => {
+          this.showProgress();
+          this.router.navigate(['alunos']);
+        },
         err => {
+          this.showProgress();
           console.log('Não autenticou');
           console.log(err);
         }
       );
+  }
+  showProgress() {
+    this.viewProgressBar = !this.viewProgressBar;
   }
   forget() {
 

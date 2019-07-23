@@ -8,6 +8,7 @@ import { AlunoTreino } from '../../../models/aluno/aluno-treino';
 import { Observable } from 'rxjs';
 import { AlunoDataService } from '../../../services/aluno/aluno-data.service';
 import { Aluno } from '../../../models/aluno/aluno';
+import { AlunoService } from '../../../services/aluno/aluno.service';
 
 
 @Component({
@@ -21,7 +22,7 @@ import { Aluno } from '../../../models/aluno/aluno';
 export class AlunoComponent implements OnInit {
 
   aluno: Aluno;
-  listTreino: Observable<AlunoTreino[]>;
+  listTreinos: AlunoTreino[] = [];
 
   tooltipButton = 'Novo Treino';
   buttonDissabled = false;
@@ -29,11 +30,17 @@ export class AlunoComponent implements OnInit {
   constructor(
     private dialog: MatDialog, private http: HttpClient,
     private alunoDataService: AlunoDataService,
-    private alunoTreinoService: AlunoTreinoService) { }
+    private alunoService: AlunoService) { }
 
   ngOnInit() {
     this.aluno = this.alunoDataService.get();
-    this.listTreino = this.alunoTreinoService.list();
+    this.alunoService.getTreinos(this.aluno.id_aluno).subscribe(
+        aluno => { 
+          this.listTreinos = aluno.series;
+          console.log('Treinos: ');
+          console.log(this.listTreinos);
+        }
+      );
   }
   openDialog(): void {
     const dialogRef = this.dialog.open(AlunoTreinoEditComponent, {

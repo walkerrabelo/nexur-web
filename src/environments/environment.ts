@@ -5,7 +5,8 @@
 export const environment = {
   production: false,
   ambiente: 'desenvolvimento',
-  api_url: 'https://api.nexur.com.br'
+  api_url: 'https://api.nexur.com.br',
+  exercicios_url: 'https://fit.nexur.com.br/exercicios'
 };
 
 /*

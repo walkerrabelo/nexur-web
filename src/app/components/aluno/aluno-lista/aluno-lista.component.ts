@@ -1,6 +1,5 @@
 import { Component, OnInit, ViewChild, OnDestroy } from '@angular/core';
 import { Aluno } from '../../../models/aluno/aluno';
-import { LISTA_ALUNOS } from './alunos-lista-exemplo';
 import { MatTableDataSource, MatPaginator, MatSort } from '@angular/material';
 import { Router } from '@angular/router';
 import { debounceTime } from 'rxjs/operators';

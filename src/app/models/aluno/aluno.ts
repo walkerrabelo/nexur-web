@@ -1,4 +1,5 @@
 import { Usuario } from '../usuario/usuario';
+import { AlunoTreino } from './aluno-treino';
 // tslint:disable: variable-name
 export interface Aluno {
     id_aluno: string;
@@ -15,5 +16,6 @@ export interface Aluno {
     ativo: string;
     visivel: string;
     usuario: Usuario;
+    series: AlunoTreino[];
 }
 

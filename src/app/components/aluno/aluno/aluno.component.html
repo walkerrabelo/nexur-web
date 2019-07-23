@@ -13,7 +13,7 @@
             <h4>Treinos</h4>
         </ng-template>
         <!--Treinos-->
-        <app-aluno-treino *ngFor="let item of listTreino" ></app-aluno-treino>
+        <app-aluno-treino *ngFor="let treino of listTreinos" [treino]="treino"></app-aluno-treino>
     </mat-tab>
     <mat-tab label="Avaliações">
         <ng-template mat-tab-label>

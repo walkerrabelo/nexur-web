@@ -3,7 +3,7 @@ import { take } from 'rxjs/operators';
 import { environment } from '../../environments/environment';
 export class HttpBaseService<T> {
 
-    private API: string;
+    protected API: string;
 
     constructor(protected http: HttpClient, private endpoint: string) {
         this.API = `${environment.api_url}/${this.endpoint}`;

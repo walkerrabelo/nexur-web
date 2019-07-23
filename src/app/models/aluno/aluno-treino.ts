@@ -8,5 +8,5 @@ export interface AlunoTreino {
   data_vencimento: string;
   ativo: string;
   visivel: string;
-  exercicioSeries: AlunoTreinoExercicio;
+  exercicioSeries: AlunoTreinoExercicio[];
 }

@@ -2,6 +2,7 @@ import { Component, OnInit, Input } from '@angular/core';
 import { MatDialog } from '@angular/material';
 import { AlunoTreinoEditComponent } from './aluno-treino-edit/aluno-treino-edit.component';
 import { Aluno } from '../../../models/aluno/aluno';
+import { AlunoTreino } from '../../../models/aluno/aluno-treino';
 
 @Component({
   selector: 'app-aluno-treino',
@@ -9,6 +10,9 @@ import { Aluno } from '../../../models/aluno/aluno';
   styleUrls: ['./aluno-treino.component.css']
 })
 export class AlunoTreinoComponent implements OnInit {
+
+  @Input()
+  treino: AlunoTreino = null;
 
   expanded = false;
   showHideText = 'Exibir';

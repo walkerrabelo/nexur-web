@@ -2,6 +2,7 @@ import { MatDialog } from '@angular/material';
 import { AlunoTreinoExercicioDialogFormComponent } from './aluno-treino-exercicio-dialog-form/aluno-treino-exercicio-dialog-form.component';
 import { Component, OnInit, Input } from '@angular/core';
 import { AlunoTreinoExercicio } from '../../../../models/aluno/aluno-treino-exercicio';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-aluno-treino-exercicio',
@@ -17,13 +18,17 @@ export class AlunoTreinoExercicioComponent implements OnInit {
   radius: number;
   color: string;
 
-  //
+  imgUrl = '';
+  alt = '';
+
   @Input()
-  alunoTreinoExercicio: AlunoTreinoExercicio;
+  alunoTreinoExercicio: AlunoTreinoExercicio = null;
 
   constructor(public dialog: MatDialog) { }
 
   ngOnInit() {
+    this.imgUrl = `${environment.exercicios_url}/${this.alunoTreinoExercicio.id_exercicio}-0.gif`;
+    this.alt = this.alunoTreinoExercicio.exercicio.descricao_pt;
   }
 
   openDialog(): void {

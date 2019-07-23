@@ -15,6 +15,7 @@ import { AlunoTreinoEditComponent } from './aluno-treino/aluno-treino-edit/aluno
 import { AlunoTreinoModule } from './aluno-treino/aluno-treino.module';
 import { AlunoService } from '../../services/aluno/aluno.service';
 import { AlunoTreinoService } from '../../services/aluno/aluno-treino.service';
+import { AlunoDataService } from '../../services/aluno/aluno-data.service';
 
 
 @NgModule({
@@ -27,7 +28,7 @@ import { AlunoTreinoService } from '../../services/aluno/aluno-treino.service';
     AlunoFormComponent,
   ],
   exports: [AlunoComponent, AlunoListaComponent],
-  providers: [AlunoService, AlunoTreinoService],
+  providers: [AlunoService, AlunoDataService, AlunoTreinoService ],
   imports: [
     CommonModule,
     MatIconModule,

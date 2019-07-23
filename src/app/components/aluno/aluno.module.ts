@@ -14,6 +14,7 @@ import { AlunoPeriodizacaoModule } from './aluno-periodizacao/aluno-periodizacao
 import { AlunoTreinoEditComponent } from './aluno-treino/aluno-treino-edit/aluno-treino-edit.component';
 import { AlunoTreinoModule } from './aluno-treino/aluno-treino.module';
 import { AlunoService } from '../../services/aluno/aluno.service';
+import { AlunoTreinoService } from '../../services/aluno/aluno-treino.service';
 
 
 @NgModule({
@@ -25,13 +26,8 @@ import { AlunoService } from '../../services/aluno/aluno.service';
     AlunoListaComponent,
     AlunoFormComponent,
   ],
-  exports: [
-    AlunoComponent,
-    AlunoListaComponent
-  ],
-  providers: [
-    AlunoService
-  ],
+  exports: [AlunoComponent, AlunoListaComponent],
+  providers: [AlunoService, AlunoTreinoService],
   imports: [
     CommonModule,
     MatIconModule,

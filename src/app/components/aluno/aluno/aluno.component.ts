@@ -3,6 +3,11 @@ import { FormControl } from '@angular/forms';
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { AlunoTreinoEditComponent } from '../aluno-treino/aluno-treino-edit/aluno-treino-edit.component';
+import { AlunoTreinoService } from '../../../services/aluno/aluno-treino.service';
+import { AlunoTreino } from '../../../models/aluno/aluno-treino';
+import { Observable } from 'rxjs';
+import { AlunoDataService } from '../../../services/aluno/aluno-data.service';
+import { Aluno } from '../../../models/aluno/aluno';
 
 
 @Component({
@@ -15,12 +20,21 @@ import { AlunoTreinoEditComponent } from '../aluno-treino/aluno-treino-edit/alun
 })
 export class AlunoComponent implements OnInit {
 
+  aluno: Aluno;
+  listTreino: Observable<AlunoTreino[]>;
+
   tooltipButton = 'Novo Treino';
   buttonDissabled = false;
   selectedTab = new FormControl(0);
-  constructor(private dialog: MatDialog, private http: HttpClient) { }
+  constructor(
+    private dialog: MatDialog, private http: HttpClient,
+    private alunoDataService: AlunoDataService,
+    private alunoTreinoService: AlunoTreinoService) { }
 
-  ngOnInit() { }
+  ngOnInit() {
+    this.aluno = this.alunoDataService.get();
+    this.listTreino = this.alunoTreinoService.list();
+  }
   openDialog(): void {
     const dialogRef = this.dialog.open(AlunoTreinoEditComponent, {
       width: '95%',

@@ -1,6 +1,6 @@
 <mat-toolbar>
     <mat-toolbar-row>
-    <span>Fulano de Tal dos Anzóis ( Engenheiro ) - 110Kg e 1,90m</span>
+    <span>{{aluno.nome}}</span>
         <span class="example-spacer"></span>
     </mat-toolbar-row>
 </mat-toolbar>
@@ -13,13 +13,7 @@
             <h4>Treinos</h4>
         </ng-template>
         <!--Treinos-->
-        <app-aluno-treino></app-aluno-treino>
-        <mat-divider></mat-divider>
-        <app-aluno-treino></app-aluno-treino>
-        <mat-divider></mat-divider>
-        <app-aluno-treino></app-aluno-treino>
-        <mat-divider></mat-divider>
-        <app-aluno-treino></app-aluno-treino>
+        <app-aluno-treino *ngFor="let item of listTreino" ></app-aluno-treino>
     </mat-tab>
     <mat-tab label="Avaliações">
         <ng-template mat-tab-label>

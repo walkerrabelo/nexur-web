@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { MatDialog } from '@angular/material';
 import { AlunoTreinoEditComponent } from './aluno-treino-edit/aluno-treino-edit.component';
+import { Aluno } from '../../../models/aluno/aluno';
 
 @Component({
   selector: 'app-aluno-treino',

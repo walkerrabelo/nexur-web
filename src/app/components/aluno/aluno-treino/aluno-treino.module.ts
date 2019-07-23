@@ -15,6 +15,7 @@ import { AlunoTreinoEditComponent } from './aluno-treino-edit/aluno-treino-edit.
 import { AlunoTreinoExercicioDialogFormComponent } from './aluno-treino-exercicio/aluno-treino-exercicio-dialog-form/aluno-treino-exercicio-dialog-form.component';
 import { AlunoTreinoExercicioComponent } from './aluno-treino-exercicio/aluno-treino-exercicio.component';
 import { ExercicioModule } from '../../exercicio/exercicio.module';
+import { AlunoTreinoService } from '../../../services/aluno/aluno-treino.service';
 
 @NgModule({
   entryComponents: [
@@ -27,6 +28,7 @@ import { ExercicioModule } from '../../exercicio/exercicio.module';
     AlunoTreinoExercicioDialogFormComponent
   ],
   exports: [AlunoTreinoComponent, AlunoTreinoEditComponent],
+  providers: [AlunoTreinoService],
   imports: [
     CommonModule,
     MatRippleModule,

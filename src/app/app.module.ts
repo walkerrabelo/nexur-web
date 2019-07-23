@@ -23,12 +23,14 @@ import { ExercicioModule } from './components/exercicio/exercicio.module';
 import { AvaliacaoModule } from './components/avaliacao/avaliacao.module';
 import { FinanceiroModule } from './components/financeiro/financeiro.module';
 import { AulaModule } from './components/aula/aula.module';
+import { RouteFriendlyPipe } from './shared/pipes/route-friendly.pipe';
 
 @NgModule({
   declarations: [
     AppComponent,
     NavigationComponent,
     LoaderComponent,
+    RouteFriendlyPipe,
   ],
   imports: [
     BrowserModule,

@@ -51,7 +51,7 @@
         *ngIf="isHandset$ | async">
         <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
       </button>
-      <span>Nexur {{currentRoute}}</span>
+      <span>Nexur {{currentRoute | routeFriendly}}</span>
     </mat-toolbar>
     <router-outlet></router-outlet>
   </mat-sidenav-content>

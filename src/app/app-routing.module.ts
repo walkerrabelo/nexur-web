@@ -17,7 +17,7 @@ const routes: Routes = [
   { path: 'alunos', component: AlunoListaComponent, canActivate: [AuthGuardAdminService]},
   { path: 'aluno', component: AlunoComponent, canActivate: [AuthGuardAdminService]},
   { path: 'aulas', component: AulaComponent, canActivate: [AuthGuardAdminService]},
-  { path: 'avaliacao', component: AvaliacaoComponent, canActivate: [AuthGuardAdminService]},
+  { path: 'avaliacoes', component: AvaliacaoComponent, canActivate: [AuthGuardAdminService]},
   { path: 'exercicios', component: ExercicioComponent, canActivate: [AuthGuardAdminService]},
   { path: 'financeiro', component: FinanceiroComponent, canActivate: [AuthGuardAdminService]},
   { path: 'home', component: HomeComponent, canActivate: [AuthGuardAdminService]},

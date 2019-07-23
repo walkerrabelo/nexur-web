@@ -1,5 +1,6 @@
+// tslint:disable: variable-name
 import { AlunoTreinoExercicio } from './aluno-treino-exercicio';
-export interface AlunoTreino {
+export class AlunoTreino {
   id_serie: string;
   id_aluno: string;
   descricao: string;

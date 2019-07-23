@@ -7,6 +7,6 @@ import { HttpClient } from '@angular/common/http';
 export class AlunoAvaliacaoService extends HttpBaseService<AlunoAvaliacao> {
 
   constructor(protected http: HttpClient) {
-    super(http, 'aluno-treino');
+    super(http, 'aluno-treino', 'id_avaliacao');
   }
 }

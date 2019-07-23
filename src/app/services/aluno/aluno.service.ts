@@ -9,7 +9,7 @@ import { environment } from 'src/environments/environment.prod';
 export class AlunoService extends HttpBaseService<Aluno> {
 
     constructor(protected http: HttpClient) {
-      super(http, 'aluno');
+      super(http, 'aluno', 'id_aluno');
     }
 
     getTreinos(idAluno: string) {

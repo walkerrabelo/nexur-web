@@ -7,6 +7,6 @@ import { AlunoTreino } from '../../models/aluno/aluno-treino';
 @Injectable()
 export class AlunoTreinoService extends HttpBaseService<AlunoTreino> {
   constructor(protected http: HttpClient) {
-    super(http, 'aluno-treino');
+    super(http, 'aluno-treino', 'id_serie');
   }
 }

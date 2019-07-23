@@ -6,6 +6,6 @@ import { Exercicio } from '../../models/exercicio/exercicio';
 @Injectable()
 export class ExercicioService extends HttpBaseService<Exercicio> {
   constructor(protected http: HttpClient) {
-    super(http, 'exercicio');
+    super(http, 'exercicio', 'id_exercicio');
   }
 }

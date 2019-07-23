@@ -5,7 +5,10 @@ export class HttpBaseService<T> {
 
     protected API: string;
 
-    constructor(protected http: HttpClient, private endpoint: string) {
+    constructor(
+        protected http: HttpClient,
+        protected endpoint: string,
+        protected idName: string) {
         this.API = `${environment.api_url}/${this.endpoint}`;
     }
 
@@ -23,13 +26,14 @@ export class HttpBaseService<T> {
 
     private update(record: T) {
         // tslint:disable-next-line: no-string-literal
-        return this.http.post(`${this.API}/update?id=${record['id']}`, record)
+        const id = record[this.idName];
+        return this.http.post(`${this.API}/update?id=${id}`, record)
         .pipe(take(1));
     }
 
     save(record: T) {
         // tslint:disable-next-line: no-string-literal
-        if (record['id']) {
+        if (record[this.idName]) {
             return this.update(record);
         }
         return this.create(record);

@@ -33,14 +33,16 @@ export class AlunoComponent implements OnInit {
     private alunoService: AlunoService) { }
 
   ngOnInit() {
-    this.aluno = this.alunoDataService.get();
-    this.alunoService.getTreinos(this.aluno.id_aluno).subscribe(
-        aluno => { 
-          this.listTreinos = aluno.series;
-          console.log('Treinos: ');
-          console.log(this.listTreinos);
-        }
-      );
+    if (this.alunoDataService.hasEntity()) {
+      this.aluno = this.alunoDataService.get();
+      this.alunoService.getTreinos(this.aluno.id_aluno).subscribe(
+          aluno => {
+            this.listTreinos = aluno.series;
+            console.log('Treinos: ');
+            console.log(this.listTreinos);
+          }
+        );
+    }
   }
   openDialog(): void {
     const dialogRef = this.dialog.open(AlunoTreinoEditComponent, {

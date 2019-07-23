@@ -1,6 +1,7 @@
 import { Exercicio } from './../exercicio/exercicio';
 import { TipoRepeticao } from '../exercicio/repeticao';
-export interface AlunoTreinoExercicio {
+export class AlunoTreinoExercicio {
+  // tslint:disable: variable-name
   id_exercicio_serie: string;
   id_serie: string;
   id_exercicio: string;

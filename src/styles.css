@@ -20,9 +20,17 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
     width: 100px;
     margin-left: 20px;
   }
+  .field-200 {
+    width: 200px;
+    margin-left: 15px;
+  }
   .field-220 {
     width: 220px;
     margin-left: 20px;
+  }
+  .field-300 { 
+    width: 300px;
+    margin-left: 15px;
   }
   .field-340 { 
     width: 340px;

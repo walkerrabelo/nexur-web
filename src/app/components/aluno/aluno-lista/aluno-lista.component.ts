@@ -52,7 +52,7 @@ export class AlunoListaComponent implements OnInit, OnDestroy {
 
   create() {
     const dialogRef = this.dialog.open(AlunoFormDialogComponent, {
-      width: '60%', height: '40%',
+      width: '80%', height: '70%',
     });
   }
 }

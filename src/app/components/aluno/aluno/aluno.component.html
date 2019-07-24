@@ -14,6 +14,7 @@
         </ng-template>
         <!--Treinos-->
         <app-aluno-treino *ngFor="let treino of listTreinos" [treino]="treino"></app-aluno-treino>
+        <div *ngIf="listTreinos.length === 0">Ainda não há treinos cadastrados para {{aluno.nome}}</div>
     </mat-tab>
     <mat-tab label="Avaliações">
         <ng-template mat-tab-label>

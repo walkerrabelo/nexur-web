@@ -1,8 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, LOCALE_ID } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { AlunoDataService } from '../../../services/aluno/aluno-data.service';
 import { AlunoService } from '../../../services/aluno/aluno.service';
 import { Aluno } from '../../../models/aluno/aluno';
+import { DatePipe } from '@angular/common';
+import * as moment from 'moment/moment';
 
 @Component({
   selector: 'app-aluno-form',
@@ -33,12 +35,17 @@ export class AlunoFormComponent implements OnInit {
     this.formAluno = this.formBuilder.group({
       nome: [this.aluno.nome, Validators.required],
       email: [this.aluno.email, Validators.email],
-      data_nascimento: [this.aluno.data_nascimento],
-      data_matricula: [this.aluno.data_matricula],
+      data_nascimento: [moment(this.aluno.data_nascimento).format(),
+         Validators.required],
+      data_matricula: [moment(this.aluno.data_matricula).format(),
+        Validators.required],
       sexo: [this.aluno.sexo],
-      usuario: [this.aluno.usuario.login],
-      senha: [this.aluno.usuario.senha]
+      usuario: [this.aluno.usuario.login, Validators.required],
+      senha: [this.aluno.usuario.senha, Validators.required]
     });
+    console.log('Matricula: ', new Date(this.aluno.data_matricula).toLocaleDateString());
+    console.log('Matricula: ', new Date(this.aluno.data_matricula).toUTCString());
+    console.log('Data MomentJS', moment(this.aluno.data_nascimento).format());
   }
 
   submit() {

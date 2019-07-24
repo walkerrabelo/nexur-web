@@ -5,8 +5,8 @@ export class Aluno {
     id_aluno: string;
     nome: string;
     email: string;
-    data_nascimento: string;
-    data_matricula: string;
+    data_nascimento: Date;
+    data_matricula: Date;
     sexo: string;
     grupo: string;
     id_professor: string;

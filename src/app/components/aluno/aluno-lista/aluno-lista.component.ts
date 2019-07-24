@@ -1,11 +1,12 @@
 import { Component, OnInit, ViewChild, OnDestroy } from '@angular/core';
 import { Aluno } from '../../../models/aluno/aluno';
-import { MatTableDataSource, MatPaginator, MatSort } from '@angular/material';
+import { MatTableDataSource, MatPaginator, MatSort, MatDialog } from '@angular/material';
 import { Router } from '@angular/router';
 import { debounceTime } from 'rxjs/operators';
 import { Subject, Observable } from 'rxjs';
 import { AlunoService } from '../../../services/aluno/aluno.service';
 import { AlunoDataService } from '../../../services/aluno/aluno-data.service';
+import { AlunoFormDialogComponent } from '../aluno-form/aluno-form-dialog/aluno-form-dialog.component';
 
 @Component({
   selector: 'app-aluno-lista',
@@ -24,7 +25,8 @@ export class AlunoListaComponent implements OnInit, OnDestroy {
 
   constructor(
     private router: Router, private alunoService: AlunoService,
-    private alunoDataService: AlunoDataService) { }
+    private alunoDataService: AlunoDataService,
+    public dialog: MatDialog) { }
 
   ngOnInit() {
     this.alunoDataService.remove();
@@ -48,4 +50,9 @@ export class AlunoListaComponent implements OnInit, OnDestroy {
     this.router.navigate(['/aluno']);
   }
 
+  create() {
+    const dialogRef = this.dialog.open(AlunoFormDialogComponent, {
+      width: '60%', height: '40%',
+    });
+  }
 }

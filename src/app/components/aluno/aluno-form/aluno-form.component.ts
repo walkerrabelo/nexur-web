@@ -36,7 +36,7 @@ export class AlunoFormComponent implements OnInit {
       data_nascimento: [this.aluno.data_nascimento],
       data_matricula: [this.aluno.data_matricula],
       sexo: [this.aluno.sexo],
-      usuario: [this.aluno.usuario.nome],
+      usuario: [this.aluno.usuario.login],
       senha: [this.aluno.usuario.senha]
     });
   }

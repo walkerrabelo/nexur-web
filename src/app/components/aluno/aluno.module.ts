@@ -16,16 +16,19 @@ import { AlunoTreinoModule } from './aluno-treino/aluno-treino.module';
 import { AlunoService } from '../../services/aluno/aluno.service';
 import { AlunoTreinoService } from '../../services/aluno/aluno-treino.service';
 import { AlunoDataService } from '../../services/aluno/aluno-data.service';
+import { AlunoFormDialogComponent } from './aluno-form/aluno-form-dialog/aluno-form-dialog.component';
 
 
 @NgModule({
  entryComponents: [
-    AlunoTreinoEditComponent
+    AlunoTreinoEditComponent,
+    AlunoFormDialogComponent
  ],
   declarations: [
     AlunoComponent,
     AlunoListaComponent,
     AlunoFormComponent,
+    AlunoFormDialogComponent,
   ],
   exports: [AlunoComponent, AlunoListaComponent],
   providers: [AlunoService, AlunoDataService, AlunoTreinoService ],

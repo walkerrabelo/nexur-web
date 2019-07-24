@@ -37,9 +37,15 @@ export class HttpErrorInterceptor implements HttpInterceptor {
         this.onEnd();
         if (err instanceof HttpErrorResponse) {
           try {
-            this.toasterService.error(err.error.message, err.error.title, {
-              positionClass: 'toast-bottom-center'
-            });
+            if (err.status === 409) {
+              this.toasterService.error('Nome de usuário já existe', err.error.title, {
+                positionClass: 'toast-bottom-center'
+              });
+            } else {
+              this.toasterService.error(err.error.message, err.error.title, {
+                positionClass: 'toast-bottom-center'
+              });
+            }
           } catch (e) {
             console.log('Deu ruim...');
             this.toasterService.error('Ops ! Deu algo errado... :(.', '', {

@@ -47,6 +47,7 @@ export class AlunoFormDialogComponent implements OnInit {
         console.log('Salvou!');
         console.log(aluno);
         this.alunoDataService.set(aluno as Aluno);
+        this.dialogRef.close();
         this.router.navigate(['aluno']);
       }
     );

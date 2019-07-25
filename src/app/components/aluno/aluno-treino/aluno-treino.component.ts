@@ -21,6 +21,7 @@ export class AlunoTreinoComponent implements OnInit {
   constructor(private dialog: MatDialog) { }
 
   ngOnInit() {
+    this.activeTrain = this.treino.ativo === '1' ? true : false;
   }
 
   expandExercices() {

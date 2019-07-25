@@ -7,7 +7,7 @@
             {{treino.data_ativacao}} a {{treino.data_vencimento}}
         </mat-card-subtitle>
         <mat-slide-toggle class="fixed-sized-button" (toggleChange)="activateTrain()" [checked]="activeTrain">
-            {{treino.ativo === "1" ? "Desativar" : "Ativar"}}
+            {{activeTrain ? "Desativar" : "Ativar"}}
         </mat-slide-toggle>
         <div class="false-button-block" (click)="expandExercices()"></div>
     </mat-card-header>

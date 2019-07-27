@@ -1,11 +1,21 @@
 <h6 mat-dialog-title>LEG PRESS ABD SUPRA INFRA MAX</h6>
 <div mat-dialog-content>
     <mat-grid-list cols="2">
-        <mat-grid-tile>
-            <div class="tile-padding">
-                <img mat-card-image src="https://cdn1.coachmag.co.uk/sites/coachmag/files/styles/16x9_860/public/2018/03/home-dumbbell-workout-plan.jpg" alt="Photo of a Shiba Inu"/> 
+        <div class="example-container1">
+            <form [formGroup]="exercicioUsuarioForm">
+                <mat-form-field class="full-width">
+                    <input (keyup)="debounce.next($event.target.value)" matInput placeholder="Pesquise por Nome, Tipo ou Equipamento" formControlName="nomeTipoEquipamento">
+                </mat-form-field>
+            </form>
+            <div class="example-list">
+                <app-exercicio-usuario
+                    class="box-left"
+                    *ngFor="let exercicioUsuario of listaExercicioUsuario | async"
+                    [showSubTitle]="false"
+                    [exercicioUsuario]="exercicioUsuario">
+                 </app-exercicio-usuario>
             </div>
-        </mat-grid-tile>
+        </div>
         <mat-grid-tile>
             <form [formGroup]="alunoExercicioForm">
                 <mat-form-field class="full-width">

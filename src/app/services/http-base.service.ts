@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { take } from 'rxjs/operators';
 import { environment } from '../../environments/environment';
+import { Observable } from 'rxjs';
 export class HttpBaseService<T> {
 
     protected API: string;
@@ -16,22 +17,22 @@ export class HttpBaseService<T> {
         return this.http.get<T>(`${this.API}/view?id=${id}`).pipe(take(1));
     }
 
-    list() {
+    list(): Observable<T[]> {
         return this.http.get<T[]>(`${this.API}/index`);
     }
 
-    private create(record: T) {
-        return this.http.post(`${this.API}/create`, record).pipe(take(1));
+    private create(record: T): Observable<T> {
+        return this.http.post<T>(`${this.API}/create`, record).pipe(take(1));
     }
 
-    private update(record: T) {
+    private update(record: T): Observable<T> {
         // tslint:disable-next-line: no-string-literal
         const id = record[this.idName];
-        return this.http.post(`${this.API}/update?id=${id}`, record)
+        return this.http.post<T>(`${this.API}/update?id=${id}`, record)
         .pipe(take(1));
     }
 
-    save(record: T) {
+    save(record: T): Observable<T> {
         // tslint:disable-next-line: no-string-literal
         if (record[this.idName]) {
             return this.update(record);

@@ -1,0 +1,13 @@
+<div matRipple class="box-list-container mat-elevation-z4">
+    <img mat-card-image src="imageUrl" [alt]="exercicioUsuario.exercicio.descricao_pt"/> 
+    <div class="box-list-footer">
+      <div class="box-list-title-footer">
+        {{exercicioUsuario.exercicio.descricao_pt}}
+      </div>
+      <div *ngIf="showSubTitle" class="box-list-subtitle-footer">
+        {{exercicioUsuario.exercicio.tipoEquipamento.descricao_pt}} /
+        {{exercicioUsuario.exercicio.classificacaoExercicio.descricao_pt}}
+      </div>
+    </div>
+  </div>
+  

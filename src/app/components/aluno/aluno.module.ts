@@ -19,6 +19,7 @@ import { AlunoDataService } from '../../services/aluno/aluno-data.service';
 import { AlunoFormDialogComponent } from './aluno-form/aluno-form-dialog/aluno-form-dialog.component';
 import { DateToNowPipe } from 'src/app/shared/pipes/date-to-now.pipe';
 import { DateToNowModule } from '../../shared/pipes/date-to-now/date-to-now.module';
+import { ExercicioUsuarioService } from 'src/app/services/exercicio/exercicio-usuario.service';
 
 
 @NgModule({
@@ -33,7 +34,7 @@ import { DateToNowModule } from '../../shared/pipes/date-to-now/date-to-now.modu
     AlunoFormDialogComponent,
   ],
   exports: [AlunoComponent, AlunoListaComponent],
-  providers: [AlunoService, AlunoDataService, AlunoTreinoService ],
+  providers: [AlunoService, AlunoDataService, AlunoTreinoService, ExercicioUsuarioService ],
   imports: [
     CommonModule,
     MatIconModule,

@@ -1,3 +1,48 @@
 .tile-padding {
     width: 80%;
 }
+.example-container1 {
+    width: 36%;
+    height: 99%;
+    display: inline-block;
+    vertical-align: top;
+    overflow: auto;
+  }
+.example-container2 {
+    width: 50%;
+    height: 99%;
+    display: inline-block;
+    vertical-align: top;
+    overflow: auto;
+  }
+  
+.example-list {
+    border: dotted 1px #ccc;
+    max-height: 390px;
+    background: white;
+    border-radius: 4px;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    overflow: auto;
+}
+.example-list2 {
+    border: solid 1px rgb(93, 29, 145);
+    max-height: 390px;
+    background: white;
+    border-radius: 4px;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    overflow: auto;
+}
+.box-left {
+    width: 150px;
+    height: 150px;
+    padding: 5px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    box-sizing: border-box;
+}

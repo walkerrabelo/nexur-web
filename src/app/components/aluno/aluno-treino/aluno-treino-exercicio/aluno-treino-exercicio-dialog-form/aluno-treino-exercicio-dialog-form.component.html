@@ -1,14 +1,14 @@
 <h6 mat-dialog-title>Novo Exercício / Editando Exercício XYZ</h6>
 <div mat-dialog-content>
     <div class="container-edit">
-        <div class="example-container1">
+        <div class="container-list">
             <form [formGroup]="exercicioUsuarioForm">
                 <mat-form-field class="full-width">
                     <input (keyup)="debounce.next($event.target.value)" matInput placeholder="Pesquise por Nome, Tipo ou Equipamento" formControlName="nomeTipoEquipamento">
                 </mat-form-field>
             </form>
             <div class="example-list">
-                <app-exercicio-usuario
+                <app-exercicio-usuario (click) = "selectExercice(exercicioUsuario.exercicio)"
                     class="box-left"
                     *ngFor="let exercicioUsuario of listaExercicioUsuarioFiltrados"
                     [showSubTitle]="false"
@@ -16,26 +16,31 @@
                  </app-exercicio-usuario>
             </div>
         </div>
-        <div class="example-container2">
-            <form [formGroup]="alunoExercicioForm">
-                <mat-form-field class="full-width">
-                    <input matInput placeholder="Tipo de Repetição" formControlName="tipoRepeticao">
-                </mat-form-field>
-                <mat-form-field class="full-width">
-                    <input matInput placeholder="Repetição" formControlName="repeticao">
-                </mat-form-field>
-                <div>
-                    <mat-form-field>
-                        <input matInput placeholder="Carga" formControlName="carga">
+        <div class="container-form">
+            <div class="container-image">
+                <img [src]="imgUrl"/>
+            </div>
+            <div class="container-fields">
+                <form [formGroup]="alunoExercicioForm">
+                    <mat-form-field class="full-width">
+                        <input matInput placeholder="Tipo de Repetição" formControlName="tipoRepeticao">
                     </mat-form-field>
-                    <mat-form-field>
-                        <input matInput placeholder="Intervalo" formControlName="intervalo">
+                    <mat-form-field class="full-width">
+                        <input matInput placeholder="Repetição" formControlName="repeticao">
                     </mat-form-field>
-                </div>
-                <mat-form-field class="full-width">
-                    <input matInput placeholder="Nota" formControlName="nota">
-                </mat-form-field>
-            </form>
+                    <div>
+                        <mat-form-field>
+                            <input matInput placeholder="Carga" formControlName="carga">
+                        </mat-form-field>
+                        <mat-form-field>
+                            <input matInput placeholder="Intervalo" formControlName="intervalo">
+                        </mat-form-field>
+                    </div>
+                    <mat-form-field class="full-width">
+                        <input matInput placeholder="Nota" formControlName="nota">
+                    </mat-form-field>
+                </form>
+            </div>
         </div>
     </div>
 </div>

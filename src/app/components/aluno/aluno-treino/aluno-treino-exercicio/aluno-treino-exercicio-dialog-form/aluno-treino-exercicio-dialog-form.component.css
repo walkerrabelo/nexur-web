@@ -11,21 +11,48 @@
     justify-content: space-around;
     overflow: auto;
 }
-.example-container1 {
+.container-list {
     width: 36%;
     height: 100%;
     display: inline-block;
     vertical-align: top;
     overflow: auto;
   }
-.example-container2 {
+.container-form {
     width: 64%;
     height: 100%;
-    display: inline-block;
-    vertical-align: top;
-    overflow: auto;
+    display: flex;
+    flex-direction: row;
+    vertical-align: center;
+    justify-content: space-around;
   }
-  
+.container-image {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    max-width: 60%;
+    max-height: 100%;
+    vertical-align: center;
+    border-color: blueviolet;
+    border-width: 2px;
+    border-style: solid;
+    padding: 10px;
+}
+.container-image > img {
+    width: auto;
+    height: 100%;
+}
+.container-fields {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    width: 40%;
+    height: 100%;
+    vertical-align: center;
+    border-color: brown;
+    border-width: 2px;
+    border-style: solid;
+  }
 .example-list {
     border: dotted 1px #ccc;
     max-height: 360px;

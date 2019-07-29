@@ -8,6 +8,7 @@ import { ExercicioUsuarioService } from '../../../../../services/exercicio/exerc
 import { ExercicioUsuario } from '../../../../../models/exercicio/exercicio-usuario';
 import { debounceTime } from 'rxjs/operators';
 import { environment } from 'src/environments/environment.prod';
+import { ExercicioUsuarioDataService } from '../../../../../services/exercicio/exercicio-usuario-data.service';
 
 @Component({
   selector: 'app-aluno-treino-exercicio-dialog-form',
@@ -30,6 +31,7 @@ export class AlunoTreinoExercicioDialogFormComponent implements OnInit, OnDestro
   constructor(
     private formBuilder: FormBuilder,
     private exercicioUsuarioService: ExercicioUsuarioService,
+    private exercicioUsuarioDataService: ExercicioUsuarioDataService,
     public dialogRef: MatDialogRef<AlunoTreinoExercicioDialogFormComponent>,
     @Inject(MAT_DIALOG_DATA) public alunoTreinoExercicioEnter: AlunoTreinoExercicio) {}
 
@@ -37,7 +39,7 @@ export class AlunoTreinoExercicioDialogFormComponent implements OnInit, OnDestro
     this.alunoTreinoExercicio = this.alunoTreinoExercicioEnter;
     this.loadImgUrl();
 
-    this.subscriptionListaExercicioUsuario = this.exercicioUsuarioService.list().subscribe(
+    this.subscriptionListaExercicioUsuario = this.exercicioUsuarioDataService.getList().subscribe(
       lista => {
         this.listaExercicioUsuarioTodos = lista;
         this.listaExercicioUsuarioFiltrados = lista;

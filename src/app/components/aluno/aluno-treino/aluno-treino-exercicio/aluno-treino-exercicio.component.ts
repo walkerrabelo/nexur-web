@@ -33,7 +33,8 @@ export class AlunoTreinoExercicioComponent implements OnInit {
 
   openDialog(): void {
     const dialogRef = this.dialog.open(AlunoTreinoExercicioDialogFormComponent, {
-      width: '90%',
+      width: '95%',
+      height: '95%',
       data: this.alunoTreinoExercicio
     });
 

@@ -1,4 +1,5 @@
-<div matTooltip="Editar Exercício" matRipple class="ripple-container mat-elevation-z4" (click)="openDialog()"
+<div matTooltip="Editar {{alunoTreinoExercicio.exercicio.descricao_pt}}"
+  matRipple class="ripple-container mat-elevation-z4" (click)="openDialog()"
   [matRippleCentered]="centered"
   [matRippleDisabled]="disabled"
   [matRippleUnbounded]="unbounded"
@@ -6,7 +7,7 @@
   [matRippleColor]="color">
   <img mat-card-image [src]="imgUrl" [alt]="alt"/>
   <div class="ripple-footer">
-    <div class="title-footer">{{alunoTreinoExercicio.exercicio.descricao_pt | uppercase}}</div>
+    <div class="title-footer">{{(alunoTreinoExercicio.exercicio.descricao_pt.trim() | uppercase) | slice: 0:20 }}</div>
     <div class="subtitle-footer">{{alunoTreinoExercicio.num_repeticao | uppercase}}</div>
   </div>
 </div>

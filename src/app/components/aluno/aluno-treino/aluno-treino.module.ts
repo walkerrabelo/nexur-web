@@ -3,7 +3,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { MatRippleModule, MatDatepickerModule, MatButtonModule,
   MatFormFieldModule, MatDialogModule, MatGridListModule, MatCardModule,
   MatTooltipModule, MatIconModule, MatExpansionModule, MatInputModule, MatSlideToggleModule,
-  MatSelectModule, MatAutocompleteModule } from '@angular/material';
+  MatSelectModule, MatAutocompleteModule, MatDividerModule} from '@angular/material';
 import { AlunoTreinoComponent } from './aluno-treino.component';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
@@ -49,6 +49,7 @@ import { AlunoTreinoExercicioNovoComponent } from './aluno-treino-exercicio/alun
     MatSlideToggleModule,
     MatSelectModule,
     MatAutocompleteModule,
+    MatDividerModule,
     ExercicioModule
   ]
 })

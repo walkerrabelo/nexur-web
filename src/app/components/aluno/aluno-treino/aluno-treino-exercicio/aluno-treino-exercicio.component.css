@@ -15,18 +15,17 @@
     -webkit-tap-highlight-color: transparent;
   }
   .ripple-container:hover {
-    border-radius: 6px;
     filter: brightness(95%);
   }
   .ripple-footer {
     position: absolute;
-    bottom: 5px;
+    bottom: 0px;
     text-align: center;
     align-items: center;
     width: 100%;
-    min-height: 50px;
+    min-height: 45px;
     background-color: white;
-    opacity: 0.9;
+    opacity: 0.75;
   }
   .title-footer {
     font-weight: 500;

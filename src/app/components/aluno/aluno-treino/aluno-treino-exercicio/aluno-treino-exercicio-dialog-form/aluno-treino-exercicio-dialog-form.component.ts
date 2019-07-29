@@ -2,7 +2,7 @@ import { FormGroup, FormBuilder } from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 import { Component, OnInit, Inject, OnDestroy } from '@angular/core';
 import { AlunoTreinoExercicio } from 'src/app/models/aluno/aluno-treino-exercicio';
-import { Subject, Observable } from 'rxjs';
+import { Subject, Observable, Subscription } from 'rxjs';
 import { ExercicioUsuarioService } from '../../../../../services/exercicio/exercicio-usuario.service';
 import { ExercicioUsuario } from '../../../../../models/exercicio/exercicio-usuario';
 import { debounceTime } from 'rxjs/operators';
@@ -19,6 +19,7 @@ export class AlunoTreinoExercicioDialogFormComponent implements OnInit, OnDestro
   exercicioUsuarioForm: FormGroup;
   listaExercicioUsuarioTodos: ExercicioUsuario[];
   listaExercicioUsuarioFiltrados: ExercicioUsuario[];
+  subscriptionListaExercicioUsuario: Subscription;
 
   constructor(
     private formBuilder: FormBuilder,
@@ -27,7 +28,7 @@ export class AlunoTreinoExercicioDialogFormComponent implements OnInit, OnDestro
     @Inject(MAT_DIALOG_DATA) public alunoTreinoExercicio: AlunoTreinoExercicio) {}
 
   ngOnInit() {
-    this.exercicioUsuarioService.list().subscribe(
+    this.subscriptionListaExercicioUsuario = this.exercicioUsuarioService.list().subscribe(
       lista => {
         this.listaExercicioUsuarioTodos = lista;
         this.listaExercicioUsuarioFiltrados = lista;
@@ -45,6 +46,7 @@ export class AlunoTreinoExercicioDialogFormComponent implements OnInit, OnDestro
 
   ngOnDestroy() {
     this.debounce.unsubscribe();
+    this.subscriptionListaExercicioUsuario.unsubscribe();
   }
 
   createForm() {

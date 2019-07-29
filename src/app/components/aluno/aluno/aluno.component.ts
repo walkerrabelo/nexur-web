@@ -1,11 +1,11 @@
 import { MatDialog } from '@angular/material';
 import { FormControl } from '@angular/forms';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { AlunoTreinoEditComponent } from '../aluno-treino/aluno-treino-edit/aluno-treino-edit.component';
 import { AlunoTreinoService } from '../../../services/aluno/aluno-treino.service';
 import { AlunoTreino } from '../../../models/aluno/aluno-treino';
-import { Observable } from 'rxjs';
+import { Observable, Subscription } from 'rxjs';
 import { AlunoDataService } from '../../../services/aluno/aluno-data.service';
 import { Aluno } from '../../../models/aluno/aluno';
 import { AlunoService } from '../../../services/aluno/aluno.service';
@@ -19,11 +19,11 @@ import { AlunoService } from '../../../services/aluno/aluno.service';
     // animation triggers go here
   ]
 })
-export class AlunoComponent implements OnInit {
+export class AlunoComponent implements OnInit, OnDestroy {
 
   aluno: Aluno;
   listTreinos: AlunoTreino[] = [];
-
+  subscriptionListAlunoTreino: Subscription;
   tooltipButton = 'Novo Treino';
   buttonDissabled = false;
   selectedTab = new FormControl(0);
@@ -35,7 +35,7 @@ export class AlunoComponent implements OnInit {
   ngOnInit() {
     if (this.alunoDataService.hasEntity()) {
       this.aluno = this.alunoDataService.get();
-      this.alunoService.getTreinos(this.aluno.id_aluno).subscribe(
+      this.subscriptionListAlunoTreino = this.alunoService.getTreinos(this.aluno.id_aluno).subscribe(
           aluno => {
             this.listTreinos = aluno.series;
             console.log('Treinos: ');
@@ -44,6 +44,13 @@ export class AlunoComponent implements OnInit {
         );
     }
   }
+
+  ngOnDestroy(): void {
+    if (this.subscriptionListAlunoTreino) {
+      this.subscriptionListAlunoTreino.unsubscribe();
+    }
+  }
+
   openDialog(): void {
     const dialogRef = this.dialog.open(AlunoTreinoEditComponent, {
       width: '95%',

@@ -1,6 +1,6 @@
-<h6 mat-dialog-title>LEG PRESS ABD SUPRA INFRA MAX</h6>
+<h6 mat-dialog-title>Novo Exercício / Editando Exercício XYZ</h6>
 <div mat-dialog-content>
-    <mat-grid-list cols="2">
+    <div class="container-edit">
         <div class="example-container1">
             <form [formGroup]="exercicioUsuarioForm">
                 <mat-form-field class="full-width">
@@ -10,13 +10,13 @@
             <div class="example-list">
                 <app-exercicio-usuario
                     class="box-left"
-                    *ngFor="let exercicioUsuario of listaExercicioUsuario | async"
+                    *ngFor="let exercicioUsuario of listaExercicioUsuarioFiltrados"
                     [showSubTitle]="false"
                     [exercicioUsuario]="exercicioUsuario">
                  </app-exercicio-usuario>
             </div>
         </div>
-        <mat-grid-tile>
+        <div class="example-container2">
             <form [formGroup]="alunoExercicioForm">
                 <mat-form-field class="full-width">
                     <input matInput placeholder="Tipo de Repetição" formControlName="tipoRepeticao">
@@ -36,8 +36,8 @@
                     <input matInput placeholder="Nota" formControlName="nota">
                 </mat-form-field>
             </form>
-        </mat-grid-tile>
-    </mat-grid-list>
+        </div>
+    </div>
 </div>
 <div mat-dialog-actions>
   <button mat-button (click)="onNoClick()">Cancelar</button>

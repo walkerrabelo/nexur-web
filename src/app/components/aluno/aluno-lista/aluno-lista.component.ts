@@ -3,7 +3,7 @@ import { Aluno } from '../../../models/aluno/aluno';
 import { MatTableDataSource, MatPaginator, MatSort, MatDialog } from '@angular/material';
 import { Router } from '@angular/router';
 import { debounceTime } from 'rxjs/operators';
-import { Subject, Observable } from 'rxjs';
+import { Subject, Observable, Subscription } from 'rxjs';
 import { AlunoService } from '../../../services/aluno/aluno.service';
 import { AlunoDataService } from '../../../services/aluno/aluno-data.service';
 import { AlunoFormDialogComponent } from '../aluno-form/aluno-form-dialog/aluno-form-dialog.component';
@@ -19,6 +19,7 @@ export class AlunoListaComponent implements OnInit, OnDestroy {
   displayedColumns: string[] = ['nome', 'email', 'avaliacao', 'vencimento', 'grupo'];
   dataSource: MatTableDataSource<Aluno>;
   debounce: Subject<string> = new Subject<string>();
+  subscritionListAluno: Subscription;
 
   @ViewChild(MatPaginator, {static: true}) paginator: MatPaginator;
   @ViewChild(MatSort, {static: true}) sort: MatSort;
@@ -31,7 +32,7 @@ export class AlunoListaComponent implements OnInit, OnDestroy {
   ngOnInit() {
     this.alunoDataService.remove();
     this.dataSource = new MatTableDataSource<Aluno>();
-    this.alunoService.list().subscribe(alunos => this.dataSource.data = alunos);
+    this.subscritionListAluno =   this.alunoService.list().subscribe(alunos => this.dataSource.data = alunos);
     this.dataSource.sort = this.sort;
     this.dataSource.paginator = this.paginator;
 
@@ -43,6 +44,7 @@ export class AlunoListaComponent implements OnInit, OnDestroy {
 
   ngOnDestroy(): void {
     this.debounce.unsubscribe();
+    this.subscritionListAluno.unsubscribe();
   }
 
   edit(aluno: Aluno) {

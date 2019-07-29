@@ -33,7 +33,7 @@ export class AlunoTreinoExercicioComponent implements OnInit {
 
   openDialog(): void {
     const dialogRef = this.dialog.open(AlunoTreinoExercicioDialogFormComponent, {
-      width: '60%',
+      width: '90%',
       data: {
         description: 'Leg Press Abd Supra Infra Max',
         activationDate: Date.now(),

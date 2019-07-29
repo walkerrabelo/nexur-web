@@ -1,16 +1,26 @@
 .tile-padding {
     width: 80%;
 }
+
+.container-edit{ 
+    width: 100%;
+    /*border: solid 1px rgb(139, 23, 23);*/
+    padding: 5px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    overflow: auto;
+}
 .example-container1 {
     width: 36%;
-    height: 99%;
+    height: 100%;
     display: inline-block;
     vertical-align: top;
     overflow: auto;
   }
 .example-container2 {
-    width: 50%;
-    height: 99%;
+    width: 64%;
+    height: 100%;
     display: inline-block;
     vertical-align: top;
     overflow: auto;
@@ -18,7 +28,7 @@
   
 .example-list {
     border: dotted 1px #ccc;
-    max-height: 390px;
+    max-height: 360px;
     background: white;
     border-radius: 4px;
     display: flex;

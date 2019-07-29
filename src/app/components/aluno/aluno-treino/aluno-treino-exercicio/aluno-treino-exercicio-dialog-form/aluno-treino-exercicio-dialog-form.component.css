@@ -2,6 +2,9 @@
     display: flex;
     overflow-y: hidden;
 }
+.container-title {
+    text-align: center;
+}
 .container-list {
     width: 36%;
     height: 100%;

@@ -1,4 +1,4 @@
-<h6 mat-dialog-title>Novo Exercício / Editando Exercício XYZ</h6>
+<div mat-dialog-title class="container-title">Novo Exercício / Editando Exercício XYZ</div>
 <div mat-dialog-content class="container-edit">
         <div class="container-list">
             <form [formGroup]="exercicioUsuarioForm">
@@ -21,19 +21,19 @@
             </div>
             <div class="container-fields">
                 <form [formGroup]="alunoExercicioForm">
-                    <mat-form-field appearance="outline" class="full-width">
+                    <mat-form-field class="full-width">
                         <input matInput placeholder="Tipo de Repetição" formControlName="tipoRepeticao">
                     </mat-form-field>
-                    <mat-form-field appearance="outline" class="full-width">
+                    <mat-form-field class="full-width">
                         <input matInput placeholder="Repetição" formControlName="repeticao">
                     </mat-form-field>
-                    <mat-form-field appearance="outline" class="full-width">
+                    <mat-form-field class="full-width">
                         <input matInput placeholder="Carga" formControlName="carga">
                     </mat-form-field>
-                    <mat-form-field appearance="outline" class="full-width">
+                    <mat-form-field class="full-width">
                         <input matInput placeholder="Intervalo" formControlName="intervalo">
                     </mat-form-field>
-                    <mat-form-field appearance="outline" class="full-width">
+                    <mat-form-field class="full-width">
                         <input matInput placeholder="Nota" formControlName="nota">
                     </mat-form-field>
                 </form>

@@ -3,6 +3,7 @@ import { MatDialog } from '@angular/material';
 import { AlunoTreinoEditComponent } from './aluno-treino-edit/aluno-treino-edit.component';
 import { Aluno } from '../../../models/aluno/aluno';
 import { AlunoTreino } from '../../../models/aluno/aluno-treino';
+import { AlunoTreinoExercicio } from '../../../models/aluno/aluno-treino-exercicio';
 
 @Component({
   selector: 'app-aluno-treino',
@@ -53,5 +54,17 @@ export class AlunoTreinoComponent implements OnInit {
         console.log(result);
       }
     });
+  }
+
+  modificarListaTreino(alunoTreinoExercicio: AlunoTreinoExercicio) {
+    console.log('Lista de Exercicio Antigo: ', this.treino.exercicioSeries);
+
+    this.treino.exercicioSeries.forEach((element, index, array) => {
+      if (element.id_exercicio_serie === alunoTreinoExercicio.id_exercicio_serie) {
+        array[index] = alunoTreinoExercicio;
+      }
+    });
+
+    console.log('Lista de Exercicio Atual: ', this.treino.exercicioSeries);
   }
 }

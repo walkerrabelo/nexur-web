@@ -1,4 +1,4 @@
-<div mat-dialog-title class="container-title">Novo Exercício / Editando Exercício XYZ</div>
+<div mat-dialog-title class="container-title">{{alunoTreinoExercicio.exercicio.descricao_pt | uppercase}}</div>
 <div mat-dialog-content class="container-edit">
         <div class="container-list">
             <form [formGroup]="exercicioUsuarioForm">
@@ -22,28 +22,35 @@
             <div class="container-fields">
                 <form [formGroup]="alunoExercicioForm">
                     <mat-form-field class="full-width">
-                        <input matInput placeholder="Tipo de Repetição" formControlName="tipoRepeticao">
+                        <mat-label>Tipo de Repetição</mat-label>
+                        <mat-select formControlName="tipoRepeticao" [compareWith]="compareRepeticoes">
+                            <mat-option *ngFor="let tipo of tiposRepeticoes" [(value)]="tipo">
+                                {{tipo.descricao}}
+                            </mat-option>
+                        </mat-select>
                     </mat-form-field>
                     <mat-form-field class="full-width">
-                        <input matInput placeholder="Repetição" formControlName="repeticao">
+                        <mat-label>Repetição</mat-label>
+                        <input matInput placeholder="06/08/10/12" formControlName="repeticao">
                     </mat-form-field>
                     <mat-form-field class="full-width">
-                        <input matInput placeholder="Carga" formControlName="carga">
+                        <mat-label>Carga</mat-label>
+                        <input matInput placeholder="10Kg ou 30s" formControlName="carga">
                     </mat-form-field>
                     <mat-form-field class="full-width">
-                        <input matInput placeholder="Intervalo" formControlName="intervalo">
+                        <mat-label>Intervalo(em seg)</mat-label>
+                        <input matInput placeholder="60s" formControlName="intervalo">
                     </mat-form-field>
                     <mat-form-field class="full-width">
-                        <input matInput placeholder="Nota" formControlName="nota">
+                        <mat-label>Nota</mat-label>
+                        <input matInput placeholder="Descida lenta" formControlName="nota">
                     </mat-form-field>
                 </form>
             </div>
         </div>
     </div>
 <div mat-dialog-actions>
-  <button mat-raised-button color="accent" type="button"
-   [mat-dialog-close]="[alunoExercicioForm.get('tipoRepeticao').value,
-  alunoExercicioForm.get('repeticao').value]" cdkFocusInitial>
+  <button mat-raised-button (click)="save()" color="accent" type="button" cdkFocusInitial>
   <mat-icon>save</mat-icon>
   Salvar</button>
   <button mat-raised-button (click)="onNoClick()"><mat-icon>close</mat-icon>Fechar</button>

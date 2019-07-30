@@ -1,7 +1,7 @@
 <mat-card class="mat-elevation-z2 background-box">
     <mat-card-header class="false-button">
         <mat-card-title (click)="expandExercices()">
-            {{treino.descricao}}
+            {{treino.descricao | uppercase}}
         </mat-card-title>
         <mat-card-subtitle (click)="expandExercices()">
             {{treino.data_ativacao}} a {{treino.data_vencimento}}
@@ -16,7 +16,9 @@
         <mat-expansion-panel [hideToggle]="false" [expanded]="expanded">
             <mat-grid-list cols="6" class="wrap-tile">
                 <mat-grid-tile *ngFor="let exercicio of treino.exercicioSeries">
-                    <app-aluno-treino-exercicio [alunoTreinoExercicio]="exercicio"></app-aluno-treino-exercicio>
+                    <app-aluno-treino-exercicio
+                        [alunoTreinoExercicio]="exercicio"
+                        (mudouAlunoTreinoExercicio)="modificarListaTreino($event)"></app-aluno-treino-exercicio>
                 </mat-grid-tile>
                 <mat-grid-tile>
                     <div matRipple class="plus-button" matTooltip="Novo Exercício">

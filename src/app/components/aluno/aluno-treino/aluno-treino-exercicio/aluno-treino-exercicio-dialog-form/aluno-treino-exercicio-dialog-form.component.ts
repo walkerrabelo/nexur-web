@@ -9,6 +9,7 @@ import { ExercicioUsuario } from '../../../../../models/exercicio/exercicio-usua
 import { debounceTime } from 'rxjs/operators';
 import { environment } from 'src/environments/environment.prod';
 import { ExercicioUsuarioDataService } from '../../../../../services/exercicio/exercicio-usuario-data.service';
+import { TIPOS_REPETICOES } from '../../../../../models/exercicio/repeticao';
 
 @Component({
   selector: 'app-aluno-treino-exercicio-dialog-form',
@@ -17,9 +18,10 @@ import { ExercicioUsuarioDataService } from '../../../../../services/exercicio/e
 })
 export class AlunoTreinoExercicioDialogFormComponent implements OnInit, OnDestroy {
 
+  tiposRepeticoes = TIPOS_REPETICOES;
   debounce: Subject<string> = new Subject<string>();
-  alunoExercicioForm: FormGroup;
   exercicioUsuarioForm: FormGroup;
+  alunoExercicioForm: FormGroup;
   listaExercicioUsuarioTodos: ExercicioUsuario[];
   listaExercicioUsuarioFiltrados: ExercicioUsuario[];
   subscriptionListaExercicioUsuario: Subscription;
@@ -30,13 +32,13 @@ export class AlunoTreinoExercicioDialogFormComponent implements OnInit, OnDestro
 
   constructor(
     private formBuilder: FormBuilder,
-    private exercicioUsuarioService: ExercicioUsuarioService,
     private exercicioUsuarioDataService: ExercicioUsuarioDataService,
     public dialogRef: MatDialogRef<AlunoTreinoExercicioDialogFormComponent>,
     @Inject(MAT_DIALOG_DATA) public alunoTreinoExercicioEnter: AlunoTreinoExercicio) {}
 
   ngOnInit() {
-    this.alunoTreinoExercicio = this.alunoTreinoExercicioEnter;
+
+    this.alunoTreinoExercicio = JSON.parse(JSON.stringify(this.alunoTreinoExercicioEnter));
     this.loadImgUrl();
 
     this.subscriptionListaExercicioUsuario = this.exercicioUsuarioDataService.getList().subscribe(
@@ -62,11 +64,11 @@ export class AlunoTreinoExercicioDialogFormComponent implements OnInit, OnDestro
 
   createForm() {
     this.alunoExercicioForm = this.formBuilder.group({
-      tipoRepeticao: '',
-      repeticao: '',
-      carga: '',
-      intervalo: '',
-      nota: '',
+      tipoRepeticao: this.alunoTreinoExercicio.tipoRepeticao,
+      repeticao: this.alunoTreinoExercicio.num_repeticao,
+      carga: this.alunoTreinoExercicio.carga,
+      intervalo: this.alunoTreinoExercicio.intervalo,
+      nota: this.alunoTreinoExercicio.nota,
     });
   }
 
@@ -87,5 +89,25 @@ export class AlunoTreinoExercicioDialogFormComponent implements OnInit, OnDestro
     console.log('Image url antigo ', this.imgUrl);
     this.imgUrl = `${environment.exercicios_url}/${this.alunoTreinoExercicio.exercicio.id_exercicio}-0.gif`;
     console.log('Image url novo ', this.imgUrl);
+  }
+
+  fillObject() {
+    console.log('Tipo Repeticao Anterior: ', this.alunoTreinoExercicio.tipoRepeticao);
+    console.log('Tipo Repeticao Original: ', this.alunoExercicioForm.get('tipoRepeticao').value);
+    this.alunoTreinoExercicio.tipoRepeticao = TIPOS_REPETICOES[this.alunoExercicioForm.get('tipoRepeticao').value];
+    this.alunoTreinoExercicio.id_tipo_repeticao = this.alunoExercicioForm.get('tipoRepeticao').value['id_tipo_repeticao'];
+    this.alunoTreinoExercicio.num_repeticao = this.alunoExercicioForm.get('repeticao').value;
+    this.alunoTreinoExercicio.carga = this.alunoExercicioForm.get('carga').value;
+    this.alunoTreinoExercicio.intervalo = this.alunoExercicioForm.get('intervalo').value;
+    this.alunoTreinoExercicio.nota = this.alunoExercicioForm.get('nota').value;
+  }
+
+  save() {
+    this.fillObject();
+    this.dialogRef.close(this.alunoTreinoExercicio);
+  }
+
+  compareRepeticoes(obj1, obj2) {
+    return (obj1.id_tipo_repeticao == obj2.id_tipo_repeticao);
   }
 }

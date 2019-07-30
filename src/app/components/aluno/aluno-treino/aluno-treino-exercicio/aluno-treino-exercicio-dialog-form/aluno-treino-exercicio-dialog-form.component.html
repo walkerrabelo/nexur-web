@@ -41,8 +41,11 @@
         </div>
     </div>
 <div mat-dialog-actions>
-  <button mat-button (click)="onNoClick()">Cancelar</button>
-  <button mat-button type="button"
+  <button mat-raised-button color="accent" type="button"
    [mat-dialog-close]="[alunoExercicioForm.get('tipoRepeticao').value,
-  alunoExercicioForm.get('repeticao').value]" cdkFocusInitial>Ok</button>
+  alunoExercicioForm.get('repeticao').value]" cdkFocusInitial>
+  <mat-icon>save</mat-icon>
+  Salvar</button>
+  <button mat-raised-button (click)="onNoClick()"><mat-icon>close</mat-icon>Fechar</button>
+  <button mat-raised-button (click)="onNoClick()" color="warn"><mat-icon>delete</mat-icon>Excluir</button>
 </div>

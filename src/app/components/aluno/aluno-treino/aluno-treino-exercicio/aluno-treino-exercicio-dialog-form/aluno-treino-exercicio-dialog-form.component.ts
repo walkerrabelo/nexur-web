@@ -71,6 +71,7 @@ export class AlunoTreinoExercicioDialogFormComponent implements OnInit, OnDestro
   }
 
   onNoClick(): void {
+    this.ngOnDestroy();
     this.dialogRef.close();
   }
 

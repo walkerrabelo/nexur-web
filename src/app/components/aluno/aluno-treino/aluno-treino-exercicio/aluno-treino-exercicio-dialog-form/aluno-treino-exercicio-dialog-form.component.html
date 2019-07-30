@@ -1,11 +1,12 @@
 <div mat-dialog-title class="container-title">{{alunoTreinoExercicio.exercicio.descricao_pt | uppercase}}</div>
 <div mat-dialog-content class="container-edit">
         <div class="container-list">
-            <form [formGroup]="exercicioUsuarioForm">
-                <mat-form-field class="full-width">
-                    <input (keyup)="debounce.next($event.target.value)" matInput placeholder="Pesquise por Nome, Tipo ou Equipamento" formControlName="nomeTipoEquipamento">
-                </mat-form-field>
-            </form>
+            <mat-form-field class="full-width" appearance="outline">
+                <mat-label>Pesquisar Exercícios</mat-label>
+                <input (keyup)="debounce.next($event.target.value)" matInput placeholder="Nome, Tipo ou Equipamento">
+                <mat-icon matSuffix>search</mat-icon>
+                <mat-hint>Ex.: Abdominal, Supino, Elevação, Leg, Flexora etc.</mat-hint>
+            </mat-form-field>
             <div class="example-list">
                 <app-exercicio-usuario (click) = "selectExercice(exercicioUsuario.exercicio)"
                     class="box-left"

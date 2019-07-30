@@ -38,8 +38,6 @@ export class AlunoComponent implements OnInit, OnDestroy {
       this.subscriptionListAlunoTreino = this.alunoService.getTreinos(this.aluno.id_aluno).subscribe(
           aluno => {
             this.listTreinos = aluno.series;
-            console.log('Treinos: ');
-            console.log(this.listTreinos);
           }
         );
     }

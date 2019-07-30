@@ -1,9 +1,9 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { MatDialog } from '@angular/material';
 import { AlunoTreinoEditComponent } from './aluno-treino-edit/aluno-treino-edit.component';
-import { Aluno } from '../../../models/aluno/aluno';
 import { AlunoTreino } from '../../../models/aluno/aluno-treino';
 import { AlunoTreinoExercicio } from '../../../models/aluno/aluno-treino-exercicio';
+import { AlunoTreinoService } from '../../../services/aluno/aluno-treino.service';
 
 @Component({
   selector: 'app-aluno-treino',
@@ -19,7 +19,9 @@ export class AlunoTreinoComponent implements OnInit {
   showHideText = 'Exibir';
   activeTrain = true;
 
-  constructor(private dialog: MatDialog) { }
+  constructor(
+    private dialog: MatDialog,
+    private alunoTreinoService: AlunoTreinoService) { }
 
   ngOnInit() {
     this.activeTrain = this.treino.ativo === '1' ? true : false;
@@ -32,7 +34,6 @@ export class AlunoTreinoComponent implements OnInit {
 
   activateTrain() {
     this.activeTrain = !this.activeTrain;
-    console.log(this.activeTrain);
   }
   openDialog(): void {
     const dialogRef = this.dialog.open(AlunoTreinoEditComponent, {
@@ -47,24 +48,18 @@ export class AlunoTreinoComponent implements OnInit {
 
     dialogRef.afterClosed().subscribe(result => {
       if (result) {
-        const descricao = result[0];
-        const dataAtivacao = result[0];
-        const dataVencimento = result[2];
-        console.log('Dados de atualizacao: ');
         console.log(result);
       }
     });
   }
 
   modificarListaTreino(alunoTreinoExercicio: AlunoTreinoExercicio) {
-    console.log('Lista de Exercicio Antigo: ', this.treino.exercicioSeries);
-
     this.treino.exercicioSeries.forEach((element, index, array) => {
       if (element.id_exercicio_serie === alunoTreinoExercicio.id_exercicio_serie) {
         array[index] = alunoTreinoExercicio;
       }
     });
-
-    console.log('Lista de Exercicio Atual: ', this.treino.exercicioSeries);
+    console.log('Salvando o treino do Aluno...');
+    this.alunoTreinoService.save(this.treino).subscribe(treino => this.treino = treino);
   }
 }

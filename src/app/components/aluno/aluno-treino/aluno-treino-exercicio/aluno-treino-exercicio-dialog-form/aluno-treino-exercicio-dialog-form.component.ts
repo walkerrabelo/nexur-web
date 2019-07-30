@@ -78,22 +78,17 @@ export class AlunoTreinoExercicioDialogFormComponent implements OnInit, OnDestro
   }
 
   selectExercice(exercicio: Exercicio) {
-    console.log('Exercicio Antigo: ', this.alunoTreinoExercicio.exercicio);
     this.alunoTreinoExercicio.exercicio = exercicio;
-    console.log('Exercicio Novo: ', this.alunoTreinoExercicio.exercicio);
+    this.alunoTreinoExercicio.id_exercicio = exercicio.id_exercicio;
     this.loadImgUrl();
   }
 
   loadImgUrl() {
-    // Put conversion in a service
-    console.log('Image url antigo ', this.imgUrl);
+    // Put conversion in a service @Cacheable
     this.imgUrl = `${environment.exercicios_url}/${this.alunoTreinoExercicio.exercicio.id_exercicio}-0.gif`;
-    console.log('Image url novo ', this.imgUrl);
   }
 
   fillObject() {
-    console.log('Tipo Repeticao Anterior: ', this.alunoTreinoExercicio.tipoRepeticao);
-    console.log('Tipo Repeticao Original: ', this.alunoExercicioForm.get('tipoRepeticao').value);
     this.alunoTreinoExercicio.tipoRepeticao = TIPOS_REPETICOES[this.alunoExercicioForm.get('tipoRepeticao').value];
     this.alunoTreinoExercicio.id_tipo_repeticao = this.alunoExercicioForm.get('tipoRepeticao').value['id_tipo_repeticao'];
     this.alunoTreinoExercicio.num_repeticao = this.alunoExercicioForm.get('repeticao').value;

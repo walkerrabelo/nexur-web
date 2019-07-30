@@ -9,7 +9,7 @@ export class HttpBaseService<T> {
     constructor(
         protected http: HttpClient,
         protected endpoint: string,
-        protected idName: string) {
+        protected idName: string  /* Woraround to fix id names */) {
         this.API = `${environment.api_url}/${this.endpoint}`;
     }
 
@@ -22,13 +22,19 @@ export class HttpBaseService<T> {
     }
 
     private create(record: T): Observable<T> {
-        return this.http.post<T>(`${this.API}/create`, record).pipe(take(1));
+        console.log('Inserindo novo: ', record);
+        const url = `${this.API}/create`;
+        console.log('Na URL: ', url);
+        return this.http.post<T>(url, record).pipe(take(1));
     }
 
     private update(record: T): Observable<T> {
         // tslint:disable-next-line: no-string-literal
         const id = record[this.idName];
-        return this.http.post<T>(`${this.API}/update?id=${id}`, record)
+        console.log('Atualizando: ', record);
+        const url = `${this.API}/update?id=${id}`;
+        console.log('Na URL: ', url);
+        return this.http.post<T>(url, record)
         .pipe(take(1));
     }
 

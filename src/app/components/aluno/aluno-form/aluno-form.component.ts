@@ -24,7 +24,6 @@ export class AlunoFormComponent implements OnInit {
   ngOnInit() {
     if (this.alunoDataService.hasEntity()) {
       this.aluno = this.alunoDataService.get();
-      console.log(this.aluno);
     } else {
       this.aluno = new Aluno();
     }
@@ -43,9 +42,6 @@ export class AlunoFormComponent implements OnInit {
       usuario: [this.aluno.usuario.login, Validators.required],
       senha: [this.aluno.usuario.senha, Validators.required]
     });
-    console.log('Matricula: ', new Date(this.aluno.data_matricula).toLocaleDateString());
-    console.log('Matricula: ', new Date(this.aluno.data_matricula).toUTCString());
-    console.log('Data MomentJS', moment(this.aluno.data_nascimento).format());
   }
 
   submit() {

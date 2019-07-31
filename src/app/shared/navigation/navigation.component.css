@@ -29,3 +29,11 @@
   padding: 0px;
   text-align: center;
 }
+.logo-route { 
+  text-align: left;
+  padding-left: 120px;
+  background:url(NEXUR_BRANCO.svg) center center no-repeat;
+  background-size: 120px 100px;
+  background-position: left;
+  height: 37px;
+}

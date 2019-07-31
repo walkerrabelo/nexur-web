@@ -10,6 +10,10 @@
   background: inherit;
 }
 
+.z-index-over-all {
+  z-index: 100000;
+}
+
 .mat-toolbar.mat-primary {
   position: sticky;
   top: 0;

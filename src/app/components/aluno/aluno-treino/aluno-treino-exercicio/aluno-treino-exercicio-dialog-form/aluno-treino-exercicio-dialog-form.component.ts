@@ -102,6 +102,10 @@ export class AlunoTreinoExercicioDialogFormComponent implements OnInit, OnDestro
     this.dialogRef.close(this.alunoTreinoExercicio);
   }
 
+  delete() {
+    this.dialogRef.close(null);
+  }
+
   compareRepeticoes(obj1, obj2) {
     return (obj1.id_tipo_repeticao == obj2.id_tipo_repeticao);
   }

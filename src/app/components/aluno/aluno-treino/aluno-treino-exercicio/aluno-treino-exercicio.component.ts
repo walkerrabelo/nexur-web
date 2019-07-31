@@ -44,10 +44,14 @@ export class AlunoTreinoExercicioComponent implements OnInit {
     });
 
     dialogRef.afterClosed().subscribe(result => {
-      if (result) {
+      if (result !== null) {
         if (!compareAlunoTreinoExercicio(this.alunoTreinoExercicio, result)) {
-          this.mudouAlunoTreinoExercicio.emit(result);
+          this.mudouAlunoTreinoExercicio.emit({alunoTreinoExercicio: result, operation: 'update'});
         }
+      }
+      // Delete
+      if (result === null) {
+        this.mudouAlunoTreinoExercicio.emit({alunoTreinoExercicio: this.alunoTreinoExercicio, operation: 'delete'});
       }
     });
   }

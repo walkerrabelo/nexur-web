@@ -4,7 +4,6 @@ import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 import { Component, OnInit, Inject, OnDestroy } from '@angular/core';
 import { AlunoTreinoExercicio } from 'src/app/models/aluno/aluno-treino-exercicio';
 import { Subject, Observable, Subscription } from 'rxjs';
-import { ExercicioUsuarioService } from '../../../../../services/exercicio/exercicio-usuario.service';
 import { ExercicioUsuario } from '../../../../../models/exercicio/exercicio-usuario';
 import { debounceTime } from 'rxjs/operators';
 import { environment } from 'src/environments/environment.prod';

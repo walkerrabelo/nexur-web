@@ -21,7 +21,8 @@ import { AlunoTreinoExercicioNovoComponent } from './aluno-treino-exercicio/alun
 
 @NgModule({
   entryComponents: [
-    AlunoTreinoExercicioDialogFormComponent
+    AlunoTreinoExercicioDialogFormComponent,
+    AlunoTreinoExercicioNovoComponent
   ],
   declarations: [
     AlunoTreinoComponent,

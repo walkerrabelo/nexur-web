@@ -5,6 +5,7 @@ import { AlunoTreino } from '../../../models/aluno/aluno-treino';
 import { AlunoTreinoExercicio } from '../../../models/aluno/aluno-treino-exercicio';
 import { AlunoTreinoService } from '../../../services/aluno/aluno-treino.service';
 import { Subscription } from 'rxjs';
+import { AlunoTreinoExercicioNovoComponent } from './aluno-treino-exercicio/aluno-treino-exercicio-novo/aluno-treino-exercicio-novo.component';
 
 @Component({
   selector: 'app-aluno-treino',
@@ -21,7 +22,7 @@ export class AlunoTreinoComponent implements OnInit, OnDestroy {
   showHideText = 'Exibir';
   activeTrain = true;
 
-  subscritptionRemove: Subscription;
+  subscritption: Subscription;
 
   constructor(
     private dialog: MatDialog,
@@ -32,8 +33,8 @@ export class AlunoTreinoComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy(): void {
-    if (this.subscritptionRemove) {
-      this.subscritptionRemove.unsubscribe();
+    if (this.subscritption) {
+      this.subscritption.unsubscribe();
     }
   }
   expandExercices() {
@@ -44,25 +45,27 @@ export class AlunoTreinoComponent implements OnInit, OnDestroy {
   activateTrain() {
     this.activeTrain = !this.activeTrain;
   }
-  openDialog(): void {
-    const dialogRef = this.dialog.open(AlunoTreinoEditComponent, {
+  openDialogNovoExercicio(): void {
+    const dialogRef = this.dialog.open(AlunoTreinoExercicioNovoComponent, {
       width: '95%',
       height: '95%',
-      data: {
-        descricao: 'Leg Press Abd Supra Infra Max',
-        dataAtivacao: Date.now(),
-        dataVencimento: Date.now()
-      }
     });
 
     dialogRef.afterClosed().subscribe(result => {
       if (result) {
-        console.log(result);
+        this.novoExercicio(result);
       }
     });
   }
 
-  modificarListaTreino(event) {
+  novoExercicio(novoExercicio: AlunoTreinoExercicio) {
+    console.log('Adicionando NOVO exercício ao treino do Aluno...');
+    this.treino.exercicioSeries.push(novoExercicio);
+    this.subscritption =
+      this.alunoTreinoService.save(this.treino).subscribe(treino => this.treino = treino);
+  }
+
+  modificarExercicio(event) {
     console.log('Salvando o treino do Aluno...');
 
     const alunoTreinoExercicio = event.alunoTreinoExercicio;
@@ -83,7 +86,7 @@ export class AlunoTreinoComponent implements OnInit, OnDestroy {
       this.treino.exercicioSeries.splice(indexToChange, 1);
       console.log('Removendo...');
     }
-    this.subscritptionRemove =
+    this.subscritption =
       this.alunoTreinoService.save(this.treino).subscribe(treino => this.treino = treino);
   }
 

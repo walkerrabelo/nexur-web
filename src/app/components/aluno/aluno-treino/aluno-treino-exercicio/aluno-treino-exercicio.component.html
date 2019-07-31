@@ -8,6 +8,7 @@
   <img mat-card-image [src]="imgUrl" [alt]="alt"/>
   <div class="ripple-footer">
     <div class="title-footer">{{(alunoTreinoExercicio.exercicio.descricao_pt.trim() | uppercase) | slice: 0:20 }}</div>
-    <div class="subtitle-footer">{{alunoTreinoExercicio.num_repeticao | uppercase}}</div>
+    <div class="subtitle-footer">
+      {{(alunoTreinoExercicio.num_repeticao + ' ' + alunoTreinoExercicio.carga + ' ' + alunoTreinoExercicio.intervalo) | slice: 0:21}}</div>
   </div>
 </div>

@@ -1,1 +1,59 @@
-<p>Selecionador de Exercício para inserção</p>
+<div mat-dialog-title class="container-title">Novo Exercício</div>
+<div mat-dialog-content class="container-edit">
+        <div class="container-list">
+            <mat-form-field class="full-width" appearance="outline">
+                <mat-label>Pesquisar Exercícios</mat-label>
+                <input (keyup)="debounce.next($event.target.value)" matInput placeholder="Nome, Tipo ou Equipamento">
+                <mat-icon matSuffix>search</mat-icon>
+                <mat-hint>Ex.: Abdominal, Supino, Elevação, Leg, Flexora etc.</mat-hint>
+            </mat-form-field>
+            <div class="example-list">
+                <app-exercicio-usuario (click) = "selectExercice(exercicioUsuario.exercicio)"
+                    class="box-left"
+                    *ngFor="let exercicioUsuario of listaExercicioUsuarioFiltrados"
+                    [showSubTitle]="false"
+                    [exercicioUsuario]="exercicioUsuario">
+                 </app-exercicio-usuario>
+            </div>
+        </div>
+        <div class="container-form">
+            <div class="container-image">
+                <div *ngIf="!imgUrl" class="blank-image">Selecione um Exercício na Lista ao lado</div>
+                <img *ngIf="imgUrl" [src]="imgUrl"/>
+            </div>
+            <div class="container-fields">
+                <form [formGroup]="alunoExercicioForm">
+                    <mat-form-field class="full-width">
+                        <mat-label>Tipo de Repetição</mat-label>
+                        <mat-select formControlName="tipoRepeticao" [compareWith]="compareRepeticoes">
+                            <mat-option *ngFor="let tipo of tiposRepeticoes" [(value)]="tipo">
+                                {{tipo.descricao}}
+                            </mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                    <mat-form-field class="full-width">
+                        <mat-label>Repetição</mat-label>
+                        <input matInput placeholder="06/08/10/12" formControlName="repeticao">
+                    </mat-form-field>
+                    <mat-form-field class="full-width">
+                        <mat-label>Carga</mat-label>
+                        <input matInput placeholder="10Kg ou 30s" formControlName="carga">
+                    </mat-form-field>
+                    <mat-form-field class="full-width">
+                        <mat-label>Intervalo(em seg)</mat-label>
+                        <input matInput placeholder="60s" formControlName="intervalo">
+                    </mat-form-field>
+                    <mat-form-field class="full-width">
+                        <mat-label>Nota</mat-label>
+                        <input matInput placeholder="Descida lenta" formControlName="nota">
+                    </mat-form-field>
+                </form>
+            </div>
+        </div>
+    </div>
+<div mat-dialog-actions>
+  <button mat-raised-button (click)="save()" color="accent" type="button" cdkFocusInitial>
+  <mat-icon>save</mat-icon>
+  Salvar</button>
+  <button mat-raised-button (click)="onNoClick()"><mat-icon>close</mat-icon>Fechar</button>
+</div>

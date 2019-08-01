@@ -48,7 +48,6 @@ import { ExercicioUsuarioService } from 'src/app/services/exercicio/exercicio-us
     MatFormFieldModule,
     ReactiveFormsModule,
     MatInputModule,
-    MatTooltipModule,
     MatRadioModule,
     MatBadgeModule,
     MatTableModule,

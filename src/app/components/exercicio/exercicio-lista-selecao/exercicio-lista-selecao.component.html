@@ -1,1 +1,14 @@
-<p>exercicio-lista-selecao works!</p>
+<mat-form-field class="full-width" appearance="outline">
+    <mat-label>Pesquisar Exercícios</mat-label>
+    <input (keyup)="debounce.next($event.target.value)" matInput placeholder="Nome, Tipo ou Equipamento">
+    <mat-icon matSuffix>search</mat-icon>
+    <mat-hint>Ex.: Abdominal, Supino, Elevação, Leg, Flexora etc.</mat-hint>
+</mat-form-field>
+<div class="list-all">
+    <app-exercicio-usuario (click) = "selectExercicio(exercicioUsuario.exercicio)"
+        class="list-box"
+        *ngFor="let exercicioUsuario of listaExercicioUsuarioFiltrados"
+        [showSubTitle]="false"
+        [exercicioUsuario]="exercicioUsuario">
+     </app-exercicio-usuario>
+</div>

@@ -1,20 +1,7 @@
 <div mat-dialog-title class="container-title">Novo Exercício</div>
 <div mat-dialog-content class="container-edit">
         <div class="container-list">
-            <mat-form-field class="full-width" appearance="outline">
-                <mat-label>Pesquisar Exercícios</mat-label>
-                <input (keyup)="debounce.next($event.target.value)" matInput placeholder="Nome, Tipo ou Equipamento">
-                <mat-icon matSuffix>search</mat-icon>
-                <mat-hint>Ex.: Abdominal, Supino, Elevação, Leg, Flexora etc.</mat-hint>
-            </mat-form-field>
-            <div class="example-list">
-                <app-exercicio-usuario (click) = "selectExercice(exercicioUsuario.exercicio)"
-                    class="box-left"
-                    *ngFor="let exercicioUsuario of listaExercicioUsuarioFiltrados"
-                    [showSubTitle]="false"
-                    [exercicioUsuario]="exercicioUsuario">
-                 </app-exercicio-usuario>
-            </div>
+            <app-exercicio-lista-selecao (exercicioClicado)="selectExercicio($event)"></app-exercicio-lista-selecao>
         </div>
         <div class="container-form">
             <div class="container-image">

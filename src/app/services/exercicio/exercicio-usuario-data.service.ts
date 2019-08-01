@@ -16,7 +16,7 @@ export class ExercicioUsuarioDataService {
 
   loadList() {
     this.listExercicioUsuario = this.exercicioUsuarioService.list();
-    console.log('Load Lista de Exercicios...');
+    console.log('Carregando Lista de Exercicios...');
   }
 
   getList() {

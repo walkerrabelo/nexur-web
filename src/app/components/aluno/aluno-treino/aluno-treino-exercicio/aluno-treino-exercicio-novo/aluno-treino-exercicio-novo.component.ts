@@ -71,7 +71,7 @@ export class AlunoTreinoExercicioNovoComponent implements OnInit, OnDestroy{
     this.dialogRef.close(null);
   }
 
-  selectExercice(exercicio: Exercicio) {
+  selectExercicio(exercicio: Exercicio) {
     this.alunoTreinoExercicio.exercicio = exercicio;
     this.alunoTreinoExercicio.id_exercicio = exercicio.id_exercicio;
     this.loadImgUrl();

@@ -1,7 +1,7 @@
 import { AlunoTreino } from '../../../../models/aluno/aluno-treino';
 import { FormGroup, FormBuilder } from '@angular/forms';
 import { Component, OnInit, Inject, OnDestroy } from '@angular/core';
-import {CdkDragDrop, moveItemInArray, transferArrayItem, copyArrayItem} from '@angular/cdk/drag-drop';
+import { CdkDragDrop, moveItemInArray, copyArrayItem } from '@angular/cdk/drag-drop';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 import { debounceTime } from 'rxjs/operators';
 import { Subject } from 'rxjs';
@@ -138,7 +138,7 @@ export class AlunoTreinoEditComponent implements OnInit, OnDestroy {
    * Validar o item em cada lista e adicionar / remover 
    * somente na lista da direita
    */
-  drop(event: CdkDragDrop<string[]>) {
+  addItem(event: CdkDragDrop<string[]>) {
     if (event.previousContainer === event.container) {
       moveItemInArray(event.container.data, event.previousIndex, event.currentIndex);
     } else {
@@ -146,6 +146,15 @@ export class AlunoTreinoEditComponent implements OnInit, OnDestroy {
                         event.container.data,
                         event.previousIndex,
                         event.currentIndex);
+      console.log('Adicionando Item', event);
+    }
+  }
+
+  removeItem(event: CdkDragDrop<string[]>) {
+    if (event.previousContainer !== event.container) {
+      event.previousContainer.exit(event.item);
+      this.done.splice(event.previousIndex, 1);
+      console.log('Removendo Item', event);
     }
   }
 

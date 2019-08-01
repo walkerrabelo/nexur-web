@@ -32,7 +32,7 @@
             [cdkDropListData]="todo"
             [cdkDropListConnectedTo]="[doneList]"
             class="example-list"
-            (cdkDropListDropped)="drop($event)">
+            (cdkDropListDropped)="removeItem($event)">
             <app-exercicio-drag-drop-item 
                 [showSubTitle]="false" class="box-left" 
                 *ngFor="let item of todo" 
@@ -54,7 +54,7 @@
             [cdkDropListData]="done"
             [cdkDropListConnectedTo]="[todoList]"
             class="example-list2"
-            (cdkDropListDropped)="drop($event)">
+            (cdkDropListDropped)="addItem($event)">
             <app-exercicio-drag-drop-item 
                 [showSubTitle]="true" class="box-right"  
                 *ngFor="let item of done" 

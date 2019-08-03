@@ -29,7 +29,7 @@ export class AlunoTreinoComponent implements OnInit, OnDestroy {
     private alunoTreinoService: AlunoTreinoService) { }
 
   ngOnInit() {
-    this.activeTrain = this.treino.ativo === '1' ? true : false;
+    this.activeTrain = this.treino.ativo;
   }
 
   ngOnDestroy(): void {

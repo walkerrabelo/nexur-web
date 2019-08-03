@@ -18,6 +18,7 @@ import { ExercicioModule } from '../../exercicio/exercicio.module';
 import { AlunoTreinoService } from '../../../services/aluno/aluno-treino.service';
 // tslint:disable-next-line: max-line-length
 import { AlunoTreinoExercicioNovoComponent } from './aluno-treino-exercicio/aluno-treino-exercicio-novo/aluno-treino-exercicio-novo.component';
+import { AlunoTreinoNovoComponent } from './aluno-treino-novo/aluno-treino-novo.component';
 
 @NgModule({
   entryComponents: [
@@ -29,7 +30,8 @@ import { AlunoTreinoExercicioNovoComponent } from './aluno-treino-exercicio/alun
     AlunoTreinoEditComponent,
     AlunoTreinoExercicioComponent,
     AlunoTreinoExercicioDialogFormComponent,
-    AlunoTreinoExercicioNovoComponent
+    AlunoTreinoExercicioNovoComponent,
+    AlunoTreinoNovoComponent
   ],
   exports: [AlunoTreinoComponent, AlunoTreinoEditComponent],
   providers: [AlunoTreinoService],

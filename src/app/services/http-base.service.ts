@@ -21,19 +21,15 @@ export class HttpBaseService<T> {
         return this.http.get<T[]>(`${this.API}/index`);
     }
 
-    private create(record: T): Observable<T> {
-        console.log('Inserindo novo: ', record);
+    protected create(record: T): Observable<T> {
         const url = `${this.API}/create`;
-        console.log('Na URL: ', url);
         return this.http.post<T>(url, record).pipe(take(1));
     }
 
-    private update(record: T): Observable<T> {
+    protected update(record: T): Observable<T> {
         // tslint:disable-next-line: no-string-literal
         const id = record[this.idName];
-        console.log('Atualizando: ', record);
         const url = `${this.API}/update?id=${id}`;
-        console.log('Na URL: ', url);
         return this.http.post<T>(url, record)
         .pipe(take(1));
     }

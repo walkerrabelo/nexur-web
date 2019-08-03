@@ -9,6 +9,7 @@ import { Observable, Subscription } from 'rxjs';
 import { AlunoDataService } from '../../../services/aluno/aluno-data.service';
 import { Aluno } from '../../../models/aluno/aluno';
 import { AlunoService } from '../../../services/aluno/aluno.service';
+import { AlunoTreinoNovoComponent } from '../aluno-treino/aluno-treino-novo/aluno-treino-novo.component';
 
 
 @Component({
@@ -35,12 +36,16 @@ export class AlunoComponent implements OnInit, OnDestroy {
   ngOnInit() {
     if (this.alunoDataService.hasEntity()) {
       this.aluno = this.alunoDataService.get();
-      this.subscriptionListAlunoTreino = this.alunoService.getTreinos(this.aluno.id_aluno).subscribe(
-          aluno => {
-            this.listTreinos = aluno.series;
-          }
-        );
+      this.loadData();
     }
+  }
+
+  loadData() {
+    this.subscriptionListAlunoTreino = this.alunoService.getTreinos(this.aluno.id_aluno).subscribe(
+        aluno => {
+          this.listTreinos = aluno.series;
+        }
+      );
   }
 
   ngOnDestroy(): void {
@@ -50,23 +55,14 @@ export class AlunoComponent implements OnInit, OnDestroy {
   }
 
   openDialog(): void {
-    const dialogRef = this.dialog.open(AlunoTreinoEditComponent, {
-      width: '95%',
-      height: '95%',
-      data: {
-        descricao: 'Leg Press Abd Supra Infra Max',
-        dataAtivacao: Date.now(),
-        dataVencimento: Date.now()
-      }
+    const dialogRef = this.dialog.open(AlunoTreinoNovoComponent, {
+      width: '350px',
+      data: this.aluno.id_aluno
     });
 
     dialogRef.afterClosed().subscribe(result => {
       if (result) {
-        const descricao = result[0];
-        const dataAtivacao = result[0];
-        const dataVencimento = result[2];
-        console.log('Dados de atualizacao: ');
-        console.log(result);
+        this.loadData();
       }
     });
   }

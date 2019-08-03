@@ -7,7 +7,7 @@ export class AlunoTreino {
   data: string;
   data_ativacao: string;
   data_vencimento: string;
-  ativo: string;
+  ativo: boolean;
   visivel: string;
   exercicioSeries: AlunoTreinoExercicio[];
 }

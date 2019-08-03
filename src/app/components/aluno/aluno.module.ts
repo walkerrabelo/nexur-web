@@ -20,11 +20,12 @@ import { AlunoDataService } from '../../services/aluno/aluno-data.service';
 import { AlunoFormDialogComponent } from './aluno-form/aluno-form-dialog/aluno-form-dialog.component';
 import { DateToNowModule } from '../../shared/pipes/date-to-now/date-to-now.module';
 import { ExercicioUsuarioService } from 'src/app/services/exercicio/exercicio-usuario.service';
+import { AlunoTreinoNovoComponent } from './aluno-treino/aluno-treino-novo/aluno-treino-novo.component';
 
 
 @NgModule({
  entryComponents: [
-    AlunoTreinoEditComponent,
+    AlunoTreinoNovoComponent,
     AlunoFormDialogComponent
  ],
   declarations: [

@@ -30,7 +30,7 @@ import { RouteFriendlyPipe } from './shared/pipes/route-friendly.pipe';
     AppComponent,
     NavigationComponent,
     LoaderComponent,
-    RouteFriendlyPipe
+    RouteFriendlyPipe,
   ],
   imports: [
     BrowserModule,

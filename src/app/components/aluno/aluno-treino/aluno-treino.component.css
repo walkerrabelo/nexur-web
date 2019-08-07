@@ -48,13 +48,45 @@
 .background-box:hover {
   background-color: #ffffbf;
 }
-
-.false-button {
-  cursor: pointer;
-  height: 50px;
+.container-header {
+  width: 100%;
+  border-color: brown;
+  border-width: 5px;
+  border-style: solid;
+  display: flex;
 }
-.false-button-block {
-  width: 40%;
-  height: 50px;
-  float: right;
+.left {
+  border-color: blueviolet;
+  border-width: 3px;
+  border-style: solid;
+  display: flex;
+  flex-grow: 1;
+  flex-direction: column;
+  justify-content: space-around;
+  cursor: pointer;
+}
+.left:hover {
+  background-color: aquamarine;
+}
+.left-top {
+  font-size: 14px;
+  font-weight: 600;
+}
+.left-bottom {
+  font-size: 11px;
+}
+.right {
+  border-color: green;
+  border-width: 3px;
+  border-style: solid;
+  display: flex;
+
+}
+.no-expandable-area {
+  display: flex;
+  justify-content: space-around;
+  width: 200px;
+  border-color: dodgerblue;
+  border-width: 3px;
+  border-style: solid;
 }

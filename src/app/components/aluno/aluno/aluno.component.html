@@ -15,7 +15,7 @@
             <h4>Treinos</h4>
         </ng-template>
         <!--Treinos-->
-        <app-aluno-treino *ngFor="let treino of listTreinos" [treino]="treino"></app-aluno-treino>
+        <app-aluno-treino *ngFor="let treino of listTreinos" [alunoTreino]="treino"></app-aluno-treino>
         <div *ngIf="listTreinos.length === 0">
             <p>Aluno(a) {{aluno.nome}} está sem treinos.</p>
         </div>

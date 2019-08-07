@@ -1,12 +1,12 @@
-<mat-card class="mat-elevation-z2 card-margin" 
+<mat-card class="mat-elevation-z2 card-margin"
     [class.background-box]="!editingMode"
     [class.saving-box]="editingMode">
     <mat-card-header class="false-button">
 
         <div class="container-header">
-            <div class="left" matTooltip="Editar dados do Treino">
-                <div class="left-top">{{treino.descricao | uppercase}}</div>
-                <div class="left-bottom">{{treino.data_ativacao}} a {{treino.data_vencimento}}</div>
+            <div class="left" matTooltip="Editar dados do Treino" (click)="openDialogEditarTreino()">
+                <div class="left-top">{{alunoTreino.descricao | uppercase}}</div>
+                <div class="left-bottom">{{alunoTreino.data_ativacao}} a {{alunoTreino.data_vencimento}}</div>
             </div>
             <div class="right">
                 <div class="expandable-area" (click)="expandExercices()" matTooltip="Visualizar/Editar Exercícios"></div>
@@ -25,7 +25,7 @@
     <mat-accordion displayMode="flat" [multi]="true" [hideToggle]="false">
         <mat-expansion-panel [hideToggle]="false" [expanded]="expanded">
             <mat-grid-list cols="6" class="wrap-tile">
-                <mat-grid-tile *ngFor="let exercicio of treino.exercicioSeries">
+                <mat-grid-tile *ngFor="let exercicio of alunoTreino.exercicioSeries">
                     <app-aluno-treino-exercicio
                         [alunoTreinoExercicio]="exercicio"
                         (mudouAlunoTreinoExercicio)="modificarExercicio($event)"></app-aluno-treino-exercicio>

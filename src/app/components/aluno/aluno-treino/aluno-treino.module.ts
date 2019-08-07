@@ -19,21 +19,23 @@ import { AlunoTreinoService } from '../../../services/aluno/aluno-treino.service
 // tslint:disable-next-line: max-line-length
 import { AlunoTreinoExercicioNovoComponent } from './aluno-treino-exercicio/aluno-treino-exercicio-novo/aluno-treino-exercicio-novo.component';
 import { AlunoTreinoNovoComponent } from './aluno-treino-novo/aluno-treino-novo.component';
+import { AlunoTreinoEditarComponent } from './aluno-treino-editar/aluno-treino-editar.component';
 
 @NgModule({
   entryComponents: [
     AlunoTreinoExercicioDialogFormComponent,
-    AlunoTreinoExercicioNovoComponent
+    AlunoTreinoExercicioNovoComponent,
+    AlunoTreinoEditarComponent
   ],
   declarations: [
     AlunoTreinoComponent,
-    AlunoTreinoEditComponent,
     AlunoTreinoExercicioComponent,
     AlunoTreinoExercicioDialogFormComponent,
     AlunoTreinoExercicioNovoComponent,
-    AlunoTreinoNovoComponent
+    AlunoTreinoNovoComponent,
+    AlunoTreinoEditarComponent
   ],
-  exports: [AlunoTreinoComponent, AlunoTreinoEditComponent],
+  exports: [AlunoTreinoComponent],
   providers: [AlunoTreinoService],
   imports: [
     CommonModule,

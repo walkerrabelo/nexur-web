@@ -1,0 +1,26 @@
+<div mat-dialog-title>Novo Treino</div>
+<div mat-dialog-content class="container-window">
+    <form [formGroup]="alunoTreinoForm">
+        <mat-form-field class="full-width">
+            <textarea matInput placeholder="Descrição do Treino" formControlName="descricao"></textarea>
+        </mat-form-field>
+        <mat-form-field class="full-width">
+            <input matInput placeholder="Data de Ativação" formControlName="dataAtivacao"
+            [matDatepicker]="pickerDataAtivacao">
+            <mat-datepicker-toggle matSuffix [for]="pickerDataAtivacao"></mat-datepicker-toggle>
+            <mat-datepicker #pickerDataAtivacao></mat-datepicker>
+        </mat-form-field>
+        <mat-form-field class="full-width">
+            <input matInput placeholder="Data de Vencimento" formControlName="dataVencimento"
+                [matDatepicker]="pickerDataVencimento">
+            <mat-datepicker-toggle matSuffix [for]="pickerDataVencimento"></mat-datepicker-toggle>
+            <mat-datepicker #pickerDataVencimento></mat-datepicker>
+        </mat-form-field>
+    </form>
+</div>
+<div mat-dialog-actions>
+    <button mat-raised-button (click)="save()" color="accent" type="button" cdkFocusInitial>
+        <mat-icon>save</mat-icon>
+        Salvar</button>
+    <button mat-raised-button (click)="onNoClick()"><mat-icon>close</mat-icon>Fechar</button>
+</div>

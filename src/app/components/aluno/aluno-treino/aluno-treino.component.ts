@@ -1,6 +1,6 @@
+import { AlunoTreinoEditarComponent } from './aluno-treino-editar/aluno-treino-editar.component';
 import { Component, OnInit, Input, OnDestroy } from '@angular/core';
 import { MatDialog } from '@angular/material';
-import { AlunoTreinoEditComponent } from './aluno-treino-edit/aluno-treino-edit.component';
 import { AlunoTreino } from '../../../models/aluno/aluno-treino';
 import { AlunoTreinoExercicio } from '../../../models/aluno/aluno-treino-exercicio';
 import { AlunoTreinoService } from '../../../services/aluno/aluno-treino.service';
@@ -18,7 +18,7 @@ export class AlunoTreinoComponent implements OnInit, OnDestroy {
 
 
   @Input()
-  treino: AlunoTreino = null;
+  alunoTreino: AlunoTreino = null;
 
   expanded = false;
   showHideText = 'Exibir';
@@ -34,7 +34,7 @@ export class AlunoTreinoComponent implements OnInit, OnDestroy {
     private alunoTreinoService: AlunoTreinoService) {}
 
   ngOnInit() {
-    this.activeTrain = this.treino.ativo;
+    this.activeTrain = this.alunoTreino.ativo;
   }
 
   ngOnDestroy(): void {
@@ -62,33 +62,43 @@ export class AlunoTreinoComponent implements OnInit, OnDestroy {
       }
     });
   }
+  openDialogEditarTreino(): void {
+    const dialogRef = this.dialog.open(AlunoTreinoEditarComponent, {
+      width: '350px',
+      data: this.alunoTreino
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      if (result) {
+        this.editaDadosTreino(result);
+      }
+    });
+  }
+
+  editaDadosTreino(alunoTreinoNovo: AlunoTreino) {
+    this.alunoTreino = alunoTreinoNovo;
+    this.editing(true);
+  }
 
   novoExercicio(novoExercicio: AlunoTreinoExercicio) {
-    console.log('Adicionando NOVO exercício ao treino do Aluno...');
-    this.treino.exercicioSeries.push(novoExercicio);
+    this.alunoTreino.exercicioSeries.push(novoExercicio);
     this.editing(true);
   }
 
   modificarExercicio(event) {
-    console.log('Salvando o treino do Aluno...');
-
     const alunoTreinoExercicio = event.alunoTreinoExercicio;
     const operation = event.operation;
-
     let indexToChange = -1;
-
-    this.treino.exercicioSeries.forEach((element, index, array) => {
+    this.alunoTreino.exercicioSeries.forEach((element, index) => {
       if (element.id_exercicio_serie === alunoTreinoExercicio.id_exercicio_serie) {
         indexToChange = index;
       }
     });
     if (operation === 'update' && indexToChange >= 0) {
-      this.treino.exercicioSeries.splice(indexToChange, 1, alunoTreinoExercicio);
-      console.log('Atualizando...');
+      this.alunoTreino.exercicioSeries.splice(indexToChange, 1, alunoTreinoExercicio);
     }
     if (operation === 'delete' && indexToChange >= 0) {
-      this.treino.exercicioSeries.splice(indexToChange, 1);
-      console.log('Removendo...');
+      this.alunoTreino.exercicioSeries.splice(indexToChange, 1);
     }
     this.editing(true);
   }
@@ -101,9 +111,9 @@ export class AlunoTreinoComponent implements OnInit, OnDestroy {
     this.editing(false);
     this.buttonSaveText = true;
     this.subscritption =
-      this.alunoTreinoService.save(this.treino).subscribe(
+      this.alunoTreinoService.save(this.alunoTreino).subscribe(
         treino => {
-          this.treino = treino;
+          this.alunoTreino = treino;
           this.buttonSaveText = false;
         }
       );

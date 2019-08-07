@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { DateToNowPipe } from '../date-to-now.pipe';
+import { DateToNowPipe } from './date-to-now.pipe';
 
 @NgModule({
   declarations: [DateToNowPipe],

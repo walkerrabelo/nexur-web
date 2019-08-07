@@ -3,7 +3,6 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { AlunoDataService } from '../../../services/aluno/aluno-data.service';
 import { AlunoService } from '../../../services/aluno/aluno.service';
 import { Aluno } from '../../../models/aluno/aluno';
-import { DatePipe } from '@angular/common';
 import * as moment from 'moment/moment';
 
 @Component({

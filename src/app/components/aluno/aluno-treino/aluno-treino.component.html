@@ -4,14 +4,14 @@
     <mat-card-header class="false-button">
 
         <div class="container-header">
-            <div class="left" matTooltip="Editar dados do Treino" (click)="openDialogEditarTreino()">
+            <div class="left" matTooltip="Editar Descrição e Data de Validade do Treino" (click)="openDialogEditarTreino()">
                 <div class="left-top">{{alunoTreino.descricao | uppercase}}</div>
-                <div class="left-bottom">{{alunoTreino.data_ativacao}} a {{alunoTreino.data_vencimento}}</div>
+                <div class="left-bottom">{{alunoTreino.data_ativacao | intervalDate:alunoTreino.data_vencimento }}</div>
             </div>
             <div class="right">
-                <div class="expandable-area" (click)="expandExercices()" matTooltip="Visualizar/Editar Exercícios"></div>
+                <div class="expandable-area" (click)="expandExercices()" matTooltip="Visualizar e Editar Exercícios"></div>
                 <div class="no-expandable-area">
-                    <button *ngIf="editingMode"  mat-raised-button color="accent" (click)="save()">
+                    <button *ngIf="editingMode"  mat-raised-button color="accent" (click)="save()" matTooltip="Salvar o Treino">
                         <mat-icon>save</mat-icon>Salvar</button>
                     <span *ngIf="buttonSaveText">Salvando Treino...</span>
                     <mat-slide-toggle *ngIf="!buttonSaveText" class="fixed-sized-button" (toggleChange)="activateTrain()" [checked]="activeTrain">

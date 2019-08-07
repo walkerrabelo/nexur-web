@@ -79,6 +79,13 @@
   justify-content: space-around;
   cursor: pointer;
   padding-bottom: 10px;
+  padding-top: 5px;
+  padding-right: 10px;
+  padding-left: 10px;
+  border-radius: 5px;
+}
+.left:hover {
+  box-shadow: 2px 2px 5px #888888;
 }
 .left-top {
   font-size: 18px;

@@ -2,7 +2,7 @@ import { Component, OnInit, Inject } from '@angular/core';
 import { FormGroup, FormBuilder } from '@angular/forms';
 import { AlunoTreino } from 'src/app/models/aluno/aluno-treino';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
-import { AlunoTreinoNovoComponent } from '../aluno-treino-novo/aluno-treino-novo.component';
+import * as moment from 'moment/moment';
 
 @Component({
   selector: 'app-aluno-treino-editar',
@@ -26,8 +26,8 @@ export class AlunoTreinoEditarComponent implements OnInit {
   createForm() {
     this.alunoTreinoForm = this.formBuilder.group({
       descricao: this.alunoTreino.descricao,
-      dataAtivacao: this.alunoTreino.data_ativacao,
-      dataVencimento: this.alunoTreino.data_vencimento
+      dataAtivacao: [moment(this.alunoTreino.data_ativacao).format()],
+      dataVencimento: [moment(this.alunoTreino.data_vencimento).format()]
     });
   }
 

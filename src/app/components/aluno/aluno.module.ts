@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 import { MatIconModule, MatToolbarModule, MatDividerModule, MatTabsModule, MatTooltipModule,
   MatDialogModule, MatButtonModule, MatFormFieldModule, MatInputModule,
   MatRadioModule, MatBadgeModule, MatTableModule, MatPaginatorModule, MatSortModule,
-  MatChipsModule, MatDatepickerModule, MatExpansionModule } from '@angular/material';
+  MatChipsModule, MatDatepickerModule } from '@angular/material';
 import { AlunoComponent } from './aluno/aluno.component';
 import { AlunoListaComponent } from './aluno-lista/aluno-lista.component';
 import { AlunoFormComponent } from './aluno-form/aluno-form.component';
@@ -12,7 +12,6 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { AlunoAvaliacaoModule } from './aluno-avaliacao/aluno-avaliacao.module';
 import { AlunoNutricaoModule } from './aluno-nutricao/aluno-nutricao.module';
 import { AlunoPeriodizacaoModule } from './aluno-periodizacao/aluno-periodizacao.module';
-import { AlunoTreinoEditComponent } from './aluno-treino/aluno-treino-edit/aluno-treino-edit.component';
 import { AlunoTreinoModule } from './aluno-treino/aluno-treino.module';
 import { AlunoService } from '../../services/aluno/aluno.service';
 import { AlunoTreinoService } from '../../services/aluno/aluno-treino.service';

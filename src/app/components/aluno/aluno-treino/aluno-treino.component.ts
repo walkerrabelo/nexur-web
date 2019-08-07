@@ -34,7 +34,9 @@ export class AlunoTreinoComponent implements OnInit, OnDestroy {
     private alunoTreinoService: AlunoTreinoService) {}
 
   ngOnInit() {
-    this.activeTrain = this.alunoTreino.ativo;
+    console.log('Ativo? : ', this.alunoTreino.ativo);
+    this.activeTrain = this.alunoTreino.ativo === '1' ? true : false;
+    console.log('ActiveButton: ', this.activeTrain);
   }
 
   ngOnDestroy(): void {
@@ -49,6 +51,8 @@ export class AlunoTreinoComponent implements OnInit, OnDestroy {
 
   activateTrain() {
     this.activeTrain = !this.activeTrain;
+    this.alunoTreino.ativo = this.activateTrain ? '1' : '0';
+    this.editing(true);
   }
   openDialogNovoExercicio(): void {
     const dialogRef = this.dialog.open(AlunoTreinoExercicioNovoComponent, {

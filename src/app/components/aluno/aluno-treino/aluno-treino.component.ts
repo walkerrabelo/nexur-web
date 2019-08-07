@@ -5,7 +5,9 @@ import { AlunoTreino } from '../../../models/aluno/aluno-treino';
 import { AlunoTreinoExercicio } from '../../../models/aluno/aluno-treino-exercicio';
 import { AlunoTreinoService } from '../../../services/aluno/aluno-treino.service';
 import { Subscription } from 'rxjs';
-import { AlunoTreinoExercicioNovoComponent } from './aluno-treino-exercicio/aluno-treino-exercicio-novo/aluno-treino-exercicio-novo.component';
+// tslint:disable-next-line: import-spacing
+import { AlunoTreinoExercicioNovoComponent }
+  from './aluno-treino-exercicio/aluno-treino-exercicio-novo/aluno-treino-exercicio-novo.component';
 
 @Component({
   selector: 'app-aluno-treino',
@@ -22,11 +24,14 @@ export class AlunoTreinoComponent implements OnInit, OnDestroy {
   showHideText = 'Exibir';
   activeTrain = true;
 
+  buttonSaveText = false;
+  editingMode = false;
+
   subscritption: Subscription;
 
   constructor(
     private dialog: MatDialog,
-    private alunoTreinoService: AlunoTreinoService) { }
+    private alunoTreinoService: AlunoTreinoService) {}
 
   ngOnInit() {
     this.activeTrain = this.treino.ativo;
@@ -61,8 +66,7 @@ export class AlunoTreinoComponent implements OnInit, OnDestroy {
   novoExercicio(novoExercicio: AlunoTreinoExercicio) {
     console.log('Adicionando NOVO exercício ao treino do Aluno...');
     this.treino.exercicioSeries.push(novoExercicio);
-    this.subscritption =
-      this.alunoTreinoService.save(this.treino).subscribe(treino => this.treino = treino);
+    this.editing(true);
   }
 
   modificarExercicio(event) {
@@ -86,8 +90,22 @@ export class AlunoTreinoComponent implements OnInit, OnDestroy {
       this.treino.exercicioSeries.splice(indexToChange, 1);
       console.log('Removendo...');
     }
-    this.subscritption =
-      this.alunoTreinoService.save(this.treino).subscribe(treino => this.treino = treino);
+    this.editing(true);
   }
 
+  editing(mode: boolean) {
+    this.editingMode = mode;
+  }
+
+  save() {
+    this.editing(false);
+    this.buttonSaveText = true;
+    this.subscritption =
+      this.alunoTreinoService.save(this.treino).subscribe(
+        treino => {
+          this.treino = treino;
+          this.buttonSaveText = false;
+        }
+      );
+  }
 }

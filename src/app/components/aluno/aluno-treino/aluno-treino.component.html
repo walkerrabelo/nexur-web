@@ -1,15 +1,20 @@
-<mat-card class="mat-elevation-z2 background-box">
+<mat-card class="mat-elevation-z2 card-margin" 
+    [class.background-box]="!editingMode"
+    [class.saving-box]="editingMode">
     <mat-card-header class="false-button">
 
         <div class="container-header">
-            <div class="left" (click)="expandExercices()">
+            <div class="left" matTooltip="Editar dados do Treino">
                 <div class="left-top">{{treino.descricao | uppercase}}</div>
                 <div class="left-bottom">{{treino.data_ativacao}} a {{treino.data_vencimento}}</div>
             </div>
             <div class="right">
+                <div class="expandable-area" (click)="expandExercices()" matTooltip="Visualizar/Editar Exercícios"></div>
                 <div class="no-expandable-area">
-                    <button mat-button (click)="expandExercices()">Action</button>
-                    <mat-slide-toggle class="fixed-sized-button" (toggleChange)="activateTrain()" [checked]="activeTrain">
+                    <button *ngIf="editingMode"  mat-raised-button color="accent" (click)="save()">
+                        <mat-icon>save</mat-icon>Salvar</button>
+                    <span *ngIf="buttonSaveText">Salvando Treino...</span>
+                    <mat-slide-toggle *ngIf="!buttonSaveText" class="fixed-sized-button" (toggleChange)="activateTrain()" [checked]="activeTrain">
                         {{activeTrain ? "Desativar" : "Ativar"}}
                     </mat-slide-toggle>
                 </div>
@@ -36,4 +41,3 @@
     </mat-accordion>
     </mat-card-content>
 </mat-card>
-<mat-divider></mat-divider>

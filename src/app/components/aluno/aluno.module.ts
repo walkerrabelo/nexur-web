@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 import { MatIconModule, MatToolbarModule, MatDividerModule, MatTabsModule, MatTooltipModule,
   MatDialogModule, MatButtonModule, MatFormFieldModule, MatInputModule,
   MatRadioModule, MatBadgeModule, MatTableModule, MatPaginatorModule, MatSortModule,
-  MatChipsModule, MatDatepickerModule } from '@angular/material';
+  MatChipsModule, MatDatepickerModule, MatExpansionModule } from '@angular/material';
 import { AlunoComponent } from './aluno/aluno.component';
 import { AlunoListaComponent } from './aluno-lista/aluno-lista.component';
 import { AlunoFormComponent } from './aluno-form/aluno-form.component';

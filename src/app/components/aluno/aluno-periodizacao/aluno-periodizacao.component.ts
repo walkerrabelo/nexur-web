@@ -7,6 +7,8 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AlunoPeriodizacaoComponent implements OnInit {
 
+  viewDate: Date = new Date();
+  events = [];
   constructor() { }
 
   ngOnInit() {

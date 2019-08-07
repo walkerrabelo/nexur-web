@@ -24,6 +24,8 @@ import { AvaliacaoModule } from './components/avaliacao/avaliacao.module';
 import { FinanceiroModule } from './components/financeiro/financeiro.module';
 import { AulaModule } from './components/aula/aula.module';
 import { RouteFriendlyPipe } from './shared/pipes/route-friendly.pipe';
+import { CalendarModule, DateAdapter } from 'angular-calendar';
+import { adapterFactory } from 'angular-calendar/date-adapters/date-fns';
 
 @NgModule({
   declarations: [
@@ -34,6 +36,10 @@ import { RouteFriendlyPipe } from './shared/pipes/route-friendly.pipe';
   ],
   imports: [
     BrowserModule,
+    CalendarModule.forRoot({
+      provide: DateAdapter,
+      useFactory: adapterFactory
+    }),
     AppRoutingModule,
     BrowserAnimationsModule,
     MatNativeDateModule,

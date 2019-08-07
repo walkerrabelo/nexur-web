@@ -1,3 +1,4 @@
+import { CalendarModule } from 'angular-calendar';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { AlunoPeriodizacaoComponent } from './aluno-periodizacao.component';
@@ -6,7 +7,8 @@ import { AlunoPeriodizacaoComponent } from './aluno-periodizacao.component';
   declarations: [AlunoPeriodizacaoComponent],
   exports: [AlunoPeriodizacaoComponent],
   imports: [
-    CommonModule
+    CommonModule,
+    CalendarModule
   ]
 })
 export class AlunoPeriodizacaoModule { }

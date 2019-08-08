@@ -26,6 +26,8 @@ export class AlunoTreinoComponent implements OnInit, OnDestroy {
 
   buttonSaveText = false;
   editingMode = false;
+  editingActivationTreino = false;
+  editingOtherData = false;
 
   subscritption: Subscription;
 
@@ -34,9 +36,7 @@ export class AlunoTreinoComponent implements OnInit, OnDestroy {
     private alunoTreinoService: AlunoTreinoService) {}
 
   ngOnInit() {
-    console.log('Ativo? : ', this.alunoTreino.ativo);
     this.activeTrain = this.alunoTreino.ativo === '1' ? true : false;
-    console.log('ActiveButton: ', this.activeTrain);
   }
 
   ngOnDestroy(): void {
@@ -51,7 +51,6 @@ export class AlunoTreinoComponent implements OnInit, OnDestroy {
 
   activateTrain() {
     this.activeTrain = !this.activeTrain;
-    this.alunoTreino.ativo = this.activateTrain ? '1' : '0';
     this.editing(true);
   }
   openDialogNovoExercicio(): void {
@@ -82,11 +81,13 @@ export class AlunoTreinoComponent implements OnInit, OnDestroy {
   editaDadosTreino(alunoTreinoNovo: AlunoTreino) {
     this.alunoTreino = alunoTreinoNovo;
     this.editing(true);
+    this.activateEditingOtherData(true);
   }
 
   novoExercicio(novoExercicio: AlunoTreinoExercicio) {
     this.alunoTreino.exercicioSeries.push(novoExercicio);
     this.editing(true);
+    this.activateEditingOtherData(true);
   }
 
   modificarExercicio(event) {
@@ -105,21 +106,42 @@ export class AlunoTreinoComponent implements OnInit, OnDestroy {
       this.alunoTreino.exercicioSeries.splice(indexToChange, 1);
     }
     this.editing(true);
+    this.activateEditingOtherData(true);
   }
 
-  editing(mode: boolean) {
-    this.editingMode = mode;
+  editing(activation: boolean) {
+    this.editingMode = activation;
+  }
+
+  activateEditingTreino(activation: boolean) {
+    this.editingActivationTreino = activation;
+  }
+
+  activateEditingOtherData(activation: boolean) {
+    this.editingOtherData = activation;
   }
 
   save() {
     this.editing(false);
     this.buttonSaveText = true;
-    this.subscritption =
-      this.alunoTreinoService.save(this.alunoTreino).subscribe(
+    if (this.editingOtherData) {
+      this.activateEditingOtherData(false);
+      this.subscritption =
+        this.alunoTreinoService.save(this.alunoTreino).subscribe(
+          treino => {
+            this.alunoTreino = treino;
+            this.buttonSaveText = false;
+          }
+        );
+    }
+    const statusAlunoTreino = this.alunoTreino.ativo === '1' ? true : false;
+    if (statusAlunoTreino !== this.activeTrain) {
+      this.subscritption = this.alunoTreinoService
+      .activateDeactivateTreino(this.alunoTreino.id_serie).subscribe(
         treino => {
-          this.alunoTreino = treino;
           this.buttonSaveText = false;
         }
       );
+    }
   }
 }

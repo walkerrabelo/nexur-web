@@ -15,4 +15,10 @@ export class AlunoTreinoService extends HttpBaseService<AlunoTreino> {
     const url = `${this.API}/create-treino`;
     return this.http.post(url, alunoTreino).pipe(take(1));
   }
+
+  activateDeactivateTreino(id: string) {
+    console.log('Ativando/Desativando Treino: ', id);
+    const url = `${this.API}/activate-deactivate?id=${id}`;
+    return this.http.get(url).pipe(take(1));
+  }
 }

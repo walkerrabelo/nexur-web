@@ -42,9 +42,15 @@ export class AlunoPeriodizacaoComponent implements OnInit {
   actionNew: CalendarEventAction[] = [
     {
       label: '',
-      onClick: (): void => {}
+      onClick: (): void => {
+        this.addTreino();
+      }
     }
   ];
+
+  // Actions Editar e Excluir Treino
+
+
   events: CalendarEvent[] = [
     {
       start: startOfDay(new Date()),
@@ -58,6 +64,7 @@ export class AlunoPeriodizacaoComponent implements OnInit {
     {
       start: startOfDay(new Date()),
       title: 'TREINO REAL',
+      // Associar Actions Editar e Excluir
       actions: this.actionNew,
       color: colors.blue,
       meta: {

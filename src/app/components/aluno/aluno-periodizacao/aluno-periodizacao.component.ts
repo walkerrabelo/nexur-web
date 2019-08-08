@@ -48,7 +48,7 @@ export class AlunoPeriodizacaoComponent implements OnInit {
   events: CalendarEvent[] = [
     {
       start: startOfDay(new Date()),
-      title: '<button mat-raised-button color="accent" (click)="addTreino()"><mat-icon>plus_one</mat-icon>Adicionar Treino</button>',
+      title: 'Adicionar Treino',
       actions: this.actionNew,
       color: colors.white,
       meta: {

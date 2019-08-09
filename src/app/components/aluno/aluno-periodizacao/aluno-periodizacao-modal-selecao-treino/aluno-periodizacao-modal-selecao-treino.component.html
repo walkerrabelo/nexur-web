@@ -1,1 +1,19 @@
-<p>aluno-periodizacao-modal-selecao-treino works!</p>
+<div mat-dialog-title>Selecione o Treino</div>
+<div mat-dialog-content class="container-window">
+    <form [formGroup]="formSelecaoTreino">
+        <mat-form-field class="full-width">
+            <mat-label>Treinos</mat-label>
+            <mat-select formControlName="treino" [compareWith]="compareTreinos">
+                <mat-option *ngFor="let treino of treinos" [(value)]="treino">
+                    {{treino.descricao}}
+                </mat-option>
+            </mat-select>
+        </mat-form-field>
+    </form>
+</div>
+<div mat-dialog-actions>
+    <button mat-raised-button (click)="save()" color="accent" type="button" cdkFocusInitial>
+        <mat-icon>done</mat-icon>
+        OK</button>
+    <button mat-raised-button (click)="onNoClick()"><mat-icon>close</mat-icon>Fechar</button>
+</div>

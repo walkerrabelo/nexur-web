@@ -27,7 +27,7 @@ export class AlunoComponent implements OnInit, OnDestroy {
   buttonDissabled = false;
   selectedTab = new FormControl(0);
   constructor(
-    private dialog: MatDialog, private http: HttpClient,
+    private dialog: MatDialog,
     private alunoDataService: AlunoDataService,
     private alunoService: AlunoService) { }
 

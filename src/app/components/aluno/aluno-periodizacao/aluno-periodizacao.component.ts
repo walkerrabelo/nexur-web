@@ -1,5 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { CalendarEventAction, CalendarEvent, CalendarMonthViewDay } from 'angular-calendar';
+import { MatDialog } from '@angular/material';
+import { Aluno } from '../../../models/aluno/aluno';
+import { AlunoPeriodizacaoModalSelecaoTreinoComponent } from './aluno-periodizacao-modal-selecao-treino/aluno-periodizacao-modal-selecao-treino.component';
 import {
   startOfDay,
   endOfDay,
@@ -39,22 +42,31 @@ export class AlunoPeriodizacaoComponent implements OnInit {
   viewDate: Date = new Date();
   activeDayIsOpen = true;
 
+  @Input()
+  aluno: Aluno;
+
   actionNew: CalendarEventAction[] = [
     {
-      label: '',
+      label: 'Adicionar Treino',
       onClick: (): void => {
-        this.addTreino();
+        this.openDialog();
       }
     }
   ];
 
+  actionsEditDelete: CalendarEventAction[] = [
+    {
+      label: '',
+      onClick: (): void => {}
+    }
+  ];
   // Actions Editar e Excluir Treino
 
 
   events: CalendarEvent[] = [
     {
       start: startOfDay(new Date()),
-      title: 'Adicionar Treino',
+      title: '',
       actions: this.actionNew,
       color: colors.white,
       meta: {
@@ -75,9 +87,23 @@ export class AlunoPeriodizacaoComponent implements OnInit {
     }
   ];
 
-  constructor() { }
+  constructor(private dialog: MatDialog) { }
 
   ngOnInit() {
+  }
+
+  openDialog(): void {
+    const dialogRef = this.dialog.open(AlunoPeriodizacaoModalSelecaoTreinoComponent, {
+      width: '350px',
+      height: '200px',
+      data: this.aluno.series
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      if (result) {
+        console.log('Treino Selecionado: ', result);
+      }
+    });
   }
 
   beforeMonthViewRender({ body }: { body: CalendarMonthViewDay[] }): void {
@@ -86,10 +112,6 @@ export class AlunoPeriodizacaoComponent implements OnInit {
         event => event.meta.incrementsBadgeTotal
       ).length;
     });
-  }
-
-  addTreino() {
-    console.log('Adicionar Treino...');
   }
 
 }

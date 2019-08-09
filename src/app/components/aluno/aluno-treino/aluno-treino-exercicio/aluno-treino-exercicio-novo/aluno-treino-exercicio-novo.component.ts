@@ -1,12 +1,10 @@
-import { ExercicioUsuarioDataService } from './../../../../../services/exercicio/exercicio-usuario-data.service';
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { TIPOS_REPETICOES } from '../../../../../models/exercicio/repeticao';
-import { Subject, Subscription } from 'rxjs';
+import { Subscription } from 'rxjs';
 import { FormGroup, FormBuilder } from '@angular/forms';
 import { ExercicioUsuario } from '../../../../../models/exercicio/exercicio-usuario';
 import { AlunoTreinoExercicio } from '../../../../../models/aluno/aluno-treino-exercicio';
 import { MatDialogRef } from '@angular/material';
-import { debounceTime } from 'rxjs/operators';
 import { environment } from 'src/environments/environment.prod';
 import { Exercicio } from '../../../../../models/exercicio/exercicio';
 
@@ -18,7 +16,6 @@ import { Exercicio } from '../../../../../models/exercicio/exercicio';
 export class AlunoTreinoExercicioNovoComponent implements OnInit, OnDestroy{
 
   tiposRepeticoes = TIPOS_REPETICOES;
-  debounce: Subject<string> = new Subject<string>();
   exercicioUsuarioForm: FormGroup;
   alunoExercicioForm: FormGroup;
   listaExercicioUsuarioTodos: ExercicioUsuario[];
@@ -31,29 +28,14 @@ export class AlunoTreinoExercicioNovoComponent implements OnInit, OnDestroy{
 
   constructor(
     private formBuilder: FormBuilder,
-    private exercicioUsuarioDataService: ExercicioUsuarioDataService,
     public dialogRef: MatDialogRef<AlunoTreinoExercicioNovoComponent>) {}
 
   ngOnInit() {
     this.alunoTreinoExercicio.exercicio = null;
-    this.subscriptionListaExercicioUsuario = this.exercicioUsuarioDataService.getList().subscribe(
-      lista => {
-        this.listaExercicioUsuarioTodos = lista;
-        this.listaExercicioUsuarioFiltrados = lista;
-      }
-    );
-    this.debounce
-    .pipe(debounceTime(300))
-    .subscribe(filter =>
-      this.listaExercicioUsuarioFiltrados = this.listaExercicioUsuarioTodos.filter(exerciciUsuario =>
-        exerciciUsuario.exercicio.descricao_pt.toLowerCase().includes(filter.toLowerCase())
-      )
-    );
     this.createForm();
   }
 
   ngOnDestroy() {
-    this.unsubscribeAll();
   }
 
   createForm() {
@@ -67,7 +49,6 @@ export class AlunoTreinoExercicioNovoComponent implements OnInit, OnDestroy{
   }
 
   onNoClick(): void {
-    this.unsubscribeAll();
     this.dialogRef.close(null);
   }
 
@@ -92,7 +73,6 @@ export class AlunoTreinoExercicioNovoComponent implements OnInit, OnDestroy{
   }
 
   save() {
-    this.unsubscribeAll();
     if (this.alunoTreinoExercicio.exercicio) {
       this.fillObject();
       this.dialogRef.close(this.alunoTreinoExercicio);
@@ -103,10 +83,5 @@ export class AlunoTreinoExercicioNovoComponent implements OnInit, OnDestroy{
 
   compareRepeticoes(obj1, obj2) {
     return (obj1.id_tipo_repeticao == obj2.id_tipo_repeticao);
-  }
-
-  unsubscribeAll() {
-    this.debounce.unsubscribe();
-    this.subscriptionListaExercicioUsuario.unsubscribe();
   }
 }

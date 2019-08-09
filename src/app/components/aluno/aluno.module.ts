@@ -31,6 +31,7 @@ import { AlunoTreinoNovoComponent } from './aluno-treino/aluno-treino-novo/aluno
     AlunoComponent,
     AlunoListaComponent,
     AlunoFormComponent,
+    AlunoTreinoNovoComponent,
     AlunoFormDialogComponent,
   ],
   exports: [AlunoComponent, AlunoListaComponent],

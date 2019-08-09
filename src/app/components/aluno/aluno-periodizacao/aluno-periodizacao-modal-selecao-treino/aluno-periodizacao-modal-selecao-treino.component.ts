@@ -19,6 +19,7 @@ export class AlunoPeriodizacaoModalSelecaoTreinoComponent implements OnInit {
   ) { }
 
   ngOnInit() {
+    console.log(this.data);
     this.createForm();
   }
 

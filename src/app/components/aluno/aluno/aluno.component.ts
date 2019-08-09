@@ -1,7 +1,6 @@
 import { MatDialog } from '@angular/material';
 import { FormControl } from '@angular/forms';
 import { Component, OnInit, OnDestroy } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
 import { AlunoTreino } from '../../../models/aluno/aluno-treino';
 import { Subscription } from 'rxjs';
 import { AlunoDataService } from '../../../services/aluno/aluno-data.service';

@@ -3,10 +3,7 @@ import { FormGroup, FormBuilder } from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 import { Component, OnInit, Inject, OnDestroy } from '@angular/core';
 import { AlunoTreinoExercicio } from 'src/app/models/aluno/aluno-treino-exercicio';
-import { Subscription } from 'rxjs';
-import { ExercicioUsuario } from '../../../../../models/exercicio/exercicio-usuario';
 import { environment } from 'src/environments/environment.prod';
-import { ExercicioUsuarioDataService } from '../../../../../services/exercicio/exercicio-usuario-data.service';
 import { TIPOS_REPETICOES } from '../../../../../models/exercicio/repeticao';
 
 @Component({

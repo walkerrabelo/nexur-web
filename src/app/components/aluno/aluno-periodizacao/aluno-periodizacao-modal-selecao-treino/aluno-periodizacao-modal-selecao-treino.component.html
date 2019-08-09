@@ -4,7 +4,7 @@
         <mat-form-field class="full-width">
             <mat-label>Treinos</mat-label>
             <mat-select formControlName="treino" [compareWith]="compareTreinos">
-                <mat-option *ngFor="let treino of treinos" [(value)]="treino">
+                <mat-option *ngFor="let treino of data" [(value)]="treino">
                     {{treino.descricao}}
                 </mat-option>
             </mat-select>

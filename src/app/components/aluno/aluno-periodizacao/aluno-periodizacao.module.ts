@@ -11,7 +11,8 @@ import { ReactiveFormsModule } from '@angular/forms';
     AlunoPeriodizacaoModalSelecaoTreinoComponent],
   declarations: [
     AlunoPeriodizacaoComponent,
-    AlunoPeriodizacaoModalSelecaoTreinoComponent],
+    AlunoPeriodizacaoModalSelecaoTreinoComponent ],
+  providers: [],
   exports: [AlunoPeriodizacaoComponent],
   imports: [
     CommonModule,

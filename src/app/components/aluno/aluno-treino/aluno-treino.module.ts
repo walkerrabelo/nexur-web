@@ -17,7 +17,6 @@ import { ExercicioModule } from '../../exercicio/exercicio.module';
 import { AlunoTreinoService } from '../../../services/aluno/aluno-treino.service';
 // tslint:disable-next-line: max-line-length
 import { AlunoTreinoExercicioNovoComponent } from './aluno-treino-exercicio/aluno-treino-exercicio-novo/aluno-treino-exercicio-novo.component';
-import { AlunoTreinoNovoComponent } from './aluno-treino-novo/aluno-treino-novo.component';
 import { AlunoTreinoEditarComponent } from './aluno-treino-editar/aluno-treino-editar.component';
 import { IntervalDateModule } from '../../../shared/pipes/interval-date/interval-date.module';
 
@@ -32,7 +31,6 @@ import { IntervalDateModule } from '../../../shared/pipes/interval-date/interval
     AlunoTreinoExercicioComponent,
     AlunoTreinoExercicioDialogFormComponent,
     AlunoTreinoExercicioNovoComponent,
-    AlunoTreinoNovoComponent,
     AlunoTreinoEditarComponent
   ],
   exports: [AlunoTreinoComponent],

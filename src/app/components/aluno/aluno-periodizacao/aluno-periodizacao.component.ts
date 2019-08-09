@@ -77,7 +77,7 @@ export class AlunoPeriodizacaoComponent implements OnInit {
       start: startOfDay(new Date()),
       title: 'TREINO REAL',
       // Associar Actions Editar e Excluir
-      actions: this.actionNew,
+      actions: this.actionsEditDelete,
       color: colors.blue,
       meta: {
         incrementsBadgeTotal: true,
@@ -90,6 +90,7 @@ export class AlunoPeriodizacaoComponent implements OnInit {
   constructor(private dialog: MatDialog) { }
 
   ngOnInit() {
+    console.log('Aluno Periodização: ', this.aluno.nome);
   }
 
   openDialog(): void {

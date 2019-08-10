@@ -66,9 +66,16 @@
 .saving-box:hover {
   background-color: #ffffbf;
 }
-.background-box:hover {
+.background-box-active:hover {
   background-color: #ffffbf;
 }
+.background-box-inactive {
+  background-color: #cecece;
+}
+.background-box-inactive:hover {
+  background-color: #bbbbbb;
+}
+
 .container-header {
   width: 100%;
   display: flex;

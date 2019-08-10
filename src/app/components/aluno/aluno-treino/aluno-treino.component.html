@@ -1,15 +1,16 @@
 <mat-card class="mat-elevation-z2 card-margin"
-    [class.background-box]="!editingMode"
+    [class.background-box-active]="activeTrain"
+    [class.background-box-inactive]="!activeTrain"
     [class.saving-box]="editingMode">
     <mat-card-header class="false-button">
 
         <div class="container-header">
-            <div class="left" matTooltip="{{(activeTrain ? '' : '(Treino Inativo)') + 'Editar Descrição e Data de Validade do Treino'}}" (click)="openDialogEditarTreino()">
+            <div class="left" matTooltip="{{(activeTrain ? '' : '*DESATIVADO*') + 'Editar Descrição e Data de Validade do Treino'}}" (click)="openDialogEditarTreino()">
                 <div class="left-top">{{alunoTreino.descricao | uppercase}}</div>
                 <div class="left-bottom">{{alunoTreino.data_ativacao | intervalDate:alunoTreino.data_vencimento }}</div>
             </div>
             <div class="right">
-                <div class="expandable-area" (click)="expandExercices()" matTooltip="{{(activeTrain ? '' : '(Treino Inativo)') + 'Visualizar e Editar Exercícios'}}"></div>
+                <div class="expandable-area" (click)="expandExercices()" matTooltip="{{(activeTrain ? '' : '*DESATIVADO*') + 'Visualizar e Editar Exercícios'}}"></div>
                 <div class="no-expandable-area">
                     <button *ngIf="editingMode"  mat-raised-button color="accent" (click)="save()" matTooltip="Salvar o Treino">
                         <mat-icon>save</mat-icon>Salvar</button>

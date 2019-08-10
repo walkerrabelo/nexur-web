@@ -25,7 +25,7 @@
     <mat-card-content>
     <mat-accordion displayMode="flat" [multi]="true" [hideToggle]="false">
         <mat-expansion-panel [hideToggle]="false" [expanded]="expanded">
-            <mat-grid-list cols="6" class="wrap-tile">
+            <mat-grid-list cols="5" class="wrap-tile">
                 <mat-grid-tile *ngFor="let exercicio of alunoTreino.exercicioSeries">
                     <app-aluno-treino-exercicio
                         [alunoTreinoExercicio]="exercicio"

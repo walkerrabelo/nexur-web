@@ -2,10 +2,8 @@
     border-radius: 6px;
     cursor: pointer;
     text-align: center;
-    width: 150px;
-    height: 150px;
-    max-width: 240px;
-    max-height: 240px;
+    width: 200px;
+    height: 200px;
     user-select: none;
     font-size: 12px;
     -webkit-user-select: none;

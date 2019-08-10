@@ -8,13 +8,13 @@
   <img [src]="imgUrl"/>
   <div class="ripple-header">
     <div class="title-header">
-      <p>
-        {{alunoTreinoExercicio.exercicio.descricao_pt.trim() | uppercase}}
-      </p>
+      <p>{{alunoTreinoExercicio.exercicio.descricao_pt.trim() | uppercase}}</p>
     </div>
   </div>
   <div class="ripple-footer">
     <div class="subtitle-footer">
-      {{(alunoTreinoExercicio.num_repeticao + ' ' + alunoTreinoExercicio.carga + ' ' + alunoTreinoExercicio.intervalo) | slice: 0:21}}</div>
+      {{(alunoTreinoExercicio.tipoRepeticao ? alunoTreinoExercicio.tipoRepeticao.descricao + ': ' : '') + alunoTreinoExercicio.num_repeticao}}
+      <br>
+      {{' Carga: ' + (alunoTreinoExercicio.carga | slice: 0:10) + ' Intervalo: ' + alunoTreinoExercicio.intervalo + 's'}}</div>
   </div>
 </div>

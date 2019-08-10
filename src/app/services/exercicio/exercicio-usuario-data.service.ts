@@ -1,28 +1,33 @@
-import { Injectable } from '@angular/core';
+
+import { Injectable, OnDestroy } from '@angular/core';
 import { ExercicioUsuarioService } from './exercicio-usuario.service';
 import { ExercicioUsuario } from '../../models/exercicio/exercicio-usuario';
-import { Observable } from 'rxjs';
+import { Subscription } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ExercicioUsuarioDataService {
 
-  listExercicioUsuario: Observable<ExercicioUsuario[]>;
-
-  constructor(private exercicioUsuarioService: ExercicioUsuarioService) {
-    this.loadList();
-  }
+  listExercicioUsuario: ExercicioUsuario[];
+  subscriptionList: Subscription;
+  constructor(private exercicioUsuarioService: ExercicioUsuarioService) { }
 
   loadList() {
-    this.listExercicioUsuario = this.exercicioUsuarioService.list();
     console.log('Carregando Lista de Exercicios...');
+    this.subscriptionList = this.exercicioUsuarioService
+    .list().subscribe(
+      list => this.listExercicioUsuario = list
+    );
   }
 
   getList() {
-    if (!this.listExercicioUsuario) {
-      this.loadList();
-    }
     return this.listExercicioUsuario;
+  }
+
+  private unsubscribeAll() {
+    if (this.subscriptionList) {
+      this.subscriptionList.unsubscribe();
+    }
   }
 }

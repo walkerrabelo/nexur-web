@@ -3,7 +3,6 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { AutenticacaoService } from 'src/app/services/autenticacao/autenticacao.service';
 import { ExercicioUsuarioDataService } from '../../../services/exercicio/exercicio-usuario-data.service';
-import { ExercicioUsuarioDataService2 } from '../../../services/exercicio/exercicio-usuario-data2.service';
 
 @Component({
   templateUrl: './sign-in.component.html',
@@ -15,7 +14,7 @@ export class SignInComponent implements OnInit {
   viewProgressBar = false;
   constructor(
     private formBuilder: FormBuilder,
-    private exercicioUsuarioDataService: ExercicioUsuarioDataService2,
+    private exercicioUsuarioDataService: ExercicioUsuarioDataService,
     private router: Router, private autenticacaoService: AutenticacaoService) { }
 
   ngOnInit() {

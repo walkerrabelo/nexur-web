@@ -1,6 +1,6 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { Subject } from 'rxjs';
-import { ExercicioUsuarioDataService2 } from '../../../services/exercicio/exercicio-usuario-data2.service';
+import { ExercicioUsuarioDataService } from '../../../services/exercicio/exercicio-usuario-data.service';
 import { ExercicioUsuario } from '../../../models/exercicio/exercicio-usuario';
 import { debounceTime } from 'rxjs/operators';
 
@@ -17,12 +17,12 @@ export class ExercicioListaSelecaoComponent implements OnInit {
   @Output()
   exercicioClicado = new EventEmitter();
 
-  constructor(private exercicioUsuarioDataService2: ExercicioUsuarioDataService2) {
-    this.listaExercicioUsuarioFiltrados = this.exercicioUsuarioDataService2.getList();
+  constructor(private exercicioUsuarioDataService: ExercicioUsuarioDataService) { }
+
+  ngOnInit() {
+    this.listaExercicioUsuarioFiltrados = this.exercicioUsuarioDataService.getList();
     this.filter();
   }
-
-  ngOnInit() { }
 
   selectExercicio(exercicio: ExercicioUsuario) {
     this.exercicioClicado.emit(exercicio);
@@ -33,7 +33,7 @@ export class ExercicioListaSelecaoComponent implements OnInit {
     .pipe(debounceTime(300))
     .subscribe(filter =>
       this.listaExercicioUsuarioFiltrados =
-      this.exercicioUsuarioDataService2.getList().filter(exerciciUsuario =>
+      this.exercicioUsuarioDataService.getList().filter(exerciciUsuario =>
         exerciciUsuario.exercicio.descricao_pt.toLowerCase().includes(filter.toLowerCase())
       )
     );

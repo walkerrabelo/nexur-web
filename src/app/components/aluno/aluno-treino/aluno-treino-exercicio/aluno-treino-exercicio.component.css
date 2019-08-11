@@ -52,6 +52,11 @@
     background-color: white;
     opacity: 0.75;
   }
+  .ripple-footer > p {
+    line-height: 1;
+    margin: 0px;
+    padding: 5px 0px 0px 0px;
+  }
   .title-footer {
     font-weight: 500;
     margin-top: 1px;

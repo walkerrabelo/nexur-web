@@ -9,12 +9,18 @@ export class AlunoTreinoExercicioResumoDadosPipe implements PipeTransform {
   transform(alunoTreinoExercicio: AlunoTreinoExercicio, ...args: any[]): string {
     let retorno = '';
 
-    retorno = alunoTreinoExercicio.tipoRepeticao ? alunoTreinoExercicio.tipoRepeticao.descricao + ': ' : '';
-    retorno += alunoTreinoExercicio.carga && alunoTreinoExercicio.carga.trim() !== '' ?
-    ' Carga: ' + alunoTreinoExercicio.carga.substring(0, 15) : '';
-    retorno += alunoTreinoExercicio.intervalo && alunoTreinoExercicio.intervalo.trim() !== '' ?
-    ' Intervalo: ' + alunoTreinoExercicio.intervalo + 's' : '';
+    retorno = alunoTreinoExercicio.tipoRepeticao ? alunoTreinoExercicio.tipoRepeticao.descricao : '';
 
+    retorno += alunoTreinoExercicio.num_repeticao && alunoTreinoExercicio.num_repeticao.trim() !== '' ?
+    ': ' + alunoTreinoExercicio.num_repeticao : '';
+
+    retorno += alunoTreinoExercicio.carga && alunoTreinoExercicio.carga.trim() !== '' ?
+      ' Carga: ' + alunoTreinoExercicio.carga.substring(0, 15) : '';
+
+    retorno += alunoTreinoExercicio.intervalo && alunoTreinoExercicio.intervalo.trim() !== '' ?
+      ' Intervalo: ' + alunoTreinoExercicio.intervalo + 's' : '';
+
+    console.log(retorno);
     return retorno.trim();
   }
 

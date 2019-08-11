@@ -19,6 +19,7 @@ import { AlunoTreinoService } from '../../../services/aluno/aluno-treino.service
 import { AlunoTreinoExercicioNovoComponent } from './aluno-treino-exercicio/aluno-treino-exercicio-novo/aluno-treino-exercicio-novo.component';
 import { AlunoTreinoEditarComponent } from './aluno-treino-editar/aluno-treino-editar.component';
 import { IntervalDateModule } from '../../../shared/pipes/interval-date/interval-date.module';
+import { AlunoTreinoExercicioResumoDadosModule } from '../../../shared/pipes/aluno-treino-exercicio-resumo-dados/aluno-treino-exercicio-resumo-dados/aluno-treino-exercicio-resumo-dados.module';
 
 @NgModule({
   entryComponents: [
@@ -55,6 +56,7 @@ import { IntervalDateModule } from '../../../shared/pipes/interval-date/interval
     MatAutocompleteModule,
     MatDividerModule,
     IntervalDateModule,
+    AlunoTreinoExercicioResumoDadosModule,
     ExercicioModule
   ]
 })

@@ -12,9 +12,6 @@
     </div>
   </div>
   <div class="ripple-footer">
-    <div class="subtitle-footer">
-      {{(alunoTreinoExercicio.tipoRepeticao ? alunoTreinoExercicio.tipoRepeticao.descricao + ': ' : '') + alunoTreinoExercicio.num_repeticao}}
-      <br>
-      {{' Carga: ' + (alunoTreinoExercicio.carga | slice: 0:10) + ' Intervalo: ' + alunoTreinoExercicio.intervalo + 's'}}</div>
+     {{alunoTreinoExercicio | alunoTreinoExercicioResumoDados}}
   </div>
 </div>

@@ -1,5 +1,5 @@
 import { Exercicio } from './../../../../../models/exercicio/exercicio';
-import { FormGroup, FormBuilder } from '@angular/forms';
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 import { Component, OnInit, Inject, OnDestroy } from '@angular/core';
 import { AlunoTreinoExercicio } from 'src/app/models/aluno/aluno-treino-exercicio';
@@ -64,7 +64,7 @@ export class AlunoTreinoExercicioDialogFormComponent implements OnInit, OnDestro
     this.alunoTreinoExercicio.id_tipo_repeticao = this.alunoExercicioForm.get('tipoRepeticao').value['id_tipo_repeticao'];
     this.alunoTreinoExercicio.num_repeticao = this.alunoExercicioForm.get('repeticao').value;
     this.alunoTreinoExercicio.carga = this.alunoExercicioForm.get('carga').value;
-    this.alunoTreinoExercicio.intervalo = this.alunoExercicioForm.get('intervalo').value;
+    this.alunoTreinoExercicio.intervalo = '' + this.alunoExercicioForm.get('intervalo').value;
     this.alunoTreinoExercicio.nota = this.alunoExercicioForm.get('nota').value;
   }
 

@@ -44,6 +44,7 @@ export class AlunoTreinoExercicioComponent implements OnInit {
     });
 
     dialogRef.afterClosed().subscribe(result => {
+      console.log('Exercicio de Retorno: ', result);
       if (result) {
         if (!compareAlunoTreinoExercicio(this.alunoTreinoExercicio, result)) {
           this.mudouAlunoTreinoExercicio.emit({alunoTreinoExercicio: result, operation: 'update'});

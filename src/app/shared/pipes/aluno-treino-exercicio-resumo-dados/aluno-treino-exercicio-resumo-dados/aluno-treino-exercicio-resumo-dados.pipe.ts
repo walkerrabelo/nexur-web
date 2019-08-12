@@ -17,10 +17,9 @@ export class AlunoTreinoExercicioResumoDadosPipe implements PipeTransform {
     retorno += alunoTreinoExercicio.carga && alunoTreinoExercicio.carga.trim() !== '' ?
       ' Carga: ' + alunoTreinoExercicio.carga.substring(0, 15) : '';
 
-    retorno += alunoTreinoExercicio.intervalo && alunoTreinoExercicio.intervalo.trim() !== '' ?
+    retorno += alunoTreinoExercicio.intervalo ?
       ' Intervalo: ' + alunoTreinoExercicio.intervalo + 's' : '';
 
-    console.log(retorno);
     return retorno.trim();
   }
 

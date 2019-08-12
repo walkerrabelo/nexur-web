@@ -91,6 +91,7 @@ export class AlunoTreinoComponent implements OnInit, OnDestroy {
   }
 
   modificarExercicio(event) {
+    console.log('Ações: ', event);
     const alunoTreinoExercicio = event.alunoTreinoExercicio;
     const operation = event.operation;
     let indexToChange = -1;

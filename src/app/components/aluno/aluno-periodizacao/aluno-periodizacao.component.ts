@@ -40,19 +40,12 @@ const colors: any = {
 export class AlunoPeriodizacaoComponent implements OnInit {
 
   viewDate: Date = new Date();
-  activeDayIsOpen = true;
+  activeDayIsOpen = false;
+
+  buttonTreinoSelected = null;
 
   @Input()
   aluno: Aluno;
-
-  actionNew: CalendarEventAction[] = [
-    {
-      label: 'Adicionar Treino',
-      onClick: (): void => {
-        this.openDialog();
-      }
-    }
-  ];
 
   actionsEditDelete: CalendarEventAction[] = [
     {
@@ -62,17 +55,7 @@ export class AlunoPeriodizacaoComponent implements OnInit {
   ];
   // Actions Editar e Excluir Treino
 
-
   events: CalendarEvent[] = [
-    {
-      start: startOfDay(new Date()),
-      title: '',
-      actions: this.actionNew,
-      color: colors.white,
-      meta: {
-        incrementsBadgeTotal: false,
-      }
-    },
     {
       start: startOfDay(new Date()),
       title: 'TREINO REAL',
@@ -113,6 +96,44 @@ export class AlunoPeriodizacaoComponent implements OnInit {
         event => event.meta.incrementsBadgeTotal
       ).length;
     });
+  }
+
+  selectTreino(selected) {
+    this.activeDayIsOpen = false;
+    console.log(selected.value);
+  }
+
+  dayClicked(event) {
+    const dateSelected = event.day.date;
+    this.viewDate = dateSelected;
+    if (!this.buttonTreinoSelected) {
+      this.activeDayIsOpen = !this.activeDayIsOpen;
+    } else {
+      console.log('Adicionando o Treino: ', this.buttonTreinoSelected);
+      console.log('No dia: ', dateSelected);
+      this.addTreinoToDate(this.buttonTreinoSelected, dateSelected);
+    }
+  }
+  save() {
+    // this.buttonTreinoSelected.checked = false;
+    this.buttonTreinoSelected = null;
+    console.log('Salvou !');
+  }
+
+  addTreinoToDate(treino, date) {
+    this.events.push(
+      {
+        start: startOfDay(date),
+        title: treino,
+        // Associar Actions Editar e Excluir
+        actions: this.actionsEditDelete,
+        color: colors.blue,
+        meta: {
+          incrementsBadgeTotal: true,
+          novoDado: treino + ' - DADOS DETALHADOS',
+        }
+      }
+    );
   }
 
 }

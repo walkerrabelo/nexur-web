@@ -2,9 +2,9 @@ import { CalendarModule } from 'angular-calendar';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { AlunoPeriodizacaoComponent } from './aluno-periodizacao.component';
-import { MatButtonModule, MatIconModule, MatTooltipModule, MatDialogModule, MatFormFieldModule, MatInputModule, MatSelectModule } from '@angular/material';
+import { MatButtonModule, MatIconModule, MatTooltipModule, MatDialogModule, MatFormFieldModule, MatInputModule, MatSelectModule, MatButtonToggleModule } from '@angular/material';
 import { AlunoPeriodizacaoModalSelecaoTreinoComponent } from './aluno-periodizacao-modal-selecao-treino/aluno-periodizacao-modal-selecao-treino.component';
-import { ReactiveFormsModule } from '@angular/forms';
+import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 
 @NgModule({
   entryComponents: [
@@ -16,8 +16,10 @@ import { ReactiveFormsModule } from '@angular/forms';
   exports: [AlunoPeriodizacaoComponent],
   imports: [
     CommonModule,
+    FormsModule,
     CalendarModule,
     MatButtonModule,
+    MatButtonToggleModule,
     MatIconModule,
     MatTooltipModule,
     MatDialogModule,

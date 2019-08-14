@@ -1,6 +1,5 @@
 import { Component, OnInit, Input, OnDestroy } from '@angular/core';
-import { CalendarEventAction, CalendarEvent, CalendarMonthViewDay } from 'angular-calendar';
-import { MatDialog } from '@angular/material';
+import { CalendarEventAction, CalendarEvent, CalendarMonthViewDay, CalendarView } from 'angular-calendar';
 import { AlunoCalendarioService } from '../../../services/aluno/aluno-calendario.service';
 import * as moment from 'moment/moment';
 import {
@@ -41,7 +40,7 @@ const colors: any = {
 })
 export class AlunoPeriodizacaoComponent implements OnInit, OnDestroy {
 
-
+  view: CalendarView = CalendarView.Month;
   viewDate: Date = new Date();
   activeDayIsOpen = false;
 
@@ -76,6 +75,9 @@ export class AlunoPeriodizacaoComponent implements OnInit, OnDestroy {
     }
   }
 
+  closeOpenMonthViewDay() {
+    this.activeDayIsOpen = false;
+  }
   beforeMonthViewRender({ body }: { body: CalendarMonthViewDay[] }): void {
     body.forEach(day => {
       day.badgeTotal = day.events.filter(

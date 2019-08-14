@@ -1,0 +1,10 @@
+.container-calendar {
+	margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    border: 1px solid #ccc;
+    overflow: hidden;
+}
+.calendar-item {
+    width: 47%;
+}

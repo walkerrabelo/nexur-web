@@ -5,6 +5,7 @@ import { AlunoPeriodizacaoComponent } from './aluno-periodizacao.component';
 import { MatButtonModule, MatIconModule, MatTooltipModule, MatDialogModule, MatFormFieldModule, MatInputModule, MatSelectModule, MatButtonToggleModule } from '@angular/material';
 import { AlunoPeriodizacaoModalSelecaoTreinoComponent } from './aluno-periodizacao-modal-selecao-treino/aluno-periodizacao-modal-selecao-treino.component';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
+import { AlunoCalendarioService } from '../../../services/aluno/aluno-calendario.service';
 
 @NgModule({
   entryComponents: [
@@ -12,7 +13,7 @@ import { ReactiveFormsModule, FormsModule } from '@angular/forms';
   declarations: [
     AlunoPeriodizacaoComponent,
     AlunoPeriodizacaoModalSelecaoTreinoComponent ],
-  providers: [],
+  providers: [AlunoCalendarioService],
   exports: [AlunoPeriodizacaoComponent],
   imports: [
     CommonModule,

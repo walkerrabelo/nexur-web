@@ -1,8 +1,8 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, OnDestroy } from '@angular/core';
 import { CalendarEventAction, CalendarEvent, CalendarMonthViewDay } from 'angular-calendar';
 import { MatDialog } from '@angular/material';
-import { Aluno } from '../../../models/aluno/aluno';
-import { AlunoPeriodizacaoModalSelecaoTreinoComponent } from './aluno-periodizacao-modal-selecao-treino/aluno-periodizacao-modal-selecao-treino.component';
+import { AlunoCalendarioService } from '../../../services/aluno/aluno-calendario.service';
+import * as moment from 'moment/moment';
 import {
   startOfDay,
   endOfDay,
@@ -13,6 +13,8 @@ import {
   isSameMonth,
   addHours
 } from 'date-fns';
+import { Subscription } from 'rxjs';
+import { AlunoTreino } from '../../../models/aluno/aluno-treino';
 
 const colors: any = {
   white: {
@@ -37,15 +39,20 @@ const colors: any = {
   templateUrl: './aluno-periodizacao.component.html',
   styleUrls: ['./aluno-periodizacao.component.css']
 })
-export class AlunoPeriodizacaoComponent implements OnInit {
+export class AlunoPeriodizacaoComponent implements OnInit, OnDestroy {
+
 
   viewDate: Date = new Date();
   activeDayIsOpen = false;
 
   buttonTreinoSelected = null;
 
+  subscription: Subscription;
+
   @Input()
-  aluno: Aluno;
+  alunoTreinoList: AlunoTreino[];
+  @Input()
+  idAluno: string;
 
   actionsEditDelete: CalendarEventAction[] = [
     {
@@ -55,39 +62,18 @@ export class AlunoPeriodizacaoComponent implements OnInit {
   ];
   // Actions Editar e Excluir Treino
 
-  events: CalendarEvent[] = [
-    {
-      start: startOfDay(new Date()),
-      title: 'TREINO REAL',
-      // Associar Actions Editar e Excluir
-      actions: this.actionsEditDelete,
-      color: colors.blue,
-      meta: {
-        incrementsBadgeTotal: true,
-        novoDado: 'DADO 01',
-        novoDado2: 'DADO 02'
-      }
-    }
-  ];
+  events: CalendarEvent[] = [];
 
-  constructor(private dialog: MatDialog) { }
+  constructor(
+    private alunoCalendarioService: AlunoCalendarioService) { }
 
   ngOnInit() {
-    console.log('Aluno Periodização: ', this.aluno.nome);
+    this.loadAlunoCalendario();
   }
-
-  openDialog(): void {
-    const dialogRef = this.dialog.open(AlunoPeriodizacaoModalSelecaoTreinoComponent, {
-      width: '350px',
-      height: '200px',
-      data: this.aluno.series
-    });
-
-    dialogRef.afterClosed().subscribe(result => {
-      if (result) {
-        console.log('Treino Selecionado: ', result);
-      }
-    });
+  ngOnDestroy(): void {
+    if (this.subscription) {
+      this.subscription.unsubscribe();
+    }
   }
 
   beforeMonthViewRender({ body }: { body: CalendarMonthViewDay[] }): void {
@@ -111,7 +97,7 @@ export class AlunoPeriodizacaoComponent implements OnInit {
     } else {
       console.log('Adicionando o Treino: ', this.buttonTreinoSelected);
       console.log('No dia: ', dateSelected);
-      this.addTreinoToDate(this.buttonTreinoSelected, dateSelected);
+      this.addTreinoAgendadoToDate(this.buttonTreinoSelected, dateSelected);
     }
   }
   save() {
@@ -120,8 +106,10 @@ export class AlunoPeriodizacaoComponent implements OnInit {
     console.log('Salvou !');
   }
 
-  addTreinoToDate(treino, date) {
-    this.events.push(
+  addTreinoAgendadoToDate(treino, date) {
+    console.log('Adicionando Agendado: ', treino, date);
+    this.events = [
+      ...this.events,
       {
         start: startOfDay(date),
         title: treino,
@@ -133,7 +121,40 @@ export class AlunoPeriodizacaoComponent implements OnInit {
           novoDado: treino + ' - DADOS DETALHADOS',
         }
       }
-    );
+    ];
+  }
+  addTreinoRegistradoToDate(treino, date) {
+    console.log('Adicionando Registrado: ', treino, date);
+    this.events = [
+      ...this.events,
+      {
+        start: startOfDay(date),
+        title: treino,
+        actions: this.actionsEditDelete,
+        color: colors.red,
+        meta: {
+          incrementsBadgeTotal: true,
+          novoDado: treino,
+        }
+      }
+    ];
   }
 
+  loadAlunoCalendario() {
+    this.subscription = this.alunoCalendarioService
+    .getCalendario(this.idAluno).subscribe(
+      list => {
+        console.log('Treinos Calendario: ');
+        console.table(list);
+        list.forEach(alunoCalendario => {
+          const date = moment(alunoCalendario.start).format();
+          const description = alunoCalendario.title;
+          if (alunoCalendario.tipo == 'p') {
+            this.addTreinoAgendadoToDate(description, date);
+          } else {
+            this.addTreinoRegistradoToDate(description, date);
+          }
+        });
+      });
+  }
 }

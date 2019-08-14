@@ -2,9 +2,8 @@
 
 <mat-button-toggle-group name="treinoSelected" aria-label="Selecione um Treino"
 [(ngModel)]="buttonTreinoSelected" (change)="selectTreino($event)">
-        <mat-button-toggle value="TREINO 01">TREINO 01</mat-button-toggle>
-        <mat-button-toggle value="TREINO 02">TREINO 02</mat-button-toggle>
-        <mat-button-toggle value="TREINO 03">TREINO 03</mat-button-toggle>
+        <mat-button-toggle *ngFor="let alunoTreino of alunoTreinoList" 
+        value="{{alunoTreino.descricao}}">{{alunoTreino.descricao | uppercase}}</mat-button-toggle>
 </mat-button-toggle-group>
 
 <button mat-button (click)="save()">Salvar</button>

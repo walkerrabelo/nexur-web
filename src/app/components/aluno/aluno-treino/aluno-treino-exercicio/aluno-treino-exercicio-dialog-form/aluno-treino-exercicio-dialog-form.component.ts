@@ -66,6 +66,7 @@ export class AlunoTreinoExercicioDialogFormComponent implements OnInit, OnDestro
     this.alunoTreinoExercicio.carga = this.alunoExercicioForm.get('carga').value;
     this.alunoTreinoExercicio.intervalo = '' + this.alunoExercicioForm.get('intervalo').value;
     this.alunoTreinoExercicio.nota = this.alunoExercicioForm.get('nota').value;
+    this.alunoTreinoExercicio.cor = '';
   }
 
   save() {

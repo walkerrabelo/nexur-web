@@ -136,8 +136,6 @@ export class AlunoTreinoComponent implements OnInit, OnDestroy {
         );
     }
     const statusAlunoTreino = this.alunoTreino.ativo === '1' ? true : false;
-    console.log('statusAlunoTreino = ', statusAlunoTreino);
-    console.log('this.activeTrain = ',  this.activeTrain);
     if (statusAlunoTreino !== this.activeTrain) {
       this.subscritption = this.alunoTreinoService
       .activateDeactivateTreino(this.alunoTreino.id_serie).subscribe(

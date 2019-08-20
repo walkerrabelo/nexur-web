@@ -14,4 +14,5 @@ export class AlunoTreinoExercicio {
   ativo: string;
   exercicio: Exercicio;
   tipoRepeticao: TipoRepeticao;
+  cor: string;
 }

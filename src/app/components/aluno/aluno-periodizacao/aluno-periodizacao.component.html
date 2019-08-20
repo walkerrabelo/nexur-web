@@ -1,9 +1,10 @@
+<mat-button-toggle-group class="menu-buttons-container" name="treinoSelected" aria-label="Selecione um Treino"
+[(ngModel)]="buttonTreinoSelected" (change)="selectTreino($event)">
+        <mat-button-toggle class="selectable-item" *ngFor="let alunoTreino of alunoTreinoList" 
+        value="{{alunoTreino.descricao}}">{{(alunoTreino.descricao | uppercase) | slice:0:15}}</mat-button-toggle>
+</mat-button-toggle-group>
+
 <div fxLayout="row">
-        <mat-button-toggle-group name="treinoSelected" aria-label="Selecione um Treino"
-        [(ngModel)]="buttonTreinoSelected" (change)="selectTreino($event)">
-                <mat-button-toggle *ngFor="let alunoTreino of alunoTreinoList" 
-                value="{{alunoTreino.descricao}}">{{alunoTreino.descricao | uppercase}}</mat-button-toggle>
-        </mat-button-toggle-group>
         <button mat-button (click)="save()">Salvar</button>
         <button mat-raised-button
                 mwlCalendarPreviousView
@@ -32,22 +33,22 @@
         <div class="calendar-item">
                 <h4>{{ viewDate | calendarDate:(view + 'ViewTitle'):'en' }}</h4>
                 <mwl-calendar-month-view
-                [viewDate]="viewDate"
-                [events]="events"
-                [activeDayIsOpen]="activeDayIsOpen"
-                (beforeViewRender)="beforeMonthViewRender($event)"
-                (dayClicked)="dayClicked($event)"
+                        [viewDate]="viewDate"
+                        [events]="events"
+                        [activeDayIsOpen]="activeDayIsOpen"
+                        (beforeViewRender)="beforeMonthViewRender($event)"
+                        (dayClicked)="dayClicked($event)"
                 >
                 </mwl-calendar-month-view>
         </div>
         <div class="calendar-item">
                 <h4>{{ viewDate | calendarDate:(view + 'ViewTitle'):'en' }}</h4>
                 <mwl-calendar-month-view
-                [viewDate]="viewDate"
-                [events]="events"
-                [activeDayIsOpen]="activeDayIsOpen"
-                (beforeViewRender)="beforeMonthViewRender($event)"
-                (dayClicked)="dayClicked($event)"
+                        [viewDate]="viewDate"
+                        [events]="events"
+                        [activeDayIsOpen]="activeDayIsOpen"
+                        (beforeViewRender)="beforeMonthViewRender($event)"
+                        (dayClicked)="dayClicked($event)"
                 >
                 </mwl-calendar-month-view>
         </div>

@@ -60,8 +60,8 @@ export class AlunoPeriodizacaoComponent implements OnInit, OnDestroy {
   actionsEditDelete: CalendarEventAction[] = [
     {
       label: '',
-      onClick: (): void => {
-        console.log('Excluir treino...');
+      onClick: ({ event }: { event: CalendarEvent }): void => {
+        console.log(event);
       }
     }
   ];
@@ -85,7 +85,7 @@ export class AlunoPeriodizacaoComponent implements OnInit, OnDestroy {
     dialogRef.afterClosed().subscribe(result => {
       if (result) {
         this.seriesRepeticoes = result;
-        console.table(this.seriesRepeticoes);
+        // console.table(this.seriesRepeticoes);
       }
     });
   }
@@ -101,6 +101,8 @@ export class AlunoPeriodizacaoComponent implements OnInit, OnDestroy {
   nextMonth() {
     this.viewDateNext = new Date(this.viewDate.toDateString());
     this.viewDateNext.setMonth(this.viewDate.getMonth() + 1);
+    this.activeDayIsOpen = false;
+    this.activeDayIsOpenNextMonth = false;
   }
   closeOpenMonthViewDay() {
     this.activeDayIsOpen = false;
@@ -127,17 +129,19 @@ export class AlunoPeriodizacaoComponent implements OnInit, OnDestroy {
     this.viewDate = dateSelected;
     if (!this.buttonTreinoSelected) {
       this.activeDayIsOpen = !this.activeDayIsOpen;
+      this.activeDayIsOpenNextMonth = false;
     } else {
       console.log('Adicionando o Treino: ', this.buttonTreinoSelected);
       console.log('No dia: ', dateSelected);
       this.addTreinoAgendadoToDate(this.buttonTreinoSelected, dateSelected);
     }
   }
-  dayClickedNextMont(event) {
+  dayClickedNextMonth(event) {
     const dateSelected = event.day.date;
     this.viewDateNext = dateSelected;
     if (!this.buttonTreinoSelected) {
       this.activeDayIsOpenNextMonth = !this.activeDayIsOpenNextMonth;
+      this.activeDayIsOpen = false;
     } else {
       console.log('Adicionando o Treino: ', this.buttonTreinoSelected);
       console.log('No dia: ', dateSelected);
@@ -147,6 +151,11 @@ export class AlunoPeriodizacaoComponent implements OnInit, OnDestroy {
   save() {
     this.buttonTreinoSelected = null;
     console.log('Salvou !');
+  }
+
+  deleteEvent(event) {
+    console.log('Deletando...');
+    this.events = this.events.filter(iEvent => iEvent !== event);
   }
 
   addTreinoAgendadoToDate(treino, date) {
@@ -161,7 +170,7 @@ export class AlunoPeriodizacaoComponent implements OnInit, OnDestroy {
         color: colors.blue,
         meta: {
           incrementsBadgeTotal: true,
-          novoDado: treino + ' - DADOS DETALHADOS',
+          serieRepeticoes: this.seriesRepeticoes,
         }
       }
     ];
@@ -177,7 +186,7 @@ export class AlunoPeriodizacaoComponent implements OnInit, OnDestroy {
         color: colors.red,
         meta: {
           incrementsBadgeTotal: true,
-          novoDado: treino,
+          serieRepeticoes: this.seriesRepeticoes,
         }
       }
     ];

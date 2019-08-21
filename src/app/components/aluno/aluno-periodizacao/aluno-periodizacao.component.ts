@@ -45,13 +45,6 @@ export class AlunoPeriodizacaoComponent implements OnInit, OnDestroy {
   viewDateNext: Date = new Date();
   activeDayIsOpen = false;
   activeDayIsOpenNextMonth = false;
-  @ViewChild('previousMonthView', {static: false})
-  previousMonthView: ElementRef;
-  @ViewChild('actualMonthView', {static: false})
-  actualMonthView: ElementRef;
-  @ViewChild('nextMonthView', {static: false})
-  nextMonthView: ElementRef;
-
   buttonTreinoSelected = null;
   sameButton = true;
 
@@ -85,20 +78,13 @@ export class AlunoPeriodizacaoComponent implements OnInit, OnDestroy {
       this.subscription.unsubscribe();
     }
   }
-  previousMonth() {
-    this.previousMonthView.nativeElement.click();
-    this.closeOpenMonthViewDay();
-  }
-  actualMonth() {
-    this.actualMonthView.nativeElement.click();
-    this.closeOpenMonthViewDay();
-  }
   nextMonth() {
-    this.nextMonthView.nativeElement.click();
-    this.closeOpenMonthViewDay();
+    this.viewDateNext = new Date(this.viewDate.toDateString());
+    this.viewDateNext.setMonth(this.viewDate.getMonth() + 1);
   }
   closeOpenMonthViewDay() {
     this.activeDayIsOpen = false;
+    this.activeDayIsOpenNextMonth = false;
   }
 
   beforeMonthViewRender({ body }: { body: CalendarMonthViewDay[] }): void {

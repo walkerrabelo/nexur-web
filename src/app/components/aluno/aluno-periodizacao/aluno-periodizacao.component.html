@@ -11,23 +11,20 @@
                 {{(alunoTreino.descricao | uppercase) | slice:0:20}}
         </mat-button-toggle>
 </mat-button-toggle-group>
-<div  #previousMonthView mwlCalendarPreviousView [view]="view" [(viewDate)]="viewDateNext"></div>
-<div  #actualMonthView mwlCalendarToday [(viewDate)]="viewDateNext"></div>
-<div  #nextMonthView mwlCalendarNextView [view]="view" [(viewDate)]="viewDateNext"></div>
 <div fxLayout="row">
         <button mat-button (click)="save()">Salvar</button>
         <button matTooltip="Mês Anterior" mat-raised-button
                 mwlCalendarPreviousView
                 [view]="view"
                 [(viewDate)]="viewDate"
-                (viewDateChange)="previousMonth()"
+                (viewDateChange)="nextMonth()"
         >
                 <mat-icon>arrow_back</mat-icon>
         </button>
         <button matTooltip="Mês Atual" mat-raised-button
                 mwlCalendarToday
                 [(viewDate)]="viewDate"
-                (viewDateChange)="actualMonth()"
+                (viewDateChange)="nextMonth()"
         >
                 <mat-icon>today</mat-icon>
         </button>

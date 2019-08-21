@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, OnDestroy } from '@angular/core';
+import { Component, OnInit, Input, OnDestroy, ViewChild, ElementRef } from '@angular/core';
 import { CalendarEventAction, CalendarEvent, CalendarMonthViewDay, CalendarView } from 'angular-calendar';
 import { AlunoCalendarioService } from '../../../services/aluno/aluno-calendario.service';
 import * as moment from 'moment/moment';
@@ -42,7 +42,14 @@ export class AlunoPeriodizacaoComponent implements OnInit, OnDestroy {
 
   view: CalendarView = CalendarView.Month;
   viewDate: Date = new Date();
+  viewDateNext: Date = new Date();
   activeDayIsOpen = false;
+  @ViewChild('previousMonthView', {static: false})
+  previousMonthView: ElementRef;
+  @ViewChild('actualMonthView', {static: false})
+  actualMonthView: ElementRef;
+  @ViewChild('nextMonthView', {static: false})
+  nextMonthView: ElementRef;
 
   buttonTreinoSelected = null;
 
@@ -64,7 +71,9 @@ export class AlunoPeriodizacaoComponent implements OnInit, OnDestroy {
   events: CalendarEvent[] = [];
 
   constructor(
-    private alunoCalendarioService: AlunoCalendarioService) { }
+    private alunoCalendarioService: AlunoCalendarioService) {
+      this.viewDateNext.setMonth(this.viewDate.getMonth() + 1);
+     }
 
   ngOnInit() {
     this.loadAlunoCalendario();
@@ -74,10 +83,22 @@ export class AlunoPeriodizacaoComponent implements OnInit, OnDestroy {
       this.subscription.unsubscribe();
     }
   }
-
+  previousMonth() {
+    this.previousMonthView.nativeElement.click();
+    this.closeOpenMonthViewDay();
+  }
+  actualMonth() {
+    this.actualMonthView.nativeElement.click();
+    this.closeOpenMonthViewDay();
+  }
+  nextMonth() {
+    this.nextMonthView.nativeElement.click();
+    this.closeOpenMonthViewDay();
+  }
   closeOpenMonthViewDay() {
     this.activeDayIsOpen = false;
   }
+
   beforeMonthViewRender({ body }: { body: CalendarMonthViewDay[] }): void {
     body.forEach(day => {
       day.badgeTotal = day.events.filter(

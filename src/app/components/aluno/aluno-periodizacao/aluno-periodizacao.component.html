@@ -1,32 +1,35 @@
 <mat-button-toggle-group class="menu-buttons-container" name="treinoSelected" aria-label="Selecione um Treino"
 [(ngModel)]="buttonTreinoSelected" (change)="selectTreino($event)">
         <mat-button-toggle class="selectable-item" *ngFor="let alunoTreino of alunoTreinoList" 
-        value="{{alunoTreino.descricao}}">{{(alunoTreino.descricao | uppercase) | slice:0:15}}</mat-button-toggle>
+        value="{{alunoTreino.descricao}}">{{(alunoTreino.descricao | uppercase) | slice:0:20}}</mat-button-toggle>
 </mat-button-toggle-group>
-
+<div  #previousMonthView mwlCalendarPreviousView [view]="view" [(viewDate)]="viewDateNext"></div>
+<div  #actualMonthView mwlCalendarToday [(viewDate)]="viewDateNext"></div>
+<div  #nextMonthView mwlCalendarNextView [view]="view" [(viewDate)]="viewDateNext"></div>
 <div fxLayout="row">
         <button mat-button (click)="save()">Salvar</button>
-        <button mat-raised-button
+        <button matTooltip="Mês Anterior" mat-raised-button
                 mwlCalendarPreviousView
                 [view]="view"
                 [(viewDate)]="viewDate"
-                (viewDateChange)="closeOpenMonthViewDay()"
+                (viewDateChange)="previousMonth()"
         >
                 <mat-icon>arrow_back</mat-icon>
         </button>
-        <button mat-raised-button
+        <button matTooltip="Mês Atual" mat-raised-button
                 mwlCalendarToday
                 [(viewDate)]="viewDate"
+                (viewDateChange)="actualMonth()"
         >
                 <mat-icon>today</mat-icon>
         </button>
-        <button mat-raised-button
+        <button matTooltip="Próximo Mês" mat-raised-button
                 mwlCalendarNextView
                 [view]="view"
                 [(viewDate)]="viewDate"
-                (viewDateChange)="closeOpenMonthViewDay()"
+                (viewDateChange)="nextMonth()"
         >
-                <mat-icon>arrow_forward</mat-icon>
+               <mat-icon>arrow_forward</mat-icon>
         </button>
 </div>
 <div class="container-calendar">
@@ -42,9 +45,9 @@
                 </mwl-calendar-month-view>
         </div>
         <div class="calendar-item">
-                <h4>{{ viewDate | calendarDate:(view + 'ViewTitle'):'en' }}</h4>
+                <h4>{{ viewDateNext | calendarDate:(view + 'ViewTitle'):'en' }}</h4>
                 <mwl-calendar-month-view
-                        [viewDate]="viewDate"
+                        [viewDate]="viewDateNext"
                         [events]="events"
                         [activeDayIsOpen]="activeDayIsOpen"
                         (beforeViewRender)="beforeMonthViewRender($event)"

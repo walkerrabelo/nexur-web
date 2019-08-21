@@ -44,6 +44,7 @@ export class AlunoPeriodizacaoComponent implements OnInit, OnDestroy {
   viewDate: Date = new Date();
   viewDateNext: Date = new Date();
   activeDayIsOpen = false;
+  activeDayIsOpenNextMonth = false;
   @ViewChild('previousMonthView', {static: false})
   previousMonthView: ElementRef;
   @ViewChild('actualMonthView', {static: false})
@@ -52,6 +53,7 @@ export class AlunoPeriodizacaoComponent implements OnInit, OnDestroy {
   nextMonthView: ElementRef;
 
   buttonTreinoSelected = null;
+  sameButton = true;
 
   subscription: Subscription;
 
@@ -107,9 +109,11 @@ export class AlunoPeriodizacaoComponent implements OnInit, OnDestroy {
     });
   }
 
-  selectTreino(selected) {
+  changeTreino(selected) {
     this.activeDayIsOpen = false;
+    console.log('Button Selected: ', this.buttonTreinoSelected);
     console.log(selected.value);
+    this.sameButton = true;
   }
 
   dayClicked(event) {
@@ -123,8 +127,18 @@ export class AlunoPeriodizacaoComponent implements OnInit, OnDestroy {
       this.addTreinoAgendadoToDate(this.buttonTreinoSelected, dateSelected);
     }
   }
+  dayClickedNextMont(event) {
+    const dateSelected = event.day.date;
+    this.viewDateNext = dateSelected;
+    if (!this.buttonTreinoSelected) {
+      this.activeDayIsOpenNextMonth = !this.activeDayIsOpenNextMonth;
+    } else {
+      console.log('Adicionando o Treino: ', this.buttonTreinoSelected);
+      console.log('No dia: ', dateSelected);
+      this.addTreinoAgendadoToDate(this.buttonTreinoSelected, dateSelected);
+    }
+  }
   save() {
-    // this.buttonTreinoSelected.checked = false;
     this.buttonTreinoSelected = null;
     console.log('Salvou !');
   }
@@ -179,5 +193,12 @@ export class AlunoPeriodizacaoComponent implements OnInit, OnDestroy {
           }
         });
       });
+  }
+
+  activateDeactivateButton(event) {
+    this.sameButton = !this.sameButton;
+    if (this.sameButton) {
+      this.buttonTreinoSelected = null;
+    }
   }
 }

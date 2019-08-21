@@ -1,7 +1,15 @@
-<mat-button-toggle-group class="menu-buttons-container" name="treinoSelected" aria-label="Selecione um Treino"
-[(ngModel)]="buttonTreinoSelected" (change)="selectTreino($event)">
-        <mat-button-toggle class="selectable-item" *ngFor="let alunoTreino of alunoTreinoList" 
-        value="{{alunoTreino.descricao}}">{{(alunoTreino.descricao | uppercase) | slice:0:20}}</mat-button-toggle>
+<mat-button-toggle-group 
+        class="menu-buttons-container" 
+        name="treinoSelected" aria-label="Selecione um Treino"
+        [(ngModel)]="buttonTreinoSelected" 
+        (click)="activateDeactivateButton($event)"
+        (change)="changeTreino($event)">
+        <mat-button-toggle 
+                class="selectable-item"
+                *ngFor="let alunoTreino of alunoTreinoList"
+                value="{{alunoTreino.descricao}}">
+                {{(alunoTreino.descricao | uppercase) | slice:0:20}}
+        </mat-button-toggle>
 </mat-button-toggle-group>
 <div  #previousMonthView mwlCalendarPreviousView [view]="view" [(viewDate)]="viewDateNext"></div>
 <div  #actualMonthView mwlCalendarToday [(viewDate)]="viewDateNext"></div>
@@ -49,9 +57,9 @@
                 <mwl-calendar-month-view
                         [viewDate]="viewDateNext"
                         [events]="events"
-                        [activeDayIsOpen]="activeDayIsOpen"
+                        [activeDayIsOpen]="activeDayIsOpenNextMonth"
                         (beforeViewRender)="beforeMonthViewRender($event)"
-                        (dayClicked)="dayClicked($event)"
+                        (dayClicked)="dayClickedNextMont($event)"
                 >
                 </mwl-calendar-month-view>
         </div>

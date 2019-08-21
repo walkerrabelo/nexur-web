@@ -14,6 +14,8 @@ import {
 } from 'date-fns';
 import { Subscription } from 'rxjs';
 import { AlunoTreino } from '../../../models/aluno/aluno-treino';
+import { MatDialog } from '@angular/material';
+import { AlunoPeriodizacaoSeriesRepeticoesDialogComponent } from './aluno-periodizacao-series-repeticoes-dialog/aluno-periodizacao-series-repeticoes-dialog.component';
 
 const colors: any = {
   white: {
@@ -47,9 +49,8 @@ export class AlunoPeriodizacaoComponent implements OnInit, OnDestroy {
   activeDayIsOpenNextMonth = false;
   buttonTreinoSelected = null;
   sameButton = true;
-  
-
   subscription: Subscription;
+  seriesRepeticoes = {seriesRepeticoes: '', observacoes: ''};
 
   @Input()
   alunoTreinoList: AlunoTreino[];
@@ -59,7 +60,9 @@ export class AlunoPeriodizacaoComponent implements OnInit, OnDestroy {
   actionsEditDelete: CalendarEventAction[] = [
     {
       label: '',
-      onClick: (): void => {}
+      onClick: (): void => {
+        console.log('Excluir treino...');
+      }
     }
   ];
   // Actions Editar e Excluir Treino
@@ -67,9 +70,25 @@ export class AlunoPeriodizacaoComponent implements OnInit, OnDestroy {
   events: CalendarEvent[] = [];
 
   constructor(
+    private dialog: MatDialog,
     private alunoCalendarioService: AlunoCalendarioService) {
       this.viewDateNext.setMonth(this.viewDate.getMonth() + 1);
      }
+
+  openDialogNovoExercicio(): void {
+    const dialogRef =
+      this.dialog.open(AlunoPeriodizacaoSeriesRepeticoesDialogComponent, {
+        width: '300px',
+        data: this.seriesRepeticoes
+      });
+
+    dialogRef.afterClosed().subscribe(result => {
+      if (result) {
+        this.seriesRepeticoes = result;
+        console.table(this.seriesRepeticoes);
+      }
+    });
+  }
 
   ngOnInit() {
     this.loadAlunoCalendario();
@@ -186,6 +205,8 @@ export class AlunoPeriodizacaoComponent implements OnInit, OnDestroy {
     this.sameButton = !this.sameButton;
     if (this.sameButton) {
       this.buttonTreinoSelected = null;
+    } else {
+      this.openDialogNovoExercicio();
     }
   }
 }

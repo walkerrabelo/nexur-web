@@ -47,6 +47,7 @@ export class AlunoPeriodizacaoComponent implements OnInit, OnDestroy {
   activeDayIsOpenNextMonth = false;
   buttonTreinoSelected = null;
   sameButton = true;
+  
 
   subscription: Subscription;
 

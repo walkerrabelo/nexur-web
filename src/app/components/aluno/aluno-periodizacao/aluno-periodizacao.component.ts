@@ -17,24 +17,38 @@ import { AlunoTreino } from '../../../models/aluno/aluno-treino';
 import { MatDialog } from '@angular/material';
 import { AlunoPeriodizacaoSeriesRepeticoesDialogComponent } from './aluno-periodizacao-series-repeticoes-dialog/aluno-periodizacao-series-repeticoes-dialog.component';
 
-const colors: any = {
-  white: {
-    primary: '#FFFFFF',
-    secondary: '#FFFFFF'
+const BORG_COLORS = [
+  {
+    primary: '#D8EDF2',
+    secondary: '#D8EDF2'
   },
-  red: {
-    primary: '#ad2121',
-    secondary: '#FAE3E3'
+  {
+    primary: '#85CCC4',
+    secondary: '#85CCC4'
   },
-  blue: {
-    primary: '#1e90ff',
-    secondary: '#D1E8FF'
+  {
+    primary: '#B7B1D7',
+    secondary: '#B7B1D7'
   },
-  yellow: {
-    primary: '#e3bc08',
-    secondary: '#FDF1BA'
+  {
+    primary: '#96B977',
+    secondary: '#96B977'
+  },
+  {
+    primary: '#EECD84',
+    secondary: '#EECD84'
+  },
+  {
+    primary: '#B5B4D6',
+    secondary: '#B5B4D6'
   }
-};
+];
+const AGENDADOS_COLORS = [
+  {
+    primary: '#3987AD',
+    secondary: '#3987AD'
+  },
+];
 @Component({
   selector: 'app-aluno-periodizacao',
   templateUrl: './aluno-periodizacao.component.html',
@@ -175,7 +189,7 @@ export class AlunoPeriodizacaoComponent implements OnInit, OnDestroy {
         title: treino + ' (' + this.seriesRepeticoes.seriesRepeticoes + ')',
         // Associar Actions Editar e Excluir
         actions: this.actionsEditDelete,
-        color: colors.blue,
+        color: AGENDADOS_COLORS[0],
         meta: {
           incrementsBadgeTotal: true,
           serieRepeticoes: this.seriesRepeticoes,
@@ -183,7 +197,7 @@ export class AlunoPeriodizacaoComponent implements OnInit, OnDestroy {
       }
     ];
   }
-  addTreinoRegistradoToDate(treino, date) {
+  addTreinoRegistradoToDate(treino, color,  date) {
     console.log('Adicionando Registrado: ', treino, date);
     this.events = [
       ...this.events,
@@ -191,7 +205,7 @@ export class AlunoPeriodizacaoComponent implements OnInit, OnDestroy {
         start: startOfDay(date),
         title: treino + ' (' + this.seriesRepeticoes.seriesRepeticoes + ')',
         actions: this.actionsEditDelete,
-        color: colors.red,
+        color,
         meta: {
           incrementsBadgeTotal: true,
           serieRepeticoes: this.seriesRepeticoes,
@@ -212,7 +226,7 @@ export class AlunoPeriodizacaoComponent implements OnInit, OnDestroy {
           if (alunoCalendario.tipo == 'p') {
             this.addTreinoAgendadoToDate(description, date);
           } else {
-            this.addTreinoRegistradoToDate(description, date);
+            this.addTreinoRegistradoToDate(description, BORG_COLORS[parseInt(alunoCalendario.borg, 10)], date);
           }
         });
       });

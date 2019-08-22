@@ -160,6 +160,7 @@ export class AlunoPeriodizacaoComponent implements OnInit, OnDestroy {
   }
 
   deleteEvent(event) {
+    this.editing(true);
     console.log('Deletando...');
     console.log(event);
     // this.events = this.events.filter(iEvent => iEvent !== event);

@@ -18,3 +18,23 @@
 .mat-button-toggle-checked {
     background-color: yellow;
 }
+.container-buttons {
+    display: flex;
+    justify-content: flex-end;
+}
+@keyframes changeborder {
+    from {
+      border-color: lightpink;
+    }
+    to {
+      border-color: tomato;
+    }
+ }
+.saving-box {
+    border-style: solid;
+    border-width: 2px;
+    animation-duration: 0.5s;
+    animation-name: changeborder;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+}

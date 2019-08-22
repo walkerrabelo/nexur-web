@@ -5,39 +5,43 @@
         (click)="activateDeactivateButton($event)"
         (change)="changeTreino($event)">
         <mat-button-toggle 
+                matTooltip="{{alunoTreino.exercicioSeries | treinoExerciciosTooltip}}"
                 class="selectable-item"
                 *ngFor="let alunoTreino of alunoTreinoList"
                 value="{{alunoTreino.descricao}}">
                 {{(alunoTreino.descricao | uppercase) | slice:0:20}}
         </mat-button-toggle>
 </mat-button-toggle-group>
-<div fxLayout="row">
-        <button mat-button (click)="save()">Salvar</button>
+
+<div class="container-buttons">
+        <button *ngIf="editingMode"
+                mat-raised-button color="accent"
+                (click)="save()" matTooltip="Salvar Periodização">
+        <mat-icon>save</mat-icon>Salvar</button>
+
         <button matTooltip="Mês Anterior" mat-raised-button
                 mwlCalendarPreviousView
                 [view]="view"
                 [(viewDate)]="viewDate"
-                (viewDateChange)="nextMonth()"
-        >
-                <mat-icon>arrow_back</mat-icon>
-        </button>
+                (viewDateChange)="nextMonth()">
+        <mat-icon>arrow_back</mat-icon></button>
+
         <button matTooltip="Mês Atual" mat-raised-button
                 mwlCalendarToday
                 [(viewDate)]="viewDate"
-                (viewDateChange)="nextMonth()"
-        >
-                <mat-icon>today</mat-icon>
-        </button>
+                (viewDateChange)="nextMonth()">
+        <mat-icon>today</mat-icon></button>
+
         <button matTooltip="Próximo Mês" mat-raised-button
                 mwlCalendarNextView
                 [view]="view"
                 [(viewDate)]="viewDate"
-                (viewDateChange)="nextMonth()"
-        >
-               <mat-icon>arrow_forward</mat-icon>
+                (viewDateChange)="nextMonth()">
+        <mat-icon>arrow_forward</mat-icon>
         </button>
 </div>
-<div class="container-calendar">
+
+<div class="container-calendar" [class.saving-box]="editingMode">
         <div class="calendar-item">
                 <h4>{{ viewDate | calendarDate:(view + 'ViewTitle'):'en' }}</h4>
                 <mwl-calendar-month-view

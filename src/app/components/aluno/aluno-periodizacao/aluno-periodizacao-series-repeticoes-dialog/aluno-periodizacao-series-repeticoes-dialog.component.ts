@@ -10,14 +10,16 @@ import { FormBuilder, FormGroup } from '@angular/forms';
 export class AlunoPeriodizacaoSeriesRepeticoesDialogComponent implements OnInit {
 
   form: FormGroup;
-
+  treino: string;
   constructor(
     private formBuilder: FormBuilder,
     public dialogRef: MatDialogRef<AlunoPeriodizacaoSeriesRepeticoesDialogComponent>,
-    @Inject(MAT_DIALOG_DATA) public data: SeriesRepeticoesPeriodizacao) {}
+    @Inject(MAT_DIALOG_DATA) public data) {}
 
   ngOnInit() {
     this.createForm();
+    this.treino = this.data.treino;
+    console.log('Treino: ', this.treino);
   }
 
   createForm() {

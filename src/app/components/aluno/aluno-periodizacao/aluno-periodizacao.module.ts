@@ -6,8 +6,9 @@ import { MatButtonModule, MatIconModule, MatTooltipModule, MatDialogModule,
   MatFormFieldModule, MatInputModule, MatSelectModule, MatButtonToggleModule, MatGridListModule } from '@angular/material';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { AlunoCalendarioService } from '../../../services/aluno/aluno-calendario.service';
-import { AlunoPeriodizacaoSeriesRepeticoesDialogComponent }
- from './aluno-periodizacao-series-repeticoes-dialog/aluno-periodizacao-series-repeticoes-dialog.component';
+// tslint:disable-next-line: max-line-length
+import { AlunoPeriodizacaoSeriesRepeticoesDialogComponent } from './aluno-periodizacao-series-repeticoes-dialog/aluno-periodizacao-series-repeticoes-dialog.component';
+import { TreinoExerciciosToolttipModule } from '../../../shared/pipes/treino-exercicios-tooltip/treino-exercicios-toolttip.module';
 
 @NgModule({
   entryComponents: [AlunoPeriodizacaoSeriesRepeticoesDialogComponent],
@@ -28,6 +29,7 @@ import { AlunoPeriodizacaoSeriesRepeticoesDialogComponent }
     MatDialogModule,
     MatFormFieldModule,
     ReactiveFormsModule,
+    TreinoExerciciosToolttipModule,
     MatInputModule,
     MatSelectModule
   ]

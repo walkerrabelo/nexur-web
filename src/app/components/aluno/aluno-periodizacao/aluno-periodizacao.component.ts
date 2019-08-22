@@ -51,6 +51,7 @@ export class AlunoPeriodizacaoComponent implements OnInit, OnDestroy {
   sameButton = true;
   subscription: Subscription;
   seriesRepeticoes = {seriesRepeticoes: '', observacoes: ''};
+  editingMode = false;
 
   @Input()
   alunoTreinoList: AlunoTreino[];
@@ -75,17 +76,21 @@ export class AlunoPeriodizacaoComponent implements OnInit, OnDestroy {
       this.viewDateNext.setMonth(this.viewDate.getMonth() + 1);
      }
 
-  openDialogNovoExercicio(): void {
+  openDialogNovaPeriodizacao(): void {
     const dialogRef =
       this.dialog.open(AlunoPeriodizacaoSeriesRepeticoesDialogComponent, {
         width: '300px',
-        data: this.seriesRepeticoes
+        data: {
+          seriesRepeticoes: this.seriesRepeticoes.seriesRepeticoes,
+          observacoes: this.seriesRepeticoes.observacoes,
+          treino: this.buttonTreinoSelected
+        }
       });
 
     dialogRef.afterClosed().subscribe(result => {
       if (result) {
         this.seriesRepeticoes = result;
-        // console.table(this.seriesRepeticoes);
+        console.log(this.seriesRepeticoes);
       }
     });
   }
@@ -131,8 +136,7 @@ export class AlunoPeriodizacaoComponent implements OnInit, OnDestroy {
       this.activeDayIsOpen = !this.activeDayIsOpen;
       this.activeDayIsOpenNextMonth = false;
     } else {
-      console.log('Adicionando o Treino: ', this.buttonTreinoSelected);
-      console.log('No dia: ', dateSelected);
+      this.editing(true);
       this.addTreinoAgendadoToDate(this.buttonTreinoSelected, dateSelected);
     }
   }
@@ -143,19 +147,22 @@ export class AlunoPeriodizacaoComponent implements OnInit, OnDestroy {
       this.activeDayIsOpenNextMonth = !this.activeDayIsOpenNextMonth;
       this.activeDayIsOpen = false;
     } else {
-      console.log('Adicionando o Treino: ', this.buttonTreinoSelected);
-      console.log('No dia: ', dateSelected);
+      this.editing(true);
       this.addTreinoAgendadoToDate(this.buttonTreinoSelected, dateSelected);
     }
   }
+  editing(activation: boolean) {
+    this.editingMode = activation;
+  }
   save() {
     this.buttonTreinoSelected = null;
-    console.log('Salvou !');
+    this.editing(false);
   }
 
   deleteEvent(event) {
     console.log('Deletando...');
-    this.events = this.events.filter(iEvent => iEvent !== event);
+    console.log(event);
+    // this.events = this.events.filter(iEvent => iEvent !== event);
   }
 
   addTreinoAgendadoToDate(treino, date) {
@@ -164,7 +171,7 @@ export class AlunoPeriodizacaoComponent implements OnInit, OnDestroy {
       ...this.events,
       {
         start: startOfDay(date),
-        title: treino,
+        title: treino + ' (' + this.seriesRepeticoes.seriesRepeticoes + ')',
         // Associar Actions Editar e Excluir
         actions: this.actionsEditDelete,
         color: colors.blue,
@@ -181,7 +188,7 @@ export class AlunoPeriodizacaoComponent implements OnInit, OnDestroy {
       ...this.events,
       {
         start: startOfDay(date),
-        title: treino,
+        title: treino + ' (' + this.seriesRepeticoes.seriesRepeticoes + ')',
         actions: this.actionsEditDelete,
         color: colors.red,
         meta: {
@@ -215,7 +222,7 @@ export class AlunoPeriodizacaoComponent implements OnInit, OnDestroy {
     if (this.sameButton) {
       this.buttonTreinoSelected = null;
     } else {
-      this.openDialogNovoExercicio();
+      this.openDialogNovaPeriodizacao();
     }
   }
 }

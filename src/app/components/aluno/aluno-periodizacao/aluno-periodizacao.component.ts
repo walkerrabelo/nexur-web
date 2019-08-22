@@ -19,6 +19,10 @@ import { AlunoPeriodizacaoSeriesRepeticoesDialogComponent } from './aluno-period
 
 const BORG_COLORS = [
   {
+    primary: '#000000',
+    secondary: '#696969'
+  },
+  {
     primary: '#D8EDF2',
     secondary: '#D8EDF2'
   },
@@ -197,15 +201,16 @@ export class AlunoPeriodizacaoComponent implements OnInit, OnDestroy {
       }
     ];
   }
-  addTreinoRegistradoToDate(treino, color,  date) {
-    console.log('Adicionando Registrado: ', treino, date);
+  addTreinoRegistradoToDate(alunoCalendario: AlunoCalendario) {
+    // console.log('Adicionando Registrado: ', treino, date);
     this.events = [
       ...this.events,
       {
-        start: startOfDay(date),
-        title: treino + ' (' + this.seriesRepeticoes.seriesRepeticoes + ')',
-        actions: this.actionsEditDelete,
-        color,
+        start: startOfDay(moment(alunoCalendario.start).format()),
+        title: alunoCalendario.title +
+          (alunoCalendario.tempo && alunoCalendario.tempo != ''  ?
+          ' (tempo: ' + alunoCalendario.tempo + ')' : ''),
+        color: BORG_COLORS[parseInt(alunoCalendario.borg, 10)],
         meta: {
           incrementsBadgeTotal: true,
           serieRepeticoes: this.seriesRepeticoes,
@@ -226,7 +231,7 @@ export class AlunoPeriodizacaoComponent implements OnInit, OnDestroy {
           if (alunoCalendario.tipo == 'p') {
             this.addTreinoAgendadoToDate(description, date);
           } else {
-            this.addTreinoRegistradoToDate(description, BORG_COLORS[parseInt(alunoCalendario.borg, 10)], date);
+            this.addTreinoRegistradoToDate(alunoCalendario);
           }
         });
       });

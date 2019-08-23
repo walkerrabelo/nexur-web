@@ -1,4 +1,4 @@
-class AlunoCalendario {
+export class AlunoCalendario {
   id: string;
   title: string;
   tipo: string;

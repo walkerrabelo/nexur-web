@@ -16,6 +16,7 @@ import { Subscription } from 'rxjs';
 import { AlunoTreino } from '../../../models/aluno/aluno-treino';
 import { MatDialog } from '@angular/material';
 import { AlunoPeriodizacaoSeriesRepeticoesDialogComponent } from './aluno-periodizacao-series-repeticoes-dialog/aluno-periodizacao-series-repeticoes-dialog.component';
+import { AlunoCalendario } from '../../../models/aluno/aluno-calendario';
 
 const BORG_COLORS = [
   {

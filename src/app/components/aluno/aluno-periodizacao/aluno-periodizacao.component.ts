@@ -164,7 +164,7 @@ export class AlunoPeriodizacaoComponent implements OnInit, OnDestroy {
       const alunoCalendario = new AlunoCalendario();
       alunoCalendario.title = this.buttonTreinoSelected.descricao;
       alunoCalendario.id_serie = this.buttonTreinoSelected.id_serie;
-      alunoCalendario.start = moment(dateSelected).format();;
+      alunoCalendario.start = moment(dateSelected).format();
       alunoCalendario.ser = this.seriesRepeticoes.seriesRepeticoes;
       alunoCalendario.obs = this.seriesRepeticoes.observacoes;
       alunoCalendario.tipo = 'p';
@@ -249,7 +249,6 @@ export class AlunoPeriodizacaoComponent implements OnInit, OnDestroy {
         console.log('Treinos Calendario: ');
         console.table(list);
         list.forEach(alunoCalendario => {
-          
           const date = moment(alunoCalendario.start).format();
           const description = alunoCalendario.title;
           if (alunoCalendario.tipo == 'p') {
@@ -267,7 +266,7 @@ export class AlunoPeriodizacaoComponent implements OnInit, OnDestroy {
     this.alunoCalendarioInsert.mesos = [];
     this.events.forEach(event => {
       const tipo = event.meta.alunoCalendario.tipo;
-      const id_serie = event.meta.alunoCalendario.id_serie;
+      const id_serie = parseInt(event.meta.alunoCalendario.id_serie, 10);
       const data = event.meta.alunoCalendario.start;
       const ser = event.meta.alunoCalendario.ser;
       const obs = event.meta.alunoCalendario.obs;

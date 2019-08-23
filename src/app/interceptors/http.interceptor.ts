@@ -35,6 +35,7 @@ export class HttpErrorInterceptor implements HttpInterceptor {
       }),
       catchError((err: any) => {
         this.onEnd();
+        console.log(err);
         if (err instanceof HttpErrorResponse) {
           try {
             if (err.status === 409) {

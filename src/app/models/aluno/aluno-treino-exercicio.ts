@@ -13,6 +13,5 @@ export class AlunoTreinoExercicio {
   nota?: any;
   ativo: string;
   exercicio: Exercicio;
-  tipoRepeticao: TipoRepeticao;
   cor: string;
 }

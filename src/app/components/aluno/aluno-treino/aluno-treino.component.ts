@@ -123,6 +123,8 @@ export class AlunoTreinoComponent implements OnInit, OnDestroy {
   }
 
   save() {
+    console.log('Salvando: ');
+    console.log(this.alunoTreino);
     this.editing(false);
     this.buttonSaveText = true;
     if (this.editingOtherData) {

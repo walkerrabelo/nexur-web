@@ -9,7 +9,7 @@ export class AlunoTreinoExercicioResumoDadosPipe implements PipeTransform {
   transform(alunoTreinoExercicio: AlunoTreinoExercicio, ...args: any[]): string {
     let retorno = '';
 
-    retorno = alunoTreinoExercicio.tipoRepeticao ? alunoTreinoExercicio.tipoRepeticao.descricao : '';
+    retorno = alunoTreinoExercicio.id_tipo_repeticao ? alunoTreinoExercicio.id_tipo_repeticao : '';
 
     retorno += alunoTreinoExercicio.num_repeticao && alunoTreinoExercicio.num_repeticao.trim() !== '' ?
     ': ' + alunoTreinoExercicio.num_repeticao : '';

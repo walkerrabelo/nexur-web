@@ -1,20 +1,11 @@
 export interface TipoRepeticao {
-    id_tipo_repeticao: number;
+    // Transformado em string para poder virar um campo livre
+    id_tipo_repeticao: string;
     descricao: string;
 }
-export const TIPOS_REPETICOES: TipoRepeticao[] = [
-    { id_tipo_repeticao: 0, descricao: '' },
-    { id_tipo_repeticao: 1, descricao: 'Drop-set' },
-    { id_tipo_repeticao: 2, descricao: 'Bi-set' },
-    { id_tipo_repeticao: 3, descricao: 'Tri-set' },
-    { id_tipo_repeticao: 4, descricao: 'Super-set' },
-    { id_tipo_repeticao: 5, descricao: 'Pirâm. Cresc.' },
-    { id_tipo_repeticao: 6, descricao: 'Pirâm. Decresc.' },
-    { id_tipo_repeticao: 7, descricao: 'Onda Cresc.' },
-    { id_tipo_repeticao: 8, descricao: 'Onda Decresc.' },
-    { id_tipo_repeticao: 9, descricao: 'Circuito' },
-    { id_tipo_repeticao: 10, descricao: 'Rotina Alta/Baixa' },
-    { id_tipo_repeticao: 11, descricao: 'Rest-pause' },
-    { id_tipo_repeticao: 12, descricao: 'Corrida intervalada' },
-    { id_tipo_repeticao: 13, descricao: 'HIIT' }
-];
+export const TIPOS_REPETICOES =
+    [
+        'Drop-set', 'Bi-set', 'Tri-set', 'Super-set', 'Pirâm. Cresc.',
+        'Pirâm. Decresc.', 'Onda Cresc.', 'Onda Decresc.', 'Circuito',
+        'Rotina Alta/Baixa', 'Rest-pause', 'Corrida intervalada', 'HIIT'
+    ];

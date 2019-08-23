@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { HttpBaseService } from '../http-base.service';
 import { HttpClient } from '@angular/common/http';
 import { take } from 'rxjs/operators';
+import { AlunoCalendario } from '../../models/aluno/aluno-calendario';
 
 @Injectable()
 export class AlunoCalendarioService extends HttpBaseService<AlunoCalendario> {

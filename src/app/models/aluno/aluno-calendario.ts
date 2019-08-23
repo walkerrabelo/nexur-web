@@ -1,5 +1,6 @@
 export class AlunoCalendario {
   id: string;
+  id_serie: number;
   title: string;
   tipo: string;
   mensagem: string;
@@ -9,4 +10,6 @@ export class AlunoCalendario {
   start: string;
   end: string;
   id_aluno: number;
+  ser: string;
+  obs: string;
 }

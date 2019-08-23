@@ -17,6 +17,8 @@ import { AlunoTreino } from '../../../models/aluno/aluno-treino';
 import { MatDialog } from '@angular/material';
 import { AlunoPeriodizacaoSeriesRepeticoesDialogComponent } from './aluno-periodizacao-series-repeticoes-dialog/aluno-periodizacao-series-repeticoes-dialog.component';
 import { AlunoCalendario } from '../../../models/aluno/aluno-calendario';
+import { AlunoCalendarioInsert } from '../../../models/aluno/aluno-calendario-insert';
+import { AlunoCalendarioInsertionService } from '../../../services/aluno/aluno-calendario-insertion.service';
 
 const BORG_COLORS = [
   {
@@ -67,11 +69,13 @@ export class AlunoPeriodizacaoComponent implements OnInit, OnDestroy {
   activeDayIsOpen = false;
   activeDayIsOpenNextMonth = false;
   buttonTreinoSelected = null;
+  idSerieSelected = null;
   sameButton = true;
   subscription: Subscription;
   seriesRepeticoes = {seriesRepeticoes: '', observacoes: ''};
   editingMode = false;
 
+  alunoCalendarioInsert: AlunoCalendarioInsert;
   @Input()
   alunoTreinoList: AlunoTreino[];
   @Input()
@@ -91,6 +95,7 @@ export class AlunoPeriodizacaoComponent implements OnInit, OnDestroy {
 
   constructor(
     private dialog: MatDialog,
+    private alunoCalendarioInsertionService: AlunoCalendarioInsertionService,
     private alunoCalendarioService: AlunoCalendarioService) {
       this.viewDateNext.setMonth(this.viewDate.getMonth() + 1);
      }
@@ -143,8 +148,8 @@ export class AlunoPeriodizacaoComponent implements OnInit, OnDestroy {
 
   changeTreino(selected) {
     this.activeDayIsOpen = false;
-    console.log('Button Selected: ', this.buttonTreinoSelected);
-    console.log(selected.value);
+    console.log('Button Selected: ');
+    console.log(selected.value.descricao);
     this.sameButton = true;
   }
 
@@ -156,7 +161,14 @@ export class AlunoPeriodizacaoComponent implements OnInit, OnDestroy {
       this.activeDayIsOpenNextMonth = false;
     } else {
       this.editing(true);
-      this.addTreinoAgendadoToDate(this.buttonTreinoSelected, dateSelected);
+      const alunoCalendario = new AlunoCalendario();
+      alunoCalendario.title = this.buttonTreinoSelected.descricao;
+      alunoCalendario.id_serie = this.buttonTreinoSelected.id_serie;
+      alunoCalendario.start = moment(dateSelected).format();;
+      alunoCalendario.ser = this.seriesRepeticoes.seriesRepeticoes;
+      alunoCalendario.obs = this.seriesRepeticoes.observacoes;
+      alunoCalendario.tipo = 'p';
+      this.addTreinoAgendadoToDate(alunoCalendario);
     }
   }
   dayClickedNextMonth(event) {
@@ -167,7 +179,14 @@ export class AlunoPeriodizacaoComponent implements OnInit, OnDestroy {
       this.activeDayIsOpen = false;
     } else {
       this.editing(true);
-      this.addTreinoAgendadoToDate(this.buttonTreinoSelected, dateSelected);
+      const alunoCalendario = new AlunoCalendario();
+      alunoCalendario.title = this.buttonTreinoSelected.descricao;
+      alunoCalendario.id_serie = this.buttonTreinoSelected.id_serie;
+      alunoCalendario.start = moment(dateSelected).format();
+      alunoCalendario.ser = this.seriesRepeticoes.seriesRepeticoes;
+      alunoCalendario.obs = this.seriesRepeticoes.observacoes;
+      alunoCalendario.tipo = 'p';
+      this.addTreinoAgendadoToDate(alunoCalendario);
     }
   }
   editing(activation: boolean) {
@@ -175,7 +194,12 @@ export class AlunoPeriodizacaoComponent implements OnInit, OnDestroy {
   }
   save() {
     this.buttonTreinoSelected = null;
-    this.editing(false);
+    this.fillData();
+    this.subscription = this.alunoCalendarioInsertionService
+    .create(this.alunoCalendarioInsert).subscribe(alunoCalendario => {
+      this.editing(false);
+      console.log('Salvou !');
+    });
   }
 
   deleteEvent(event) {
@@ -185,19 +209,17 @@ export class AlunoPeriodizacaoComponent implements OnInit, OnDestroy {
     // this.events = this.events.filter(iEvent => iEvent !== event);
   }
 
-  addTreinoAgendadoToDate(treino, date) {
-    console.log('Adicionando Agendado: ', treino, date);
+  addTreinoAgendadoToDate(alunoCalendario: AlunoCalendario) {
+    // console.log('Adicionando Agendado: ', treino, date);
     this.events = [
       ...this.events,
       {
-        start: startOfDay(date),
-        title: treino + ' (' + this.seriesRepeticoes.seriesRepeticoes + ')',
-        // Associar Actions Editar e Excluir
-        actions: this.actionsEditDelete,
+        start: startOfDay(alunoCalendario.start),
+        title: alunoCalendario.title + ' (' + alunoCalendario.ser + ')',
         color: AGENDADOS_COLORS[0],
         meta: {
           incrementsBadgeTotal: true,
-          serieRepeticoes: this.seriesRepeticoes,
+          alunoCalendario
         }
       }
     ];
@@ -207,14 +229,14 @@ export class AlunoPeriodizacaoComponent implements OnInit, OnDestroy {
     this.events = [
       ...this.events,
       {
-        start: startOfDay(moment(alunoCalendario.start).format()),
+        start: startOfDay(alunoCalendario.start),
         title: alunoCalendario.title +
           (alunoCalendario.tempo && alunoCalendario.tempo != ''  ?
           ' (tempo: ' + alunoCalendario.tempo + ')' : ''),
         color: BORG_COLORS[parseInt(alunoCalendario.borg, 10)],
         meta: {
           incrementsBadgeTotal: true,
-          serieRepeticoes: this.seriesRepeticoes,
+          alunoCalendario
         }
       }
     ];
@@ -227,15 +249,34 @@ export class AlunoPeriodizacaoComponent implements OnInit, OnDestroy {
         console.log('Treinos Calendario: ');
         console.table(list);
         list.forEach(alunoCalendario => {
+          
           const date = moment(alunoCalendario.start).format();
           const description = alunoCalendario.title;
           if (alunoCalendario.tipo == 'p') {
-            this.addTreinoAgendadoToDate(description, date);
+            this.addTreinoAgendadoToDate(alunoCalendario);
           } else {
             this.addTreinoRegistradoToDate(alunoCalendario);
           }
         });
       });
+  }
+
+  fillData() {
+    this.alunoCalendarioInsert = new AlunoCalendarioInsert();
+    this.alunoCalendarioInsert.events = [];
+    this.alunoCalendarioInsert.mesos = [];
+    this.events.forEach(event => {
+      const tipo = event.meta.alunoCalendario.tipo;
+      const id_serie = event.meta.alunoCalendario.id_serie;
+      const data = event.meta.alunoCalendario.start;
+      const ser = event.meta.alunoCalendario.ser;
+      const obs = event.meta.alunoCalendario.obs;
+      this.alunoCalendarioInsert.id_aluno = this.idAluno;
+      this.alunoCalendarioInsert.events.push(
+        {tipo, id_serie, data, ser, obs}
+      );
+    });
+    console.log(this.alunoCalendarioInsert);
   }
 
   activateDeactivateButton(event) {

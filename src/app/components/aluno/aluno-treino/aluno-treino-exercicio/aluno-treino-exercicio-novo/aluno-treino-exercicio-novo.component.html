@@ -12,12 +12,14 @@
                 <form [formGroup]="alunoExercicioForm">
                     <mat-form-field class="full-width">
                         <mat-label>Tipo de Repetição</mat-label>
-                        <mat-select formControlName="tipoRepeticao" [compareWith]="compareRepeticoes">
-                            <mat-option *ngFor="let tipo of tiposRepeticoes" [(value)]="tipo">
-                                {{tipo.descricao}}
-                            </mat-option>
-                        </mat-select>
+                        <input matInput placeholder="Tipo de Repetição" 
+                            formControlName="tipoRepeticao"
+                            [matAutocomplete]="autoCompleteRepeticoes">
                     </mat-form-field>
+                    <mat-autocomplete #autoCompleteRepeticoes="matAutocomplete">
+                        <mat-option *ngFor="let tipo of tiposRepeticoes" [value]="tipo">{{tipo}}</mat-option>
+                    </mat-autocomplete>
+
                     <mat-form-field class="full-width">
                         <mat-label>Repetição</mat-label>
                         <input matInput placeholder="06/08/10/12" formControlName="repeticao">

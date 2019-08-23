@@ -9,13 +9,14 @@ import { AlunoCalendarioService } from '../../../services/aluno/aluno-calendario
 // tslint:disable-next-line: max-line-length
 import { AlunoPeriodizacaoSeriesRepeticoesDialogComponent } from './aluno-periodizacao-series-repeticoes-dialog/aluno-periodizacao-series-repeticoes-dialog.component';
 import { TreinoExerciciosToolttipModule } from '../../../shared/pipes/treino-exercicios-tooltip/treino-exercicios-toolttip.module';
+import { AlunoCalendarioInsertionService } from '../../../services/aluno/aluno-calendario-insertion.service';
 
 @NgModule({
   entryComponents: [AlunoPeriodizacaoSeriesRepeticoesDialogComponent],
   declarations: [
     AlunoPeriodizacaoComponent,
     AlunoPeriodizacaoSeriesRepeticoesDialogComponent],
-  providers: [AlunoCalendarioService],
+  providers: [AlunoCalendarioService, AlunoCalendarioInsertionService],
   exports: [AlunoPeriodizacaoComponent],
   imports: [
     CommonModule,

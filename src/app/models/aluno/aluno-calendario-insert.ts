@@ -1,4 +1,5 @@
 export class AlunoCalendarioInsert {
+    id_aluno: string;
     mesos: MesoCiclo[];
     events: Event[];
 }

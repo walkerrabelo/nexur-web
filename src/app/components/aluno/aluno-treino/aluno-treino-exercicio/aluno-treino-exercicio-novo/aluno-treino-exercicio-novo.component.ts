@@ -40,7 +40,7 @@ export class AlunoTreinoExercicioNovoComponent implements OnInit, OnDestroy{
 
   createForm() {
     this.alunoExercicioForm = this.formBuilder.group({
-      tipoRepeticao: TIPOS_REPETICOES[0],
+      tipoRepeticao: '',
       repeticao: '',
       carga: '',
       intervalo: '',
@@ -64,13 +64,13 @@ export class AlunoTreinoExercicioNovoComponent implements OnInit, OnDestroy{
   }
 
   fillObject() {
-    this.alunoTreinoExercicio.tipoRepeticao = TIPOS_REPETICOES[this.alunoExercicioForm.get('tipoRepeticao').value];
-    this.alunoTreinoExercicio.id_tipo_repeticao = this.alunoExercicioForm.get('tipoRepeticao').value['id_tipo_repeticao'];
+    this.alunoTreinoExercicio.id_tipo_repeticao = this.alunoExercicioForm.get('tipoRepeticao').value;
     this.alunoTreinoExercicio.num_repeticao = this.alunoExercicioForm.get('repeticao').value;
     this.alunoTreinoExercicio.carga = this.alunoExercicioForm.get('carga').value;
     this.alunoTreinoExercicio.intervalo = '' + this.alunoExercicioForm.get('intervalo').value;
     this.alunoTreinoExercicio.nota = this.alunoExercicioForm.get('nota').value;
     this.alunoTreinoExercicio.cor = '';
+    console.log(this.alunoTreinoExercicio);
   }
 
   save() {

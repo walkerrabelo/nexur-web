@@ -5,10 +5,10 @@
         (click)="activateDeactivateButton($event)"
         (change)="changeTreino($event)">
         <mat-button-toggle 
-                matTooltip="{{alunoTreino.exercicioSeries | treinoExerciciosTooltip}}"
+                [matTooltip]="alunoTreino.exercicioSeries | treinoExerciciosTooltip"
                 class="selectable-item"
                 *ngFor="let alunoTreino of alunoTreinoList"
-                value="{{alunoTreino.descricao}}">
+                [value]="alunoTreino">
                 {{(alunoTreino.descricao | uppercase) | slice:0:20}}
         </mat-button-toggle>
 </mat-button-toggle-group>

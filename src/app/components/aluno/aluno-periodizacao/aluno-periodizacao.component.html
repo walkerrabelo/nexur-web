@@ -49,7 +49,7 @@
                         [events]="events"
                         [activeDayIsOpen]="activeDayIsOpen"
                         (beforeViewRender)="beforeMonthViewRender($event)"
-                        (dayClicked)="dayClicked($event)"
+                        (dayClicked)="dayClickedMonth01($event)"
                         (eventClicked)="deleteEvent($event.event)"
                 >
                 </mwl-calendar-month-view>
@@ -61,7 +61,7 @@
                         [events]="events"
                         [activeDayIsOpen]="activeDayIsOpenNextMonth"
                         (beforeViewRender)="beforeMonthViewRender($event)"
-                        (dayClicked)="dayClickedNextMonth($event)"
+                        (dayClicked)="dayClickedMonth02($event)"
                         (eventClicked)="deleteEvent($event.event)"
                 >
                 </mwl-calendar-month-view>

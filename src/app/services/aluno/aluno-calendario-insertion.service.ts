@@ -12,7 +12,7 @@ export class AlunoCalendarioInsertionService extends HttpBaseService<AlunoCalend
     super(http, 'aluno-calendario', 'id');
   }
 
-  create(alunoCalendarioInsert): Observable<any> {
+  saveCalendar(alunoCalendarioInsert): Observable<any> {
     const url = `${this.API}/save`;
     return this.http.post(url, alunoCalendarioInsert).pipe(take(1));
   }

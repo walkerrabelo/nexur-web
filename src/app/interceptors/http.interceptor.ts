@@ -22,6 +22,7 @@ export class HttpErrorInterceptor implements HttpInterceptor {
     this.showLoader();
     return next.handle(req).pipe(
       tap(evt => {
+        console.log(evt);
         if (evt instanceof HttpResponse) {
           this.onEnd();
           if (evt.body && evt.body.success) {

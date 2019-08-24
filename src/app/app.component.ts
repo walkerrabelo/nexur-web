@@ -1,5 +1,5 @@
 import { Subscription } from 'rxjs';
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnInit, OnDestroy, ChangeDetectionStrategy } from '@angular/core';
 import { LoaderService } from './shared/loader/loader.service';
 import { LoaderState } from './shared/loader/loader';
 import { ExercicioUsuarioDataService } from './services/exercicio/exercicio-usuario-data.service';
@@ -8,7 +8,8 @@ import { TokenService } from './services/autenticacao/token.service';
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css']
+  styleUrls: ['./app.component.css'],
+  changeDetection: ChangeDetectionStrategy.Default
 })
 export class AppComponent implements OnInit, OnDestroy{
 
@@ -23,9 +24,9 @@ export class AppComponent implements OnInit, OnDestroy{
 
   ngOnInit() {
     this.subscription = this.loaderService.loaderState
-    .subscribe((state: LoaderState) => {
-      this.showLoader = state.show;
-    });
+      .subscribe((state: LoaderState) => {
+        this.showLoader = state.show;
+      });
     if (this.tokenService.hasToken()) {
       this.exercicioUsuarioDataService.loadList();
     }

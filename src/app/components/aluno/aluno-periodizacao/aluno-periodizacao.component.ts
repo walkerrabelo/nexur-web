@@ -81,16 +81,6 @@ export class AlunoPeriodizacaoComponent implements OnInit, OnDestroy {
   @Input()
   idAluno: string;
 
-  actionsEditDelete: CalendarEventAction[] = [
-    {
-      label: '',
-      onClick: ({ event }: { event: CalendarEvent }): void => {
-        console.log(event);
-      }
-    }
-  ];
-  // Actions Editar e Excluir Treino
-
   events: CalendarEvent[] = [];
 
   constructor(
@@ -153,12 +143,12 @@ export class AlunoPeriodizacaoComponent implements OnInit, OnDestroy {
     this.sameButton = true;
   }
 
-  dayClicked(event) {
+  dayClickedMonth01(event) {
     const dateSelected = event.day.date;
     this.viewDate = dateSelected;
     if (!this.buttonTreinoSelected) {
-      this.activeDayIsOpen = !this.activeDayIsOpen;
       this.activeDayIsOpenNextMonth = false;
+      this.activeDayIsOpen = !this.activeDayIsOpen;
     } else {
       this.editing(true);
       const alunoCalendario = new AlunoCalendario();
@@ -171,12 +161,12 @@ export class AlunoPeriodizacaoComponent implements OnInit, OnDestroy {
       this.addTreinoAgendadoToDate(alunoCalendario);
     }
   }
-  dayClickedNextMonth(event) {
+  dayClickedMonth02(event) {
     const dateSelected = event.day.date;
     this.viewDateNext = dateSelected;
     if (!this.buttonTreinoSelected) {
-      this.activeDayIsOpenNextMonth = !this.activeDayIsOpenNextMonth;
       this.activeDayIsOpen = false;
+      this.activeDayIsOpenNextMonth = !this.activeDayIsOpenNextMonth;
     } else {
       this.editing(true);
       const alunoCalendario = new AlunoCalendario();
@@ -196,17 +186,14 @@ export class AlunoPeriodizacaoComponent implements OnInit, OnDestroy {
     this.buttonTreinoSelected = null;
     this.fillData();
     this.subscription = this.alunoCalendarioInsertionService
-    .create(this.alunoCalendarioInsert).subscribe(alunoCalendario => {
-      this.editing(false);
-      console.log('Salvou !');
-    });
+    .saveCalendar(this.alunoCalendarioInsert).subscribe(alunoCalendario => this.editing(false));
   }
 
   deleteEvent(event) {
-    this.editing(true);
-    console.log('Deletando...');
-    console.log(event);
-    // this.events = this.events.filter(iEvent => iEvent !== event);
+    if (confirm('Apagar ' + event.title + ' ?')) {
+      this.editing(true);
+      this.events = this.events.filter(iEvent => iEvent !== event);
+    }
   }
 
   addTreinoAgendadoToDate(alunoCalendario: AlunoCalendario) {
@@ -243,20 +230,25 @@ export class AlunoPeriodizacaoComponent implements OnInit, OnDestroy {
   }
 
   loadAlunoCalendario() {
+    const inicio: Date = new Date();
+    inicio.setMonth(inicio.getMonth() - 2);
+    const fim: Date = new Date();
+    fim.setMonth(fim.getMonth() + 3);
+
     this.subscription = this.alunoCalendarioService
-    .getCalendario(this.idAluno).subscribe(
+    .getCalendario(this.idAluno, moment(inicio).format('YYYY-MM-DD'), moment(fim).format('YYYY-MM-DD')).subscribe(
       list => {
-        console.log('Treinos Calendario: ');
-        console.table(list);
+        console.log('Periodização: ');
+        console.log(list);
         list.forEach(alunoCalendario => {
-          const date = moment(alunoCalendario.start).format();
-          const description = alunoCalendario.title;
-          if (alunoCalendario.tipo == 'p') {
-            this.addTreinoAgendadoToDate(alunoCalendario);
-          } else {
-            this.addTreinoRegistradoToDate(alunoCalendario);
-          }
-        });
+        const date = moment(alunoCalendario.start).format();
+        const description = alunoCalendario.title;
+        if (alunoCalendario.tipo == 'p') {
+          this.addTreinoAgendadoToDate(alunoCalendario);
+        } else {
+          this.addTreinoRegistradoToDate(alunoCalendario);
+        }
+      });
       });
   }
 
@@ -264,13 +256,13 @@ export class AlunoPeriodizacaoComponent implements OnInit, OnDestroy {
     this.alunoCalendarioInsert = new AlunoCalendarioInsert();
     this.alunoCalendarioInsert.events = [];
     this.alunoCalendarioInsert.mesos = [];
+    this.alunoCalendarioInsert.id_aluno = this.idAluno;
     this.events.forEach(event => {
       const tipo = event.meta.alunoCalendario.tipo;
       const id_serie = parseInt(event.meta.alunoCalendario.id_serie, 10);
       const data = event.meta.alunoCalendario.start;
       const ser = event.meta.alunoCalendario.ser;
       const obs = event.meta.alunoCalendario.obs;
-      this.alunoCalendarioInsert.id_aluno = this.idAluno;
       this.alunoCalendarioInsert.events.push(
         {tipo, id_serie, data, ser, obs}
       );

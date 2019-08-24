@@ -12,8 +12,9 @@ export class AlunoCalendarioService extends HttpBaseService<AlunoCalendario> {
     super(http, 'aluno-calendario', 'id');
   }
 
-  getCalendario(idAluno: string) {
+  getCalendario(idAluno: string, inicio: string, fim: string) {
+    const url = `${this.API}/index?id=${idAluno}&inicio=${inicio}&fim=${fim}`;
     return this.http
-    .get<AlunoCalendario[]>(`${environment.api_url}/aluno-calendario/index?id=${idAluno}`).pipe(take(1));
+    .get<AlunoCalendario[]>(url).pipe(take(1));
   }
 }
